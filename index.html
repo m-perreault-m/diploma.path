@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ontario Course Prereq Planner (MVP)</title>
+  <link rel="stylesheet" href="./styles/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="title">
+      <h1>Ontario Course Planner</h1>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Modes">
+      <button id="tab-backward" class="tab active" role="tab" aria-selected="true">Backward (Start from Grade 12)</button>
+      <button id="tab-forward" class="tab" role="tab" aria-selected="false">Forward (Start from Completed)</button>
+    </div>
+  </header>
+
+  <section class="controls">
+    <div class="control-row">
+      <input id="search" type="search" placeholder="Search (code or name)…" autocomplete="off" />
+       <button id="clear" class="btn icon-btn" title="New - start over" aria-label="New - start over">🆕</button>
+      <button id="show-all" class="btn icon-btn" title="Show all courses / remove filters" aria-label="Show all courses / remove filters">🔄️</button>
+      
+    </div>
+
+
+
+  </section>
+
+  <section class="plan-strip">
+
+    <!-- NEW: plan overlay for wires -->
+    <div class="plan-wrap">
+      <svg id="plan-wires" class="plan-wires" aria-hidden="true"></svg>
+      <div id="plan" class="plan"></div>
+    </div>
+  </section>
+
+  <main class="board-wrap">
+    <svg id="wires" class="wires" aria-hidden="true"></svg>
+
+    <div id="board" class="board" aria-label="Course board">
+      <div class="col" data-grade="9">
+        <div class="col-title">Grade 9</div>
+        <div class="col-body" id="col-9"></div>
+      </div>
+
+      <div class="col" data-grade="10">
+        <div class="col-title">Grade 10</div>
+        <div class="col-body" id="col-10"></div>
+      </div>
+
+      <div class="col" data-grade="11">
+        <div class="col-title">Grade 11</div>
+        <div class="col-body" id="col-11"></div>
+      </div>
+
+      <div class="col" data-grade="12">
+        <div class="col-title">Grade 12</div>
+        <div class="col-body" id="col-12"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="small">
+      Data source: Ontario course prerequisites JSON (your local file). This MVP focuses on course-to-course prerequisite logic.
+    </div>
+  </footer>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
