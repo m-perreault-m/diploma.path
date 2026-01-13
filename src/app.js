@@ -2,6 +2,11 @@
 import { buildIndex, dependentClosure, courseIsUnlocked } from "./graph.js";
 
 const CLICK_DELAY_MS = 200;
+const SAVE_COOKIE_KEY = "pathwaySaves";
+const SAVE_COOKIE_MAX_AGE_DAYS = 365;
+const SAVE_COOKIE_CHAR_LIMIT = 3500;
+const SAVE_COOKIE_MAX_ENTRIES = 8;
+const SAVE_NAME_MAX = 20;
 
 const state = {
   mode: "backward",
@@ -47,6 +52,8 @@ const state = {
 
   draggingCode: null,
   draggingFrom: null,
+
+  savedPaths: [],
 };
 
 const els = {
@@ -60,7 +67,9 @@ const els = {
   search: document.getElementById("search"),
   clear: document.getElementById("clear"), // Start Over
   printPathway: document.getElementById("print-pathway"),
+  savePathway: document.getElementById("save-pathway"),
   showAll: document.getElementById("show-all"), // Show All Courses
+  savedList: document.getElementById("saved-list"),
 
   plan: document.getElementById("plan"),
   planWires: document.getElementById("plan-wires"),
@@ -89,6 +98,8 @@ async function boot() {
 
   initWheelOrder();
   wireEvents();
+  state.savedPaths = loadSavedPathways();
+  renderSavedList();
 
   renderBoard();
   renderPlan();
@@ -143,6 +154,20 @@ function wireEvents() {
     els.drawerScrim?.setAttribute("hidden", "");
     els.drawerToggle?.setAttribute("aria-expanded", "false");
     window.print();
+  });
+  els.savePathway?.addEventListener("click", () => {
+    const name = promptForSaveName();
+    if (!name) return;
+    saveCurrentPathway(name);
+  });
+  els.savedList?.addEventListener("click", (event) => {
+    const button = event.target.closest(".saved-item");
+    if (!button) return;
+    const id = button.dataset.saveId;
+    if (!id) return;
+    const entry = state.savedPaths.find((item) => item.id === id);
+    if (!entry) return;
+    applySavedPathway(entry);
   });
 
   els.search?.addEventListener("input", (e) => {
@@ -216,6 +241,130 @@ function wireEvents() {
   });
 
   setupPlanDropZones();
+}
+
+function loadSavedPathways() {
+  const raw = readCookie(SAVE_COOKIE_KEY);
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .filter((item) => item && typeof item === "object")
+      .map((item) => ({
+        id: String(item.id ?? ""),
+        name: String(item.name ?? "").trim(),
+        savedAt: String(item.savedAt ?? ""),
+        data: item.data ?? {},
+      }))
+      .filter((item) => item.id && item.name)
+      .sort((a, b) => b.savedAt.localeCompare(a.savedAt));
+  } catch {
+    return [];
+  }
+}
+
+function persistSavedPathways(list) {
+  let trimmed = list
+    .slice()
+    .sort((a, b) => String(b.savedAt ?? "").localeCompare(String(a.savedAt ?? "")))
+    .slice(0, SAVE_COOKIE_MAX_ENTRIES);
+  let encoded = encodeURIComponent(JSON.stringify(trimmed));
+  while (encoded.length > SAVE_COOKIE_CHAR_LIMIT && trimmed.length > 1) {
+    trimmed = trimmed.slice(0, -1);
+    encoded = encodeURIComponent(JSON.stringify(trimmed));
+  }
+  writeCookie(SAVE_COOKIE_KEY, encoded, SAVE_COOKIE_MAX_AGE_DAYS);
+  state.savedPaths = trimmed;
+}
+
+function renderSavedList() {
+  if (!els.savedList) return;
+  if (!state.savedPaths.length) {
+    els.savedList.innerHTML = `<div class="saved-empty">No saved pathways yet.</div>`;
+    return;
+  }
+  els.savedList.innerHTML = state.savedPaths
+    .map((entry) => {
+      const date = entry.savedAt ? new Date(entry.savedAt) : null;
+      const label = date
+        ? date.toLocaleDateString(undefined, { month: "short", day: "numeric" })
+        : "Saved";
+      return `
+        <button class="saved-item" type="button" data-save-id="${escapeHtml(entry.id)}">
+          <span>${escapeHtml(entry.name)}</span>
+          <time datetime="${escapeHtml(entry.savedAt ?? "")}">${escapeHtml(label)}</time>
+        </button>
+      `;
+    })
+    .join("");
+}
+
+function promptForSaveName() {
+  const hint = `Name this pathway (1-${SAVE_NAME_MAX} characters; 15-20 recommended).`;
+  while (true) {
+    const input = window.prompt(hint);
+    if (input === null) return null;
+    const name = input.trim();
+    if (!name) {
+      window.alert("Please enter a name for your pathway.");
+      continue;
+    }
+    if (name.length > SAVE_NAME_MAX) {
+      window.alert(`Please keep the name under ${SAVE_NAME_MAX} characters.`);
+      continue;
+    }
+    return name;
+  }
+}
+
+function saveCurrentPathway(name) {
+  const entry = {
+    id: `save_${Date.now()}_${Math.random().toString(16).slice(2, 8)}`,
+    name,
+    savedAt: new Date().toISOString(),
+    data: serializePathway(),
+  };
+  const withoutName = state.savedPaths.filter(
+    (item) => item.name.toLowerCase() !== name.toLowerCase()
+  );
+  const updated = [entry, ...withoutName];
+  persistSavedPathways(updated);
+  renderSavedList();
+}
+
+function serializePathway() {
+  return {
+    mode: state.mode,
+    completed: [...state.completed],
+    plannedByGrade: {
+      9: [...(state.plannedByGrade.get(9) ?? new Set())],
+      10: [...(state.plannedByGrade.get(10) ?? new Set())],
+      11: [...(state.plannedByGrade.get(11) ?? new Set())],
+      12: [...(state.plannedByGrade.get(12) ?? new Set())],
+    },
+  };
+}
+
+function applySavedPathway(entry) {
+  const payload = entry?.data ?? {};
+  state.completed = new Set(payload.completed ?? []);
+  state.plannedByGrade = new Map([
+    [9, new Set(payload.plannedByGrade?.[9] ?? [])],
+    [10, new Set(payload.plannedByGrade?.[10] ?? [])],
+    [11, new Set(payload.plannedByGrade?.[11] ?? [])],
+    [12, new Set(payload.plannedByGrade?.[12] ?? [])],
+  ]);
+  state.search = "";
+  if (els.search) els.search.value = "";
+  state.hoveredCode = null;
+  state.hoverSet = new Set();
+  state.focusedCode = null;
+  state.prereqSet = new Set();
+  state.prereqDirectSet = new Set();
+  state.focusFilterActive = false;
+  initWheelOrder();
+  setMode(payload.mode ?? "backward");
 }
 
 function resetFocusOnly() {
@@ -944,4 +1093,20 @@ function escapeHtml(s) {
 function cssEscape(value) {
   if (window.CSS && CSS.escape) return CSS.escape(value);
   return String(value).replace(/"/g, '\\"');
+}
+
+function readCookie(name) {
+  const prefix = `${name}=`;
+  const parts = document.cookie.split("; ");
+  for (const part of parts) {
+    if (part.startsWith(prefix)) {
+      return decodeURIComponent(part.slice(prefix.length));
+    }
+  }
+  return "";
+}
+
+function writeCookie(name, encodedValue, maxAgeDays) {
+  const maxAgeSeconds = Math.floor(maxAgeDays * 24 * 60 * 60);
+  document.cookie = `${name}=${encodedValue}; max-age=${maxAgeSeconds}; path=/; SameSite=Lax`;
 }
