@@ -52,6 +52,8 @@ const state = {
 const els = {
   tabBackward: document.getElementById("tab-backward"),
   tabForward: document.getElementById("tab-forward"),
+  drawer: document.getElementById("drawer"),
+  drawerToggle: document.getElementById("drawer-toggle"),
   hint: document.getElementById("mode-hint"),
   search: document.getElementById("search"),
   clear: document.getElementById("clear"), // Start Over
@@ -118,6 +120,11 @@ function sanitizeCoursesInMemory(courses) {
 function wireEvents() {
   els.tabBackward?.addEventListener("click", () => setMode("backward"));
   els.tabForward?.addEventListener("click", () => setMode("forward"));
+  els.drawerToggle?.addEventListener("click", () => {
+    const isOpen = els.drawer?.classList.toggle("is-open");
+    document.body.classList.toggle("drawer-open", isOpen);
+    els.drawerToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
 
   els.search?.addEventListener("input", (e) => {
     state.search = e.target.value.trim().toLowerCase();
