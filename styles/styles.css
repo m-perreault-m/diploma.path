@@ -1,0 +1,373 @@
+:root{
+  --bg: #0b0c10;
+  --panel: rgba(255,255,255,0.06);
+  --text: rgba(255,255,255,0.92);
+  --mutedText: rgba(255,255,255,0.65);
+  --stroke: rgba(255,255,255,0.10);
+  --glow: rgba(255,255,255,0.18);
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Fixed, non-scrolling background glow */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,0.06), transparent),
+    radial-gradient(1200px 600px at 80% 0%, rgba(255,255,255,0.05), transparent);
+}
+
+
+.app-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  padding:18px 18px 10px;
+}
+
+.title h1{ margin:0; font-size:20px; }
+.subtitle{ margin:6px 0 0; color: var(--mutedText); font-size:13px; }
+
+.tabs{ display:flex; gap:8px; }
+.tab{
+  border:1px solid var(--stroke);
+  background: var(--panel);
+  color: var(--text);
+  padding:10px 12px;
+  border-radius: 999px;
+  cursor:pointer;
+  transition: transform .15s ease, background .15s ease;
+}
+.tab:hover{ transform: translateY(-1px); }
+.tab.active{ background: rgba(255,255,255,0.12); }
+
+.controls{
+  padding: 10px 18px 14px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.control-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+input[type="search"]{
+  flex:1;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+  outline: none;
+}
+
+.btn{
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  cursor:pointer;
+}
+
+.mode-hint{ color: var(--mutedText); font-size: 13px; }
+
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.pill{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,0.06);
+}
+.pill.muted{ opacity: .6; }
+.pill.prereq{ background: rgba(120,200,255,0.12); }
+.pill.unlocked{ background: rgba(140,255,180,0.12); }
+.pill.selected{ background: rgba(255,255,255,0.14); }
+.pill.glow{ box-shadow: 0 0 0 6px rgba(255,255,255,0.03); }
+
+/* ===== Plan Area (now 4 grade boxes) ===== */
+.plan-strip{ padding: 0 18px 12px; }
+.plan-title{
+  font-size: 12px;
+  color: var(--mutedText);
+  margin-bottom: 8px;
+}
+
+.plan-wrap{
+  position: relative;
+}
+
+.plan{
+  position: relative;
+  display:grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.plan-col{
+  border: 1px solid var(--stroke);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.04);
+  overflow:hidden;
+  min-height: 140px;
+}
+
+.plan-col-title{
+  padding: 10px 12px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--stroke);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+}
+
+.plan-col-subtitle{
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--mutedText);
+}
+
+.plan-col-body{
+  padding: 12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.plan-empty{
+  color: var(--mutedText);
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px dashed var(--stroke);
+}
+
+/* Smaller plan cards (still "course-card" semantics, separate class) */
+.plan-card{
+  text-align:left;
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  cursor:pointer;
+  transition: transform .18s ease, filter .18s ease, opacity .18s ease, box-shadow .18s ease;
+}
+.plan-card:hover{ transform: translateY(-1px); }
+
+.plan-card .course-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.plan-card .course-code{ font-weight: 800; }
+.plan-card .course-level{ font-size: 12px; color: var(--mutedText); }
+.plan-card .course-name{ margin-top: 6px; font-size: 13px; }
+.plan-card .course-meta{ margin-top: 6px; font-size: 11px; color: var(--mutedText); }
+
+/* Plan wires overlay */
+.plan-wires{
+  position:absolute;
+  inset: 0;
+  pointer-events:none;
+  overflow:visible;
+}
+
+/* ===== Board Area ===== */
+.board-wrap{
+  position:relative;
+  padding: 0 18px 24px;
+}
+.board{
+  position:relative;
+  display:grid;
+  grid-template-columns: repeat(4, minmax(240px, 1fr));
+  gap: 14px;
+  align-items:start;
+}
+
+.col{
+  border: 1px solid var(--stroke);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.04);
+  overflow:hidden;
+}
+.col-title{
+  padding: 10px 12px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--stroke);
+}
+.col-body{
+  padding: 12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-height: 260px;
+}
+
+.course-card{
+  text-align:left;
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  cursor:pointer;
+  transition: transform .18s ease, filter .18s ease, opacity .18s ease, box-shadow .18s ease;
+}
+.course-card:hover{ transform: translateY(-1px); }
+
+.course-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.course-code{ font-weight: 800; }
+.course-level{ font-size: 12px; color: var(--mutedText); }
+.course-name{ margin-top: 6px; font-size: 13px; }
+.course-meta{ margin-top: 6px; font-size: 11px; color: var(--mutedText); }
+
+.course-card.muted{
+  opacity: 0.35;
+  filter: grayscale(0.35);
+}
+
+.course-card.prereq{
+  box-shadow: 0 0 0 3px rgba(120,200,255,0.10);
+}
+
+.course-card.unlocked{
+  opacity: 1;
+  filter: none;
+  box-shadow: 0 0 0 3px rgba(140,255,180,0.10);
+}
+
+.course-card.selected{
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.14), 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.course-card.glow{
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.05);
+}
+
+/* Plan card states can reuse same styles */
+.plan-card.muted{
+  opacity: 0.35;
+  filter: grayscale(0.35);
+}
+.plan-card.prereq{ box-shadow: 0 0 0 3px rgba(120,200,255,0.10); }
+.plan-card.selected{
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.14), 0 10px 30px rgba(0,0,0,0.25);
+}
+.plan-card.glow{ box-shadow: 0 0 0 6px rgba(255,255,255,0.05); }
+
+/* Subject pastel placeholders */
+.subject-math{ background: rgba(140,170,255,0.14); }
+.subject-science{ background: rgba(160,255,200,0.12); }
+.subject-english{ background: rgba(255,200,160,0.12); }
+.subject-compsci{ background: rgba(220,180,255,0.12); }
+.subject-business{ background: rgba(255,210,140,0.12); }
+.subject-technology{ background: rgba(120,220,220,0.12); }
+.subject-french{ background: rgba(140,170,255,0.12); }
+.subject-cws{ background: rgba(190,170,255,0.12); }
+.subject-social_sciences{ background: rgba(210,160,220,0.12); }
+.subject-health{ background: rgba(170,230,170,0.12); }
+.subject-arts{ background: rgba(255,160,180,0.12); }
+.subject-guidance{ background: rgba(255,235,150,0.12); }
+.subject-coop{ background: rgba(160,190,255,0.12); }
+.subject-other{ background: rgba(255,255,255,0.06); }
+
+
+
+/* Board wires */
+.wires{
+  position:absolute;
+  inset: 0 18px 24px 18px;
+  pointer-events:none;
+  overflow:visible;
+}
+
+.wire{
+  stroke: rgba(255,255,255,0.22);
+  stroke-width: 1.5;
+}
+
+.wire-or{
+  stroke-dasharray: 5 5;
+  opacity: 0.75;
+}
+
+.footer{
+  padding: 0 18px 18px;
+  color: var(--mutedText);
+  font-size: 12px;
+}
+
+/* Ensure app content stays above fixed background glow */
+body > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   Drag & Drop additions (keeps original styling intact)
+   ========================================================= */
+
+/* Only the top course in a column is draggable (app.js adds these classes) */
+.course-card.not-draggable{ cursor: default; }
+.course-card.top-draggable{ cursor: grab; }
+.course-card.dragging{ cursor: grabbing; opacity: 0.7; }
+
+/* Drop highlight on plan column */
+.plan-col.drop-hover{
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,0.14),
+    0 14px 40px rgba(0,0,0,0.25);
+}
+
+/* Red pulsing outer glow when prereqs are missing */
+@keyframes prereqPulse{
+  0%{
+    box-shadow: 0 0 0 3px rgba(255,80,80,0.18), 0 0 14px rgba(255,80,80,0.10);
+  }
+  50%{
+    box-shadow: 0 0 0 3px rgba(255,80,80,0.62), 0 0 22px rgba(255,80,80,0.30);
+  }
+  100%{
+    box-shadow: 0 0 0 3px rgba(255,80,80,0.18), 0 0 14px rgba(255,80,80,0.10);
+  }
+}
+
+/* Plan: pulse if the course is missing prereqs currently in the plan */
+.plan-card.needs-prereq{
+  animation: prereqPulse 1.6s ease-in-out infinite;
+}
+
+/* Board: pulse the dragged card if it is missing prereqs */
+.course-card.drag-warning{
+  animation: prereqPulse 1.6s ease-in-out infinite;
+}

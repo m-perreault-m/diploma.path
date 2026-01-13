@@ -1,0 +1,3695 @@
+{
+  "version": "1.0",
+  "notes": " | prereqs resolved from prereq_note where possible; OR-prereqs in prereq_any_of; unresolved flagged. Updated for ENL1W (Sept 2023) and MTH1W (2021) and Grade 10 prereqs. | v3: parsed prereq_note patterns 'X, Grade N, ...' (FSL fix). | v4: resolved remaining Grade 11 prereqs where possible (arts M, HSP3U, FNMI pathways). | Grade 12 audit: 25 courses have category/eligibility prerequisites and remain text-only with prereq_unresolved=true; no missing code-based prereqs detected. | Added CGC1W and updated prereq alternatives for courses referencing CGC1D/CGC1P. | v9: Expanded category prereq notes of form 'Any university or university/college prep course in ...' into prereq_any_of lists using prefix+level heuristic (C/E/H + U/M, grades 11-12).",
+  "courses": [
+    {
+      "code": "ADA1O",
+      "name": "Drama",
+      "grade": 9,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "ADA2O",
+      "name": "Drama",
+      "grade": 10,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "ADA3M",
+      "name": "Drama",
+      "grade": 11,
+      "level": "M",
+      "subject": "arts",
+      "prereqs": [],
+      "prereq_note": "Drama, Grade 9 or 10, Open",
+      "prereq_any_of": [
+        [
+          "ADA1O",
+          "ADA2O"
+        ]
+      ]
+    },
+    {
+      "code": "ADA3O",
+      "name": "Drama",
+      "grade": 11,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "ADA4E",
+      "name": "Drama",
+      "grade": 12,
+      "level": "E",
+      "subject": "arts",
+      "prereqs": [
+        "ADA3O"
+      ]
+    },
+    {
+      "code": "ADA4M",
+      "name": "Drama",
+      "grade": 12,
+      "level": "M",
+      "subject": "arts",
+      "prereqs": [
+        "ADA3M"
+      ]
+    },
+    {
+      "code": "AMU1O",
+      "name": "Music",
+      "grade": 9,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "AMU2O",
+      "name": "Music",
+      "grade": 10,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "AMU3M",
+      "name": "Music",
+      "grade": 11,
+      "level": "M",
+      "subject": "arts",
+      "prereqs": [],
+      "prereq_note": "Music, Grade 9 or 10, Open",
+      "prereq_any_of": [
+        [
+          "AMU1O",
+          "AMU2O"
+        ]
+      ]
+    },
+    {
+      "code": "AMU3O",
+      "name": "Music",
+      "grade": 11,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "AMU4E",
+      "name": "Music",
+      "grade": 12,
+      "level": "E",
+      "subject": "arts",
+      "prereqs": [
+        "AMU3O"
+      ]
+    },
+    {
+      "code": "AMU4M",
+      "name": "Music",
+      "grade": 12,
+      "level": "M",
+      "subject": "arts",
+      "prereqs": [
+        "AMU3M"
+      ]
+    },
+    {
+      "code": "ASM2O",
+      "name": "Media Arts",
+      "grade": 10,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "ASM3M",
+      "name": "Media Arts",
+      "grade": 11,
+      "level": "M",
+      "subject": "arts",
+      "prereqs": [
+        "ASM2O"
+      ]
+    },
+    {
+      "code": "ASM3O",
+      "name": "Media Arts",
+      "grade": 11,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "ASM4E",
+      "name": "Media Arts",
+      "grade": 12,
+      "level": "E",
+      "subject": "arts",
+      "prereqs": [
+        "ASM3O"
+      ]
+    },
+    {
+      "code": "ASM4M",
+      "name": "Media Arts",
+      "grade": 12,
+      "level": "M",
+      "subject": "arts",
+      "prereqs": [
+        "ASM3M"
+      ]
+    },
+    {
+      "code": "ATC1O",
+      "name": "Dance",
+      "grade": 9,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "ATC2O",
+      "name": "Dance",
+      "grade": 10,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "ATC3M",
+      "name": "Dance",
+      "grade": 11,
+      "level": "M",
+      "subject": "arts",
+      "prereqs": [],
+      "prereq_note": "Dance, Grade 9 or 10, Open",
+      "prereq_any_of": [
+        [
+          "ATC1O",
+          "ATC2O"
+        ]
+      ]
+    },
+    {
+      "code": "ATC3O",
+      "name": "Dance",
+      "grade": 11,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "ATC4E",
+      "name": "Dance",
+      "grade": 12,
+      "level": "E",
+      "subject": "arts",
+      "prereqs": [
+        "ATC3O"
+      ]
+    },
+    {
+      "code": "ATC4M",
+      "name": "Dance",
+      "grade": 12,
+      "level": "M",
+      "subject": "arts",
+      "prereqs": [
+        "ATC3M"
+      ]
+    },
+    {
+      "code": "AVI1O",
+      "name": "Visual Arts",
+      "grade": 9,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "AVI2O",
+      "name": "Visual Arts",
+      "grade": 10,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "AVI3M",
+      "name": "Visual Arts",
+      "grade": 11,
+      "level": "M",
+      "subject": "arts",
+      "prereqs": [],
+      "prereq_note": "Visual Arts, Grade 9 or 10, Open",
+      "prereq_any_of": [
+        [
+          "AVI1O",
+          "AVI2O"
+        ]
+      ]
+    },
+    {
+      "code": "AVI3O",
+      "name": "Visual Arts",
+      "grade": 11,
+      "level": "O",
+      "subject": "arts",
+      "prereqs": []
+    },
+    {
+      "code": "AVI4E",
+      "name": "Visual Arts",
+      "grade": 12,
+      "level": "E",
+      "subject": "arts",
+      "prereqs": [
+        "AVI3O"
+      ]
+    },
+    {
+      "code": "AVI4M",
+      "name": "Visual Arts",
+      "grade": 12,
+      "level": "M",
+      "subject": "arts",
+      "prereqs": [
+        "AVI3M"
+      ]
+    },
+    {
+      "code": "BAF3M",
+      "name": "Financial Accounting Fundamentals",
+      "grade": 11,
+      "level": "M",
+      "subject": "business",
+      "prereqs": []
+    },
+    {
+      "code": "BAI3E",
+      "name": "Accounting Essentials",
+      "grade": 11,
+      "level": "E",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "BAN4E",
+      "name": "Accounting for a Small Business",
+      "grade": 12,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [
+        "BAI3E"
+      ]
+    },
+    {
+      "code": "BAT4M",
+      "name": "Financial Accounting Principles",
+      "grade": 12,
+      "level": "M",
+      "subject": "business",
+      "prereqs": [
+        "BAF3M"
+      ]
+    },
+    {
+      "code": "BBB4E",
+      "name": "International Business Essentials",
+      "grade": 12,
+      "level": "E",
+      "subject": "business",
+      "prereqs": []
+    },
+    {
+      "code": "BBB4M",
+      "name": "International Business Fundamentals",
+      "grade": 12,
+      "level": "M",
+      "subject": "business",
+      "prereqs": []
+    },
+    {
+      "code": "BBI1O",
+      "name": "Introduction to Business",
+      "grade": 9,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "BBI2O",
+      "name": "Introduction to Business",
+      "grade": 10,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "BDI3C",
+      "name": "Entrepreneurship: The Venture",
+      "grade": 11,
+      "level": "C",
+      "subject": "business",
+      "prereqs": []
+    },
+    {
+      "code": "BDP3O",
+      "name": "Entrepreneurship: The Enterprising Person",
+      "grade": 11,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "BMI3C",
+      "name": "Marketing: Goods, Services, Events",
+      "grade": 11,
+      "level": "C",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "BMX3E",
+      "name": "Marketing: Retail and Service",
+      "grade": 11,
+      "level": "E",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "BOG4E",
+      "name": "Business Leadership: Becoming a Manager",
+      "grade": 12,
+      "level": "E",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "BOH4M",
+      "name": "Business Leadership: Management Fundamentals",
+      "grade": 12,
+      "level": "M",
+      "subject": "business",
+      "prereqs": []
+    },
+    {
+      "code": "BTA3O",
+      "name": "Information and Communication Technology: The Digital Environment",
+      "grade": 11,
+      "level": "O",
+      "subject": "business",
+      "prereqs": []
+    },
+    {
+      "code": "BTT1O",
+      "name": "Information and Communication Technology in Business",
+      "grade": 9,
+      "level": "O",
+      "subject": "business",
+      "prereqs": []
+    },
+    {
+      "code": "BTX4C",
+      "name": "Information and Communication Technology: Multimedia Solutions",
+      "grade": 12,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [
+        "BTA3O"
+      ],
+      "prereq_note": "Information and Communication Technology: The Digital Environment, Grade 11, Open"
+    },
+    {
+      "code": "BTX4E",
+      "name": "Information and Communication Technology in the Workplace",
+      "grade": 12,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [
+        "BTA3O"
+      ],
+      "prereq_note": "Information and Communication Technology: The Digital Environment, Grade 11, Open"
+    },
+    {
+      "code": "CGC1D",
+      "name": "Issues in Canadian Geography",
+      "grade": 9,
+      "level": "D",
+      "subject": "cws",
+      "prereqs": [],
+      "status": "expired_or_superseded",
+      "superseded_by": "CGC1W"
+    },
+    {
+      "code": "CGC1P",
+      "name": "Issues in Canadian Geography",
+      "grade": 9,
+      "level": "P",
+      "subject": "cws",
+      "prereqs": [],
+      "status": "expired_or_superseded",
+      "superseded_by": "CGC1W"
+    },
+    {
+      "code": "CGD3M",
+      "name": "Regional Geography",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "CGC1D",
+          "CGC1P",
+          "CGC1W"
+        ]
+      ]
+    },
+    {
+      "code": "CGF3M",
+      "name": "Forces of Nature: Physical Processes and Disasters",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "CGC1D",
+          "CGC1P",
+          "CGC1W"
+        ]
+      ]
+    },
+    {
+      "code": "CGG3O",
+      "name": "Travel and Tourism: A Geographic Perspective",
+      "grade": 11,
+      "level": "O",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "CGC1D",
+          "CGC1P",
+          "CGC1W"
+        ]
+      ]
+    },
+    {
+      "code": "CGO4M",
+      "name": "Spatial Technologies in Action",
+      "grade": 12,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any university, university/college, or college preparation course in Canadian and world studies, English, or social sciences and humanities.",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "CGR4E",
+      "name": "Living in a Sustainable World",
+      "grade": 12,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "CGC1D",
+          "CGC1P",
+          "CGC1W"
+        ]
+      ]
+    },
+    {
+      "code": "CGT3O",
+      "name": "Introduction to Spatial Technologies",
+      "grade": 11,
+      "level": "O",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "CGC1D",
+          "CGC1P",
+          "CGC1W"
+        ]
+      ]
+    },
+    {
+      "code": "CGW4C",
+      "name": "World Issues: A Geographic Analysis",
+      "grade": 12,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "CGC1D",
+          "CGC1P",
+          "CGC1W"
+        ]
+      ]
+    },
+    {
+      "code": "CGW4U",
+      "name": "World Issues: A Geographic Analysis",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any university or university/college preparation course in Canadian and world studies, English, or social sciences and humanities",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "CHA3U",
+      "name": "American History",
+      "grade": 11,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "CHC2D",
+          "CHC2P"
+        ]
+      ]
+    },
+    {
+      "code": "CHC2D",
+      "name": "Canadian History since World War I",
+      "grade": 10,
+      "level": "D",
+      "subject": "cws",
+      "prereqs": []
+    },
+    {
+      "code": "CHC2P",
+      "name": "Canadian History since World War I",
+      "grade": 10,
+      "level": "P",
+      "subject": "cws",
+      "prereqs": []
+    },
+    {
+      "code": "CHI4U",
+      "name": "Canada: History, Identity, and Culture",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any university or university/college preparation course in Canadian and world studies, English, or social sciences and humanities",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "CHM4E",
+      "name": "Adventures in World History",
+      "grade": 12,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied, or the locally developed compulsory course (LDCC) in Canadian history",
+      "prereq_any_of": [
+        [
+          "CHC2D",
+          "CHC2P"
+        ]
+      ]
+    },
+    {
+      "code": "CHT3O",
+      "name": "World History since 1900: Global and Regional Interactions",
+      "grade": 11,
+      "level": "O",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied, or the locally developed compulsory course (LDCC) in Canadian history",
+      "prereq_any_of": [
+        [
+          "CHC2D",
+          "CHC2P"
+        ]
+      ]
+    },
+    {
+      "code": "CHV2O",
+      "name": "Civics and Citizenship",
+      "grade": 10,
+      "level": "O",
+      "subject": "cws",
+      "prereqs": []
+    },
+    {
+      "code": "CHW3M",
+      "name": "World History to the End of the Fifteenth Century",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "CHC2D",
+          "CHC2P"
+        ]
+      ]
+    },
+    {
+      "code": "CHY4C",
+      "name": "World History since the Fifteenth Century",
+      "grade": 12,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any university, university/college, or college preparation course in Canadian and world studies, English, or social sciences and humanities",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "CHY4U",
+      "name": "World History since the Fifteenth Century",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any university or university/college preparation course in Canadian and world studies, English, or social sciences and humanities",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "CIE3M",
+      "name": "The Individual and the Economy",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "CHC2D",
+          "CHC2P"
+        ]
+      ]
+    },
+    {
+      "code": "CLN4C",
+      "name": "Legal Studies",
+      "grade": 12,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [
+        "CHV2O"
+      ]
+    },
+    {
+      "code": "CLN4U",
+      "name": "Canadian and International Law",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any university or university/college preparation course in Canadian and world studies, English, or social sciences and humanities",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "CLU3E",
+      "name": "Understanding Canadian Law in Everyday Life",
+      "grade": 11,
+      "level": "E",
+      "subject": "cws",
+      "prereqs": [],
+      "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied, or the locally developed compulsory course (LDCC) in Canadian history",
+      "prereq_any_of": [
+        [
+          "CHC2D",
+          "CHC2P"
+        ]
+      ]
+    },
+    {
+      "code": "CLU3M",
+      "name": "Understanding Canadian Law",
+      "grade": 11,
+      "level": "M",
+      "subject": "cws",
+      "prereqs": [],
+      "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "CHC2D",
+          "CHC2P"
+        ]
+      ]
+    },
+    {
+      "code": "CPC3O",
+      "name": "Politics in Action: Making Change",
+      "grade": 11,
+      "level": "O",
+      "subject": "other",
+      "prereqs": [
+        "CHV2O"
+      ]
+    },
+    {
+      "code": "CPW4U",
+      "name": "Canadian and International Politics",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any university or university/college preparation course in Canadian and world studies, English, or social sciences and humanities",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "EBT4O",
+      "name": "Business and Technological Communication",
+      "grade": 12,
+      "level": "O",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Grade 11 English, University, College, or Workplace Preparation",
+      "prereq_any_of": [
+        [
+          "ENG3C",
+          "ENG3E",
+          "ENG3U"
+        ]
+      ]
+    },
+    {
+      "code": "ELS2O",
+      "name": "Literacy Skills: Reading and Writing",
+      "grade": 10,
+      "level": "O",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Grade 9 English, Academic or Applied, or a Grade 9 English LDCC (locally developed compulsory credit) course",
+      "prereq_any_of": [
+        [
+          "ENG1D",
+          "ENG1P"
+        ]
+      ]
+    },
+    {
+      "code": "EMS3O",
+      "name": "Media Studies",
+      "grade": 11,
+      "level": "O",
+      "subject": "english",
+      "prereqs": [],
+      "prereq_note": "Grade 10 English, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "ENG2D",
+          "ENG2P"
+        ]
+      ]
+    },
+    {
+      "code": "ENG1D",
+      "name": "English",
+      "grade": 9,
+      "level": "D",
+      "subject": "english",
+      "prereqs": [],
+      "status": "expired_or_superseded",
+      "superseded_by": "ENL1W"
+    },
+    {
+      "code": "ENG1P",
+      "name": "English",
+      "grade": 9,
+      "level": "P",
+      "subject": "english",
+      "prereqs": [],
+      "status": "expired_or_superseded",
+      "superseded_by": "ENL1W"
+    },
+    {
+      "code": "ENG2D",
+      "name": "English",
+      "grade": 10,
+      "level": "D",
+      "subject": "english",
+      "prereqs": [
+        "ENG1D",
+        "ENG1P",
+        "ENL1W"
+      ],
+      "prereq_note": "Grade 9 English, De-streamed (ENL1W) (legacy credits ENG1D/ENG1P may be accepted)"
+    },
+    {
+      "code": "ENG2P",
+      "name": "English",
+      "grade": 10,
+      "level": "P",
+      "subject": "english",
+      "prereqs": [
+        "ENG1D",
+        "ENG1P",
+        "ENL1W"
+      ],
+      "prereq_note": "Grade 9 English, De-streamed (ENL1W) (legacy credits ENG1D/ENG1P may be accepted)"
+    },
+    {
+      "code": "ENG3C",
+      "name": "English",
+      "grade": 11,
+      "level": "C",
+      "subject": "english",
+      "prereqs": [
+        "ENG2P"
+      ],
+      "prereq_note": "Grade 10 English, Applied"
+    },
+    {
+      "code": "ENG3E",
+      "name": "English",
+      "grade": 11,
+      "level": "E",
+      "subject": "english",
+      "prereqs": [
+        "ENG2P"
+      ],
+      "prereq_note": "Grade 10 English, Applied"
+    },
+    {
+      "code": "ENG3U",
+      "name": "English",
+      "grade": 11,
+      "level": "U",
+      "subject": "english",
+      "prereqs": [
+        "ENG2D"
+      ],
+      "prereq_note": "Grade 10 English, Academic"
+    },
+    {
+      "code": "ENG4C",
+      "name": "English",
+      "grade": 12,
+      "level": "C",
+      "subject": "english",
+      "prereqs": [
+        "ENG3C"
+      ],
+      "prereq_note": "Grade 11 English, College Preparation"
+    },
+    {
+      "code": "ENG4E",
+      "name": "English",
+      "grade": 12,
+      "level": "E",
+      "subject": "english",
+      "prereqs": [
+        "ENG3E"
+      ],
+      "prereq_note": "Grade 11 English, Workplace Preparation"
+    },
+    {
+      "code": "ENG4U",
+      "name": "English",
+      "grade": 12,
+      "level": "U",
+      "subject": "english",
+      "prereqs": [
+        "ENG3U"
+      ],
+      "prereq_note": "Grade 11 English, University Preparation"
+    },
+    {
+      "code": "ENL1W",
+      "name": "English",
+      "grade": 9,
+      "level": "W",
+      "subject": "english",
+      "prereqs": [
+        "ENG1D",
+        "ENG1P"
+      ],
+      "prereq_note": "De-streamed Grade 9 English (supersedes ENG1D/ENG1P)"
+    },
+    {
+      "code": "EPS3O",
+      "name": "Presentation and Speaking Skills",
+      "grade": 11,
+      "level": "O",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Grade 10 English, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "ENG2D",
+          "ENG2P"
+        ]
+      ]
+    },
+    {
+      "code": "ETC3M",
+      "name": "Canadian Literature",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Grade 10 English, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "ENG2D",
+          "ENG2P"
+        ]
+      ]
+    },
+    {
+      "code": "ETS4C",
+      "name": "Studies in Literature",
+      "grade": 12,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [
+        "ENG3C"
+      ],
+      "prereq_note": "Grade 11 English, College Preparation"
+    },
+    {
+      "code": "ETS4U",
+      "name": "Studies in Literature",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [
+        "ENG3U"
+      ],
+      "prereq_note": "Grade 11 English, University Preparation"
+    },
+    {
+      "code": "EWC4U",
+      "name": "The Writer’s Craft",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [
+        "ENG3U"
+      ],
+      "prereq_note": "Grade 11 English, University Preparation"
+    },
+    {
+      "code": "FEF1D",
+      "name": "Extended French",
+      "grade": 9,
+      "level": "D",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Minimum of 1260 hours of instruction in French, or equivalent",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "FEF2D",
+      "name": "Extended French",
+      "grade": 10,
+      "level": "D",
+      "subject": "other",
+      "prereqs": [
+        "FEF1D"
+      ]
+    },
+    {
+      "code": "FEF3U",
+      "name": "Extended French",
+      "grade": 11,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [
+        "FEF2D"
+      ]
+    },
+    {
+      "code": "FEF4U",
+      "name": "Extended French",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [
+        "FEF3U"
+      ]
+    },
+    {
+      "code": "FIF1D",
+      "name": "French Immersion",
+      "grade": 9,
+      "level": "D",
+      "subject": "fsl",
+      "prereqs": [],
+      "prereq_note": "Minimum of 3800 hours of instruction in French, or equivalent",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "FIF1P",
+      "name": "French Immersion",
+      "grade": 9,
+      "level": "P",
+      "subject": "fsl",
+      "prereqs": [],
+      "prereq_note": "Minimum of 3800 hours of instruction in French, or equivalent",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "FIF2D",
+      "name": "French Immersion",
+      "grade": 10,
+      "level": "D",
+      "subject": "fsl",
+      "prereqs": [],
+      "prereq_note": "French Immersion, Grade 9, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "FIF1D",
+          "FIF1P"
+        ]
+      ]
+    },
+    {
+      "code": "FIF2P",
+      "name": "French Immersion",
+      "grade": 10,
+      "level": "P",
+      "subject": "fsl",
+      "prereqs": [],
+      "prereq_note": "French Immersion, Grade 9, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "FIF1D",
+          "FIF1P"
+        ]
+      ]
+    },
+    {
+      "code": "FIF3O",
+      "name": "French Immersion",
+      "grade": 11,
+      "level": "O",
+      "subject": "fsl",
+      "prereqs": [],
+      "prereq_note": "French Immersion, Grade 10, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "FIF2D",
+          "FIF2P"
+        ]
+      ]
+    },
+    {
+      "code": "FIF3U",
+      "name": "French Immersion",
+      "grade": 11,
+      "level": "U",
+      "subject": "fsl",
+      "prereqs": [
+        "FIF2D"
+      ]
+    },
+    {
+      "code": "FIF4O",
+      "name": "French Immersion",
+      "grade": 12,
+      "level": "O",
+      "subject": "fsl",
+      "prereqs": [],
+      "prereq_note": "French Immersion, Grade 11, University Preparation or Open",
+      "prereq_any_of": [
+        [
+          "FIF3O",
+          "FIF3U"
+        ]
+      ]
+    },
+    {
+      "code": "FIF4U",
+      "name": "French Immersion",
+      "grade": 12,
+      "level": "U",
+      "subject": "fsl",
+      "prereqs": [
+        "FIF3U"
+      ]
+    },
+    {
+      "code": "FSF1D",
+      "name": "Core French",
+      "grade": 9,
+      "level": "D",
+      "subject": "fsl",
+      "prereqs": [],
+      "prereq_note": "Minimum of 600 hours of French instruction, or equivalent",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "FSF1O",
+      "name": "Core French",
+      "grade": 9,
+      "level": "O",
+      "subject": "fsl",
+      "prereqs": []
+    },
+    {
+      "code": "FSF1P",
+      "name": "Core French",
+      "grade": 9,
+      "level": "P",
+      "subject": "fsl",
+      "prereqs": [],
+      "prereq_note": "Minimum of 600 hours of French instruction, or equivalent",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "FSF2D",
+      "name": "Core French",
+      "grade": 10,
+      "level": "D",
+      "subject": "fsl",
+      "prereqs": [],
+      "prereq_note": "Core French, Grade 9, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "FSF1D",
+          "FSF1P"
+        ]
+      ]
+    },
+    {
+      "code": "FSF2O",
+      "name": "Core French",
+      "grade": 10,
+      "level": "O",
+      "subject": "fsl",
+      "prereqs": [
+        "FSF1O"
+      ]
+    },
+    {
+      "code": "FSF2P",
+      "name": "Core French",
+      "grade": 10,
+      "level": "P",
+      "subject": "fsl",
+      "prereqs": [],
+      "prereq_note": "Core French, Grade 9, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "FSF1D",
+          "FSF1P"
+        ]
+      ]
+    },
+    {
+      "code": "FSF3O",
+      "name": "Core French",
+      "grade": 11,
+      "level": "O",
+      "subject": "fsl",
+      "prereqs": [
+        "FSF2D"
+      ]
+    },
+    {
+      "code": "FSF3U",
+      "name": "Core French",
+      "grade": 11,
+      "level": "U",
+      "subject": "fsl",
+      "prereqs": [
+        "FSF2D"
+      ]
+    },
+    {
+      "code": "FSF4O",
+      "name": "Core French",
+      "grade": 12,
+      "level": "O",
+      "subject": "fsl",
+      "prereqs": [],
+      "prereq_note": "Core French, Grade 11, University Preparation or Open",
+      "prereq_any_of": [
+        [
+          "FSF3O",
+          "FSF3U"
+        ]
+      ]
+    },
+    {
+      "code": "FSF4U",
+      "name": "Core French",
+      "grade": 12,
+      "level": "U",
+      "subject": "fsl",
+      "prereqs": [
+        "FSF3U"
+      ]
+    },
+    {
+      "code": "GLC2O",
+      "name": "Career Studies",
+      "grade": 10,
+      "level": "O",
+      "subject": "guidance",
+      "prereqs": []
+    },
+    {
+      "code": "GLD2O",
+      "name": "Discovering the Workplace",
+      "grade": 10,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "GLE1O",
+      "name": "Learning Strategies 1: Skills for Success in Secondary School",
+      "grade": 9,
+      "level": "O",
+      "subject": "gce",
+      "prereqs": [],
+      "prereq_note": "Recommendation of principal",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "GLE2O",
+      "name": "Learning Strategies 1: Skills for Success in Secondary School",
+      "grade": 10,
+      "level": "O",
+      "subject": "gce",
+      "prereqs": [],
+      "prereq_note": "Recommendation of principal",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "GLN4O",
+      "name": "Navigating the Workplace",
+      "grade": 12,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "GLS1O",
+      "name": "Learning Strategies 1: Skills for Success in Secondary School",
+      "grade": 9,
+      "level": "O",
+      "subject": "gce",
+      "prereqs": []
+    },
+    {
+      "code": "GPP3O",
+      "name": "Leadership and Peer Support",
+      "grade": 11,
+      "level": "O",
+      "subject": "guidance",
+      "prereqs": []
+    },
+    {
+      "code": "GWL3O",
+      "name": "Designing Your Future",
+      "grade": 11,
+      "level": "O",
+      "subject": "guidance",
+      "prereqs": []
+    },
+    {
+      "code": "HFA4C",
+      "name": "Nutrition and Health",
+      "grade": 12,
+      "level": "C",
+      "subject": "ssh",
+      "prereqs": [],
+      "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "HFA4U",
+      "name": "Nutrition and Health",
+      "grade": 12,
+      "level": "U",
+      "subject": "ssh",
+      "prereqs": [],
+      "prereq_note": "Any university or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "HFC3E",
+      "name": "Food and Culture",
+      "grade": 11,
+      "level": "E",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HFC3M",
+      "name": "Food and Culture",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HFL4E",
+      "name": "Food and Healthy Living",
+      "grade": 12,
+      "level": "E",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HFN1O",
+      "name": "Food and Nutrition",
+      "grade": 9,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HFN2O",
+      "name": "Food and Nutrition",
+      "grade": 10,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HHD3O",
+      "name": "Dynamics of Human Relationships",
+      "grade": 11,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HHG4M",
+      "name": "Human Development throughout the Lifespan",
+      "grade": 12,
+      "level": "M",
+      "subject": "ssh",
+      "prereqs": [],
+      "prereq_note": "Any university, university/college, or college preparation course in social sciences and humanities, English, or Canadian and world studies",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "HHS4C",
+      "name": "Families in Canada",
+      "grade": 12,
+      "level": "C",
+      "subject": "ssh",
+      "prereqs": [],
+      "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "HHS4U",
+      "name": "Families in Canada",
+      "grade": 12,
+      "level": "U",
+      "subject": "ssh",
+      "prereqs": [],
+      "prereq_note": "Any university or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "HIF1O",
+      "name": "Exploring Family Studies",
+      "grade": 9,
+      "level": "O",
+      "subject": "ssh",
+      "prereqs": []
+    },
+    {
+      "code": "HIP4O",
+      "name": "Personal Life Management",
+      "grade": 12,
+      "level": "O",
+      "subject": "ssh",
+      "prereqs": []
+    },
+    {
+      "code": "HLS3O",
+      "name": "Housing and Home Design",
+      "grade": 11,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HNB4M",
+      "name": "The World of Fashion",
+      "grade": 12,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "HNC3C",
+      "name": "Understanding Fashion",
+      "grade": 11,
+      "level": "C",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HNL2O",
+      "name": "Clothing",
+      "grade": 10,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HPC3O",
+      "name": "Raising Healthy Children",
+      "grade": 11,
+      "level": "O",
+      "subject": "ssh",
+      "prereqs": []
+    },
+    {
+      "code": "HPD4C",
+      "name": "Working with School-Age Children and Adolescents",
+      "grade": 12,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "HPW3C",
+      "name": "Working with Infants and Young Children",
+      "grade": 11,
+      "level": "C",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HRF3O",
+      "name": "World Religions and Belief Traditions in Daily Life",
+      "grade": 11,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HRT3M",
+      "name": "World Religions and Belief Traditions: Perspectives, Issues, and Challenges",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HSB4U",
+      "name": "Challenge and Change in Society",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any university or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "HSC4M",
+      "name": "World Cultures",
+      "grade": 12,
+      "level": "M",
+      "subject": "ssh",
+      "prereqs": [],
+      "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "HSE3E",
+      "name": "Equity, Diversity, and Social Justice",
+      "grade": 11,
+      "level": "E",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HSE4M",
+      "name": "Equity and Social Justice: From Theory to Practice",
+      "grade": 12,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "HSG3M",
+      "name": "Gender Studies",
+      "grade": 11,
+      "level": "M",
+      "subject": "ssh",
+      "prereqs": []
+    },
+    {
+      "code": "HSP3C",
+      "name": "Introduction to Anthropology, Psychology, and Sociology",
+      "grade": 11,
+      "level": "C",
+      "subject": "ssh",
+      "prereqs": []
+    },
+    {
+      "code": "HSP3U",
+      "name": "Introduction to Anthropology, Psychology, and Sociology",
+      "grade": 11,
+      "level": "U",
+      "subject": "ssh",
+      "prereqs": [],
+      "prereq_note": "The Grade 10 academic course in English, or the Grade 10 academic history course (Canadian and world studies)",
+      "prereq_any_of": [
+        [
+          "ENG2D",
+          "CHC2D"
+        ]
+      ]
+    },
+    {
+      "code": "HZB3M",
+      "name": "Philosophy: The Big Questions",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "HZT4U",
+      "name": "Philosophy: Questions and Theories",
+      "grade": 12,
+      "level": "U",
+      "subject": "ssh",
+      "prereqs": [],
+      "prereq_note": "Any university or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "ENG3U",
+          "ENG4U",
+          "ETC3M",
+          "ETS4U",
+          "EWC4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "E",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "ICS2O",
+      "name": "Introduction to Computer Studies",
+      "grade": 10,
+      "level": "O",
+      "subject": "compsci",
+      "prereqs": []
+    },
+    {
+      "code": "ICS3C",
+      "name": "Introduction to Computer Programming",
+      "grade": 11,
+      "level": "C",
+      "subject": "compsci",
+      "prereqs": []
+    },
+    {
+      "code": "ICS3U",
+      "name": "Introduction to Computer Science",
+      "grade": 11,
+      "level": "U",
+      "subject": "compsci",
+      "prereqs": []
+    },
+    {
+      "code": "ICS4C",
+      "name": "Computer Programming",
+      "grade": 12,
+      "level": "C",
+      "subject": "compsci",
+      "prereqs": [
+        "ICS3C"
+      ]
+    },
+    {
+      "code": "ICS4U",
+      "name": "Computer Science",
+      "grade": 12,
+      "level": "U",
+      "subject": "compsci",
+      "prereqs": [
+        "ICS3U"
+      ]
+    },
+    {
+      "code": "IDC3O",
+      "name": "Interdisciplinary Studies",
+      "grade": 11,
+      "level": "O",
+      "subject": "guidance",
+      "prereqs": []
+    },
+    {
+      "code": "IDC4O",
+      "name": "Interdisciplinary Studies",
+      "grade": 12,
+      "level": "O",
+      "subject": "guidance",
+      "prereqs": []
+    },
+    {
+      "code": "IDC4U",
+      "name": "Interdisciplinary Studies",
+      "grade": 12,
+      "level": "U",
+      "subject": "guidance",
+      "prereqs": [],
+      "prereq_note": "Any university or university/college preparation course",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "IDP3O",
+      "name": "Interdisciplinary Studies",
+      "grade": 11,
+      "level": "O",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "The prerequisite for each of the courses in the package",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "IDP4O",
+      "name": "Interdisciplinary Studies",
+      "grade": 12,
+      "level": "O",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "The prerequisite for each of the courses in the package",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "IDP4U",
+      "name": "Interdisciplinary Studies",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "The prerequisite for each of the courses in the package",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "LVV4U",
+      "name": "Classical Civilization",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [
+        "ENG2D"
+      ]
+    },
+    {
+      "code": "MAP4C",
+      "name": "Foundations for College Mathematics",
+      "grade": 12,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [
+        "MBF3C"
+      ]
+    },
+    {
+      "code": "MBF3C",
+      "name": "Foundations for College Mathematics",
+      "grade": 11,
+      "level": "C",
+      "subject": "math",
+      "prereqs": [
+        "MFM2P"
+      ]
+    },
+    {
+      "code": "MCF3M",
+      "name": "Functions and Applications",
+      "grade": 11,
+      "level": "M",
+      "subject": "math",
+      "prereqs": [
+        "MPM2D"
+      ]
+    },
+    {
+      "code": "MCR3U",
+      "name": "Functions",
+      "grade": 11,
+      "level": "U",
+      "subject": "math",
+      "prereqs": [
+        "MPM2D"
+      ]
+    },
+    {
+      "code": "MCT4C",
+      "name": "Mathematics for College Technology",
+      "grade": 12,
+      "level": "C",
+      "subject": "math",
+      "prereqs": [
+        "MCF3M"
+      ]
+    },
+    {
+      "code": "MCV4U",
+      "name": "Calculus and Vectors",
+      "grade": 12,
+      "level": "U",
+      "subject": "math",
+      "prereqs": [
+        "MHF4U"
+      ]
+    },
+    {
+      "code": "MDM4U",
+      "name": "Mathematics of Data Management",
+      "grade": 12,
+      "level": "U",
+      "subject": "math",
+      "prereqs": [
+        "MCR3U"
+      ]
+    },
+    {
+      "code": "MEL3E",
+      "name": "Mathematics for Work and Everyday Life",
+      "grade": 11,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [
+        "MPM1D"
+      ]
+    },
+    {
+      "code": "MEL4E",
+      "name": "Mathematics for Work and Everyday Life",
+      "grade": 12,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [
+        "MEL3E"
+      ]
+    },
+    {
+      "code": "MFM1P",
+      "name": "Foundations of Mathematics",
+      "grade": 9,
+      "level": "P",
+      "subject": "math",
+      "prereqs": [],
+      "status": "expired_or_superseded",
+      "superseded_by": "MTH1W"
+    },
+    {
+      "code": "MFM2P",
+      "name": "Foundations of Mathematics",
+      "grade": 10,
+      "level": "P",
+      "subject": "math",
+      "prereqs": [
+        "MTH1W"
+      ],
+      "prereq_note": "Grade 9 Mathematics, De-streamed (MTH1W) (legacy Grade 9 math credits may be accepted)"
+    },
+    {
+      "code": "MHF4U",
+      "name": "Advanced Functions",
+      "grade": 12,
+      "level": "U",
+      "subject": "math",
+      "prereqs": [
+        "MCR3U"
+      ]
+    },
+    {
+      "code": "MPM1D",
+      "name": "Principles of Mathematics",
+      "grade": 9,
+      "level": "D",
+      "subject": "math",
+      "prereqs": [],
+      "status": "expired_or_superseded",
+      "superseded_by": "MTH1W"
+    },
+    {
+      "code": "MPM1H",
+      "name": "Mathematics Transfer",
+      "grade": 9,
+      "level": "H",
+      "subject": "math",
+      "prereqs": [
+        "MFM1P"
+      ],
+      "prereq_note": "Foundations of Mathematics, Grade 9, Applied (MFM1P)"
+    },
+    {
+      "code": "MPM2D",
+      "name": "Principles of Mathematics",
+      "grade": 10,
+      "level": "D",
+      "subject": "math",
+      "prereqs": [
+        "MTH1W"
+      ],
+      "prereq_note": "Grade 9 Mathematics, De-streamed (MTH1W) (legacy Grade 9 math credits may be accepted)"
+    },
+    {
+      "code": "MTH1W",
+      "name": "Mathematics",
+      "grade": 9,
+      "level": "W",
+      "subject": "math",
+      "prereqs": [
+        "MFM1P",
+        "MPM1D"
+      ],
+      "prereq_note": "Grade 9 de-streamed mathematics (supersedes MPM1D/MFM1P)"
+    },
+    {
+      "code": "NAC1O",
+      "name": "Expressions of First Nations, Métis, and Inuit Cultures",
+      "grade": 9,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "NAC2O",
+      "name": "First Nations, Métis, and Inuit in Canada",
+      "grade": 10,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "NBE3C",
+      "name": "English: Understanding Contemporary First Nations, Métis, and Inuit Voices",
+      "grade": 11,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "English, Grade 10, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "ENG2D",
+          "ENG2P"
+        ]
+      ]
+    },
+    {
+      "code": "NBE3E",
+      "name": "English: Understanding Contemporary First Nations, Métis and Inuit Voices",
+      "grade": 11,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "English, Grade 10, Academic or Applied or the Grade 10 locally developed compulsory credit (LDCC) course in English",
+      "prereq_any_of": [
+        [
+          "ENG2D",
+          "ENG2P"
+        ]
+      ]
+    },
+    {
+      "code": "NBV3C",
+      "name": "in Canada",
+      "grade": 11,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Grade 10 First Nations, Métis, and Inuit in Canada, Open, or Grade 10 Canadian History since World War I, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "NAC2O",
+          "CHC2D",
+          "CHC2P"
+        ]
+      ]
+    },
+    {
+      "code": "NBV3E",
+      "name": "in Canada",
+      "grade": 11,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [
+        "NAC2O"
+      ],
+      "prereq_note": "Grade 10 First Nations, Métis and Inuit in Canada, Open, or Grade 10 Canadian History since World War I, Academic or Applied or the Grade 10 locally developed compulsory credit (LDCC) course in history",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "NDA3M",
+      "name": "Contemporary First Nations, Métis, and Inuit Issues and Perspectives",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Grade 10 First Nations, Métis and Inuit in Canada, Open, or Grade 10 Canadian History since World War I, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "NAC2O",
+          "CHC2D",
+          "CHC2P"
+        ]
+      ]
+    },
+    {
+      "code": "NDW4M",
+      "name": "Contemporary Indigenous Issues and Perspectives in a Global Context",
+      "grade": 12,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Any Grade 11 University, University/College, or College Preparation course in First Nations, Métis, and Inuit studies, Canadian and world studies, or social sciences and humanities",
+      "prereq_any_of": [
+        [
+          "CGD3M",
+          "CGF3M",
+          "CGO4M",
+          "CGW4U",
+          "CHA3U",
+          "CHI4U",
+          "CHW3M",
+          "CHY4U",
+          "CIE3M",
+          "CLN4U",
+          "CLU3M",
+          "CPW4U",
+          "HFA4U",
+          "HFC3M",
+          "HHG4M",
+          "HHS4U",
+          "HNB4M",
+          "HRT3M",
+          "HSB4U",
+          "HSC4M",
+          "HSE4M",
+          "HSG3M",
+          "HSP3U",
+          "HZB3M",
+          "HZT4U"
+        ]
+      ],
+      "prereq_expanded_from_note": true,
+      "prereq_expanded_rule": {
+        "type": "any_course_by_prefix_and_level",
+        "prefixes": [
+          "C",
+          "H"
+        ],
+        "levels": [
+          "M",
+          "U"
+        ],
+        "grades": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "code": "OLC3O",
+      "name": "Ontario Secondary School Literacy Course",
+      "grade": 11,
+      "level": "O",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Eligibility requirement: Students who have been eligible to write the OSSLT at least twice and who have been unsuccessful at least once are eligible to take the course. (Stu- dents who have already met the literacy requirement for graduation may be eligible to take the course under special circumstances, at the discretion of the principal.)",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "OLC4O",
+      "name": "Ontario Secondary School Literacy Course",
+      "grade": 12,
+      "level": "O",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Eligibility requirement: Students who have been eligible to write the OSSLT at least twice and who have been unsuccessful at least once are eligible to take the course. (Stu- dents who have already met the literacy requirement for graduation may be eligible to take the course under special circumstances, at the discretion of the principal.)",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "PLF4M",
+      "name": "Recreation and Healthy Active Living Leadership",
+      "grade": 12,
+      "level": "M",
+      "subject": "hpe",
+      "prereqs": [],
+      "prereq_note": "Any health and physical education course",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "PPL1O",
+      "name": "Healthy Active Living Education",
+      "grade": 9,
+      "level": "O",
+      "subject": "hpe",
+      "prereqs": []
+    },
+    {
+      "code": "PPL2O",
+      "name": "Healthy Active Living Education",
+      "grade": 10,
+      "level": "O",
+      "subject": "hpe",
+      "prereqs": []
+    },
+    {
+      "code": "PPL3O",
+      "name": "Healthy Active Living Education",
+      "grade": 11,
+      "level": "O",
+      "subject": "hpe",
+      "prereqs": []
+    },
+    {
+      "code": "PSK4U",
+      "name": "Introductory Kinesiology",
+      "grade": 12,
+      "level": "U",
+      "subject": "hpe",
+      "prereqs": [],
+      "prereq_note": "Any Grade 11 university or university/college preparation course in science, or any Grade 11 or 12 course in health and physical education",
+      "prereq_unresolved": true
+    },
+    {
+      "code": "SBI3C",
+      "name": "Biology",
+      "grade": 11,
+      "level": "C",
+      "subject": "science",
+      "prereqs": [],
+      "prereq_note": "Grade 10 Science, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "SNC2D",
+          "SNC2P"
+        ]
+      ]
+    },
+    {
+      "code": "SBI3U",
+      "name": "Biology",
+      "grade": 11,
+      "level": "U",
+      "subject": "science",
+      "prereqs": [
+        "SNC2D"
+      ],
+      "prereq_note": "Grade 10 Science, Academic"
+    },
+    {
+      "code": "SBI4U",
+      "name": "Biology",
+      "grade": 12,
+      "level": "U",
+      "subject": "science",
+      "prereqs": [
+        "SBI3U"
+      ],
+      "prereq_note": "Grade 11 Biology, University Preparation"
+    },
+    {
+      "code": "SCH3U",
+      "name": "Chemistry",
+      "grade": 11,
+      "level": "U",
+      "subject": "science",
+      "prereqs": [
+        "SNC2D"
+      ],
+      "prereq_note": "Grade 10 Science, Academic"
+    },
+    {
+      "code": "SCH4C",
+      "name": "Chemistry",
+      "grade": 12,
+      "level": "C",
+      "subject": "science",
+      "prereqs": [],
+      "prereq_note": "Grade 10 Science, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "SNC2D",
+          "SNC2P"
+        ]
+      ]
+    },
+    {
+      "code": "SCH4U",
+      "name": "Chemistry",
+      "grade": 12,
+      "level": "U",
+      "subject": "science",
+      "prereqs": [
+        "SCH3U"
+      ],
+      "prereq_note": "Grade 11 Chemistry, University Preparation"
+    },
+    {
+      "code": "SES4U",
+      "name": "Earth and Space Science",
+      "grade": 12,
+      "level": "U",
+      "subject": "other",
+      "prereqs": [
+        "SNC2D"
+      ],
+      "prereq_note": "Grade 10 Science, Academic"
+    },
+    {
+      "code": "SNC1D",
+      "name": "Science",
+      "grade": 9,
+      "level": "D",
+      "subject": "science",
+      "prereqs": [],
+      "status": "expired_or_superseded",
+      "superseded_by": "SNC1W"
+    },
+    {
+      "code": "SNC1P",
+      "name": "Science",
+      "grade": 9,
+      "level": "P",
+      "subject": "science",
+      "prereqs": [],
+      "status": "expired_or_superseded",
+      "superseded_by": "SNC1W"
+    },
+    {
+      "code": "SNC1W",
+      "name": "Science",
+      "grade": 9,
+      "level": "W",
+      "subject": "science",
+      "prereqs": [
+        "SNC1D",
+        "SNC1P"
+      ],
+      "prereq_note": "Grade 9 de-streamed science (supersedes SNC1D/SNC1P)"
+    },
+    {
+      "code": "SNC2D",
+      "name": "Science",
+      "grade": 10,
+      "level": "D",
+      "subject": "science",
+      "prereqs": [],
+      "prereq_note": "Grade 9 Science",
+      "prereq_any_of": [
+        [
+          "SNC1D",
+          "SNC1P",
+          "SNC1W"
+        ]
+      ]
+    },
+    {
+      "code": "SNC2P",
+      "name": "Science",
+      "grade": 10,
+      "level": "P",
+      "subject": "science",
+      "prereqs": [],
+      "prereq_note": "Grade 9 Science",
+      "prereq_any_of": [
+        [
+          "SNC1D",
+          "SNC1P",
+          "SNC1W"
+        ]
+      ]
+    },
+    {
+      "code": "SNC4E",
+      "name": "Science",
+      "grade": 12,
+      "level": "E",
+      "subject": "science",
+      "prereqs": [
+        "SNC2P"
+      ],
+      "prereq_note": "Grade 10 Science, Applied, or a Grade 10 locally developed compulsory credit (LDCC) course in science"
+    },
+    {
+      "code": "SNC4M",
+      "name": "Science",
+      "grade": 12,
+      "level": "M",
+      "subject": "science",
+      "prereqs": [
+        "SNC2D"
+      ],
+      "prereq_note": "Grade 10 Science, Academic, or any Grade 11 university, university/college, or college preparation course in science"
+    },
+    {
+      "code": "SPH3U",
+      "name": "Physics",
+      "grade": 11,
+      "level": "U",
+      "subject": "science",
+      "prereqs": [
+        "SNC2D"
+      ],
+      "prereq_note": "Grade 10 Science, Academic"
+    },
+    {
+      "code": "SPH4C",
+      "name": "Physics",
+      "grade": 12,
+      "level": "C",
+      "subject": "science",
+      "prereqs": [],
+      "prereq_note": "Grade 10 Science, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "SNC2D",
+          "SNC2P"
+        ]
+      ]
+    },
+    {
+      "code": "SPH4U",
+      "name": "Physics",
+      "grade": 12,
+      "level": "U",
+      "subject": "science",
+      "prereqs": [
+        "SPH3U"
+      ],
+      "prereq_note": "Grade 11 Physics, University Preparation"
+    },
+    {
+      "code": "SVN3E",
+      "name": "Environmental Science",
+      "grade": 11,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Grade 9 Science, Academic or Applied, or a Grade 9 or 10 locally developed compulsory credit (LDCC) course in science",
+      "prereq_any_of": [
+        [
+          "SNC1D",
+          "SNC1P"
+        ]
+      ]
+    },
+    {
+      "code": "SVN3M",
+      "name": "Environmental Science",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [],
+      "prereq_note": "Grade 10 Science, Academic or Applied",
+      "prereq_any_of": [
+        [
+          "SNC2D",
+          "SNC2P"
+        ]
+      ]
+    },
+    {
+      "code": "TCJ2O",
+      "name": "Construction Technology",
+      "grade": 10,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TCJ3C",
+      "name": "Construction Engineering Technology",
+      "grade": 11,
+      "level": "C",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TCJ3E",
+      "name": "Construction Technology",
+      "grade": 11,
+      "level": "E",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TCJ4C",
+      "name": "Construction Engineering Technology",
+      "grade": 12,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [
+        "TCJ3C"
+      ]
+    },
+    {
+      "code": "TCJ4E",
+      "name": "Construction Technology",
+      "grade": 12,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [
+        "TCJ3E"
+      ]
+    },
+    {
+      "code": "TDJ2O",
+      "name": "Technological Design",
+      "grade": 10,
+      "level": "O",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TDJ3M",
+      "name": "Technological Design",
+      "grade": 11,
+      "level": "M",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TDJ3O",
+      "name": "Technological Design and the Environment",
+      "grade": 11,
+      "level": "O",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TDJ4M",
+      "name": "Technological Design",
+      "grade": 12,
+      "level": "M",
+      "subject": "tech",
+      "prereqs": [
+        "TDJ3M"
+      ]
+    },
+    {
+      "code": "TDJ4O",
+      "name": "Technological Design in the Twenty-first Century",
+      "grade": 12,
+      "level": "O",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TEJ2O",
+      "name": "Computer Technology",
+      "grade": 10,
+      "level": "O",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TEJ3E",
+      "name": "Computer Technology",
+      "grade": 11,
+      "level": "E",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TEJ3M",
+      "name": "Computer Engineering Technology",
+      "grade": 11,
+      "level": "M",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TEJ4E",
+      "name": "Computer Technology",
+      "grade": 12,
+      "level": "E",
+      "subject": "tech",
+      "prereqs": [
+        "TEJ3E"
+      ]
+    },
+    {
+      "code": "TEJ4M",
+      "name": "Computer Engineering Technology",
+      "grade": 12,
+      "level": "M",
+      "subject": "tech",
+      "prereqs": [
+        "TEJ3M"
+      ]
+    },
+    {
+      "code": "TFJ2O",
+      "name": "Hospitality and Tourism",
+      "grade": 10,
+      "level": "O",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TFJ3C",
+      "name": "Hospitality and Tourism",
+      "grade": 11,
+      "level": "C",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TFJ3E",
+      "name": "Hospitality and Tourism",
+      "grade": 11,
+      "level": "E",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TFJ4C",
+      "name": "Hospitality and Tourism",
+      "grade": 12,
+      "level": "C",
+      "subject": "tech",
+      "prereqs": [
+        "TFJ3C"
+      ]
+    },
+    {
+      "code": "TFJ4E",
+      "name": "Hospitality and Tourism",
+      "grade": 12,
+      "level": "E",
+      "subject": "tech",
+      "prereqs": [
+        "TFJ3E"
+      ]
+    },
+    {
+      "code": "TGJ2O",
+      "name": "Communications Technology",
+      "grade": 10,
+      "level": "O",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TGJ3M",
+      "name": "Communications Technology",
+      "grade": 11,
+      "level": "M",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TGJ4M",
+      "name": "Communications Technology",
+      "grade": 12,
+      "level": "M",
+      "subject": "tech",
+      "prereqs": [
+        "TGJ3M"
+      ]
+    },
+    {
+      "code": "TGJ4O",
+      "name": "Communications Technology: Digital Imagery and Web Design",
+      "grade": 12,
+      "level": "O",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "THJ2O",
+      "name": "Green Industries",
+      "grade": 10,
+      "level": "O",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "THJ3E",
+      "name": "Green Industries",
+      "grade": 11,
+      "level": "E",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "THJ3M",
+      "name": "Green Industries",
+      "grade": 11,
+      "level": "M",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "THJ4E",
+      "name": "Green Industries",
+      "grade": 12,
+      "level": "E",
+      "subject": "tech",
+      "prereqs": [
+        "THJ3E"
+      ]
+    },
+    {
+      "code": "THJ4M",
+      "name": "Green Industries",
+      "grade": 12,
+      "level": "M",
+      "subject": "tech",
+      "prereqs": [
+        "THJ3M"
+      ]
+    },
+    {
+      "code": "TIJ1O",
+      "name": "Exploring Technologies",
+      "grade": 9,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TMJ2O",
+      "name": "Manufacturing Technology",
+      "grade": 10,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TMJ3C",
+      "name": "Manufacturing Technology",
+      "grade": 11,
+      "level": "C",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TMJ3E",
+      "name": "Manufacturing Technology",
+      "grade": 11,
+      "level": "E",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TMJ3M",
+      "name": "Manufacturing Engineering Technology",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TMJ4C",
+      "name": "Manufacturing Technology",
+      "grade": 12,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [
+        "TMJ3C"
+      ]
+    },
+    {
+      "code": "TMJ4E",
+      "name": "Manufacturing Technology",
+      "grade": 12,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [
+        "TMJ3E"
+      ]
+    },
+    {
+      "code": "TMJ4M",
+      "name": "Manufacturing Engineering Technology",
+      "grade": 12,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [
+        "TMJ3M"
+      ]
+    },
+    {
+      "code": "TOJ4C",
+      "name": "Child Development and Gerontology",
+      "grade": 12,
+      "level": "C",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TPJ2O",
+      "name": "Health Care",
+      "grade": 10,
+      "level": "O",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TPJ3C",
+      "name": "Health Care",
+      "grade": 11,
+      "level": "C",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TPJ3M",
+      "name": "Health Care",
+      "grade": 11,
+      "level": "M",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TPJ4C",
+      "name": "Health Care",
+      "grade": 12,
+      "level": "C",
+      "subject": "other",
+      "prereqs": [
+        "TPJ3C"
+      ]
+    },
+    {
+      "code": "TPJ4E",
+      "name": "Health Care: Support Services",
+      "grade": 12,
+      "level": "E",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TPJ4M",
+      "name": "Health Care",
+      "grade": 12,
+      "level": "M",
+      "subject": "other",
+      "prereqs": [
+        "TPJ3M"
+      ]
+    },
+    {
+      "code": "TTJ2O",
+      "name": "Transportation Technology",
+      "grade": 10,
+      "level": "O",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TTJ3C",
+      "name": "Transportation Technology",
+      "grade": 11,
+      "level": "C",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TTJ3O",
+      "name": "Transportation Technology: Vehicle Ownership",
+      "grade": 11,
+      "level": "O",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TTJ4C",
+      "name": "Transportation Technology",
+      "grade": 12,
+      "level": "C",
+      "subject": "tech",
+      "prereqs": [
+        "TTJ3C"
+      ]
+    },
+    {
+      "code": "TTJ4E",
+      "name": "Transportation Technology: Vehicle Maintenance",
+      "grade": 12,
+      "level": "E",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TWJ3E",
+      "name": "Custom Woodworking",
+      "grade": 11,
+      "level": "E",
+      "subject": "other",
+      "prereqs": []
+    },
+    {
+      "code": "TWJ4E",
+      "name": "Custom Woodworking",
+      "grade": 12,
+      "level": "E",
+      "subject": "other",
+      "prereqs": [
+        "TWJ3E"
+      ]
+    },
+    {
+      "code": "TXJ2O",
+      "name": "Hairstyling and Aesthetics",
+      "grade": 10,
+      "level": "O",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TXJ3E",
+      "name": "Hairstyling and Aesthetics",
+      "grade": 11,
+      "level": "E",
+      "subject": "tech",
+      "prereqs": []
+    },
+    {
+      "code": "TXJ4E",
+      "name": "Hairstyling and Aesthetics",
+      "grade": 12,
+      "level": "E",
+      "subject": "tech",
+      "prereqs": [
+        "TXJ3E"
+      ]
+    },
+    {
+      "code": "CGC1W",
+      "name": "Exploring Canadian Geography",
+      "grade": 9,
+      "level": "W",
+      "subject": "cws",
+      "credits": 1.0,
+      "prereqs": [],
+      "prereq_any_of": [],
+      "prereq_note": "None",
+      "status": "active"
+    }
+  ]
+}
