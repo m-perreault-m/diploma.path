@@ -59,6 +59,7 @@ const els = {
   hint: document.getElementById("mode-hint"),
   search: document.getElementById("search"),
   clear: document.getElementById("clear"), // Start Over
+  printPathway: document.getElementById("print-pathway"),
   showAll: document.getElementById("show-all"), // Show All Courses
 
   plan: document.getElementById("plan"),
@@ -136,6 +137,12 @@ function wireEvents() {
     els.drawer?.classList.remove("is-open");
     els.drawerScrim?.setAttribute("hidden", "");
     els.drawerToggle?.setAttribute("aria-expanded", "false");
+  });
+  els.printPathway?.addEventListener("click", () => {
+    els.drawer?.classList.remove("is-open");
+    els.drawerScrim?.setAttribute("hidden", "");
+    els.drawerToggle?.setAttribute("aria-expanded", "false");
+    window.print();
   });
 
   els.search?.addEventListener("input", (e) => {
