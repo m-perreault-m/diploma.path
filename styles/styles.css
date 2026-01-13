@@ -406,6 +406,47 @@ body > *{
   z-index: 1;
 }
 
+@media print{
+  body{
+    background: #fff;
+    color: #000;
+  }
+
+  body::before,
+  .drawer,
+  .drawer-scrim,
+  .drawer-toggle,
+  .controls,
+  .board-wrap,
+  .footer{
+    display: none !important;
+  }
+
+  .app-header{
+    padding: 0 0 12px;
+  }
+
+  .plan-strip{
+    padding: 0;
+  }
+
+  .plan{
+    gap: 16px;
+  }
+
+  .plan-col,
+  .plan-card,
+  .plan-empty{
+    background: #fff;
+    color: #000;
+    border-color: #d0d0d0;
+  }
+
+  .plan-wires{
+    display: none;
+  }
+}
+
 /* =========================================================
    Drag & Drop additions (keeps original styling intact)
    ========================================================= */
