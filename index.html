@@ -7,14 +7,24 @@
   <link rel="stylesheet" href="./styles/styles.css" />
 </head>
 <body>
+  <button class="drawer-toggle" id="drawer-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="drawer-scrim" id="drawer-scrim" hidden></div>
+  <aside class="drawer" id="drawer">
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="Close menu">✕</button>
+    <div class="drawer-panel">
+      <div class="tabs" role="tablist" aria-label="Modes">
+        <button id="tab-backward" class="tab active" role="tab" aria-selected="true">Backward (Start from Grade 12)</button>
+        <button id="tab-forward" class="tab" role="tab" aria-selected="false">Forward (Start from Completed)</button>
+      </div>
+    </div>
+  </aside>
   <header class="app-header">
     <div class="title">
       <h1>Ontario Course Planner</h1>
-    </div>
-
-    <div class="tabs" role="tablist" aria-label="Modes">
-      <button id="tab-backward" class="tab active" role="tab" aria-selected="true">Backward (Start from Grade 12)</button>
-      <button id="tab-forward" class="tab" role="tab" aria-selected="false">Forward (Start from Completed)</button>
     </div>
   </header>
 
