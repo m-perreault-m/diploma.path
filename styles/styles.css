@@ -5,8 +5,8 @@
   --mutedText: rgba(255,255,255,0.65);
   --stroke: rgba(255,255,255,0.10);
   --glow: rgba(255,255,255,0.18);
-  --drawer-closed: 64px;
-  --drawer-open: 240px;
+  --drawer-open: 280px;
+  --drawer-toggle-size: 44px;
 }
 
 *{ box-sizing:border-box; }
@@ -16,11 +16,7 @@ body{
   font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
-  padding-left: var(--drawer-closed);
-  transition: padding-left 0.2s ease;
-}
-body.drawer-open{
-  padding-left: var(--drawer-open);
+  overflow-x: hidden;
 }
 
 /* Fixed, non-scrolling background glow */
@@ -37,16 +33,16 @@ body::before{
 
 .drawer{
   position: fixed;
-  inset: 0 auto 0 0;
+  inset: 0 0 0 auto;
   width: var(--drawer-open);
   background: rgba(9,10,14,0.94);
-  border-right: 1px solid var(--stroke);
+  border-left: 1px solid var(--stroke);
   display:flex;
   flex-direction:column;
   align-items:stretch;
   gap: 16px;
   padding: 18px 12px;
-  transform: translateX(calc(-1 * (var(--drawer-open) - var(--drawer-closed))));
+  transform: translateX(100%);
   transition: transform 0.2s ease;
   z-index: 2;
   backdrop-filter: blur(10px);
@@ -54,9 +50,18 @@ body::before{
 .drawer.is-open{
   transform: translateX(0);
 }
+.drawer-scrim{
+  position: fixed;
+  inset: 0;
+  background: rgba(3,4,8,0.55);
+  z-index: 1;
+}
 .drawer-toggle{
-  width: 40px;
-  height: 40px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: var(--drawer-toggle-size);
+  height: var(--drawer-toggle-size);
   border-radius: 12px;
   border: 1px solid var(--stroke);
   background: var(--panel);
@@ -65,12 +70,23 @@ body::before{
   justify-content:center;
   gap: 6px;
   cursor:pointer;
+  z-index: 3;
 }
 .drawer-toggle span{
   display:block;
   height: 2px;
   background: var(--text);
   border-radius: 999px;
+}
+.drawer-close{
+  align-self:flex-end;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--stroke);
+  background: var(--panel);
+  color: var(--text);
+  cursor:pointer;
 }
 .drawer-panel{
   display:flex;

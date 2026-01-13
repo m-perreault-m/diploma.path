@@ -54,6 +54,8 @@ const els = {
   tabForward: document.getElementById("tab-forward"),
   drawer: document.getElementById("drawer"),
   drawerToggle: document.getElementById("drawer-toggle"),
+  drawerClose: document.getElementById("drawer-close"),
+  drawerScrim: document.getElementById("drawer-scrim"),
   hint: document.getElementById("mode-hint"),
   search: document.getElementById("search"),
   clear: document.getElementById("clear"), // Start Over
@@ -122,8 +124,18 @@ function wireEvents() {
   els.tabForward?.addEventListener("click", () => setMode("forward"));
   els.drawerToggle?.addEventListener("click", () => {
     const isOpen = els.drawer?.classList.toggle("is-open");
-    document.body.classList.toggle("drawer-open", isOpen);
+    els.drawerScrim?.toggleAttribute("hidden", !isOpen);
     els.drawerToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+  els.drawerClose?.addEventListener("click", () => {
+    els.drawer?.classList.remove("is-open");
+    els.drawerScrim?.setAttribute("hidden", "");
+    els.drawerToggle?.setAttribute("aria-expanded", "false");
+  });
+  els.drawerScrim?.addEventListener("click", () => {
+    els.drawer?.classList.remove("is-open");
+    els.drawerScrim?.setAttribute("hidden", "");
+    els.drawerToggle?.setAttribute("aria-expanded", "false");
   });
 
   els.search?.addEventListener("input", (e) => {
