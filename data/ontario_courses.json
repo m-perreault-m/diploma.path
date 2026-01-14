@@ -297,7 +297,7 @@
       "name": "Accounting Essentials",
       "grade": 11,
       "level": "E",
-      "subject": "other",
+      "subject": "business-studies",
       "prereqs": []
     },
     {
@@ -305,7 +305,7 @@
       "name": "Accounting for a Small Business",
       "grade": 12,
       "level": "E",
-      "subject": "other",
+      "subject": "business-studies",
       "prereqs": [
         "BAI3E"
       ]
@@ -341,7 +341,7 @@
       "name": "Introduction to Business",
       "grade": 9,
       "level": "O",
-      "subject": "other",
+      "subject": "business-studies",
       "prereqs": []
     },
     {
@@ -349,7 +349,7 @@
       "name": "Introduction to Business",
       "grade": 10,
       "level": "O",
-      "subject": "other",
+      "subject": "business-studies",
       "prereqs": []
     },
     {
@@ -365,7 +365,7 @@
       "name": "Entrepreneurship: The Enterprising Person",
       "grade": 11,
       "level": "O",
-      "subject": "other",
+      "subject": "business-studies",
       "prereqs": []
     },
     {
@@ -373,7 +373,7 @@
       "name": "Marketing: Goods, Services, Events",
       "grade": 11,
       "level": "C",
-      "subject": "other",
+      "subject": "business-studies",
       "prereqs": []
     },
     {
@@ -381,7 +381,7 @@
       "name": "Marketing: Retail and Service",
       "grade": 11,
       "level": "E",
-      "subject": "other",
+      "subject": "business-studies",
       "prereqs": []
     },
     {
@@ -389,7 +389,7 @@
       "name": "Business Leadership: Becoming a Manager",
       "grade": 12,
       "level": "E",
-      "subject": "other",
+      "subject": "business-studies",
       "prereqs": []
     },
     {
@@ -421,7 +421,7 @@
       "name": "Information and Communication Technology: Multimedia Solutions",
       "grade": 12,
       "level": "C",
-      "subject": "other",
+      "subject": "business-studies",
       "prereqs": [
         "BTA3O"
       ],
@@ -432,7 +432,7 @@
       "name": "Information and Communication Technology in the Workplace",
       "grade": 12,
       "level": "E",
-      "subject": "other",
+      "subject": "business-studies",
       "prereqs": [
         "BTA3O"
       ],
@@ -463,7 +463,7 @@
       "name": "Regional Geography",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
@@ -479,7 +479,7 @@
       "name": "Forces of Nature: Physical Processes and Disasters",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
@@ -495,7 +495,7 @@
       "name": "Travel and Tourism: A Geographic Perspective",
       "grade": 11,
       "level": "O",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
@@ -511,7 +511,7 @@
       "name": "Spatial Technologies in Action",
       "grade": 12,
       "level": "M",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Any university, university/college, or college preparation course in Canadian and world studies, English, or social sciences and humanities.",
       "prereq_any_of": [
@@ -570,7 +570,7 @@
       "name": "Living in a Sustainable World",
       "grade": 12,
       "level": "E",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
@@ -586,7 +586,7 @@
       "name": "Introduction to Spatial Technologies",
       "grade": 11,
       "level": "O",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
@@ -602,7 +602,7 @@
       "name": "World Issues: A Geographic Analysis",
       "grade": 12,
       "level": "C",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
@@ -618,7 +618,7 @@
       "name": "World Issues: A Geographic Analysis",
       "grade": 12,
       "level": "U",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Any university or university/college preparation course in Canadian and world studies, English, or social sciences and humanities",
       "prereq_any_of": [
@@ -677,7 +677,7 @@
       "name": "American History",
       "grade": 11,
       "level": "U",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied",
       "prereq_any_of": [
@@ -708,7 +708,7 @@
       "name": "Canada: History, Identity, and Culture",
       "grade": 12,
       "level": "U",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Any university or university/college preparation course in Canadian and world studies, English, or social sciences and humanities",
       "prereq_any_of": [
@@ -767,7 +767,7 @@
       "name": "Adventures in World History",
       "grade": 12,
       "level": "E",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied, or the locally developed compulsory course (LDCC) in Canadian history",
       "prereq_any_of": [
@@ -782,7 +782,7 @@
       "name": "World History since 1900: Global and Regional Interactions",
       "grade": 11,
       "level": "O",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied, or the locally developed compulsory course (LDCC) in Canadian history",
       "prereq_any_of": [
@@ -805,7 +805,7 @@
       "name": "World History to the End of the Fifteenth Century",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied",
       "prereq_any_of": [
@@ -820,7 +820,7 @@
       "name": "World History since the Fifteenth Century",
       "grade": 12,
       "level": "C",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Any university, university/college, or college preparation course in Canadian and world studies, English, or social sciences and humanities",
       "prereq_any_of": [
@@ -880,7 +880,7 @@
       "name": "World History since the Fifteenth Century",
       "grade": 12,
       "level": "U",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Any university or university/college preparation course in Canadian and world studies, English, or social sciences and humanities",
       "prereq_any_of": [
@@ -939,7 +939,7 @@
       "name": "The Individual and the Economy",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Canadian History since World War I, Grade 10, Academic or Applied",
       "prereq_any_of": [
@@ -954,7 +954,7 @@
       "name": "Legal Studies",
       "grade": 12,
       "level": "C",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [
         "CHV2O"
       ]
@@ -964,7 +964,7 @@
       "name": "Canadian and International Law",
       "grade": 12,
       "level": "U",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Any university or university/college preparation course in Canadian and world studies, English, or social sciences and humanities",
       "prereq_any_of": [
@@ -1053,7 +1053,7 @@
       "name": "Politics in Action: Making Change",
       "grade": 11,
       "level": "O",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [
         "CHV2O"
       ]
@@ -1063,7 +1063,7 @@
       "name": "Canadian and International Politics",
       "grade": 12,
       "level": "U",
-      "subject": "other",
+      "subject": "cws",
       "prereqs": [],
       "prereq_note": "Any university or university/college preparation course in Canadian and world studies, English, or social sciences and humanities",
       "prereq_any_of": [
@@ -1138,7 +1138,7 @@
       "name": "Literacy Skills: Reading and Writing",
       "grade": 10,
       "level": "O",
-      "subject": "other",
+      "subject": "english",
       "prereqs": [],
       "prereq_note": "Grade 9 English, Academic or Applied, or a Grade 9 English LDCC (locally developed compulsory credit) course",
       "prereq_any_of": [
@@ -1292,7 +1292,7 @@
       "name": "Presentation and Speaking Skills",
       "grade": 11,
       "level": "O",
-      "subject": "other",
+      "subject": "english",
       "prereqs": [],
       "prereq_note": "Grade 10 English, Academic or Applied",
       "prereq_any_of": [
@@ -1307,7 +1307,7 @@
       "name": "Canadian Literature",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "english",
       "prereqs": [],
       "prereq_note": "Grade 10 English, Academic or Applied",
       "prereq_any_of": [
@@ -1322,7 +1322,7 @@
       "name": "Studies in Literature",
       "grade": 12,
       "level": "C",
-      "subject": "other",
+      "subject": "english",
       "prereqs": [
         "ENG3C"
       ],
@@ -1333,7 +1333,7 @@
       "name": "Studies in Literature",
       "grade": 12,
       "level": "U",
-      "subject": "other",
+      "subject": "english",
       "prereqs": [
         "ENG3U"
       ],
@@ -1344,7 +1344,7 @@
       "name": "The Writer’s Craft",
       "grade": 12,
       "level": "U",
-      "subject": "other",
+      "subject": "english",
       "prereqs": [
         "ENG3U"
       ],
@@ -1355,7 +1355,7 @@
       "name": "Extended French",
       "grade": 9,
       "level": "D",
-      "subject": "other",
+      "subject": "fsl",
       "prereqs": [],
       "prereq_note": "Minimum of 1260 hours of instruction in French, or equivalent",
       "prereq_unresolved": true
@@ -1365,7 +1365,7 @@
       "name": "Extended French",
       "grade": 10,
       "level": "D",
-      "subject": "other",
+      "subject": "fsl",
       "prereqs": [
         "FEF1D"
       ]
@@ -1375,7 +1375,7 @@
       "name": "Extended French",
       "grade": 11,
       "level": "U",
-      "subject": "other",
+      "subject": "fsl",
       "prereqs": [
         "FEF2D"
       ]
@@ -1385,7 +1385,7 @@
       "name": "Extended French",
       "grade": 12,
       "level": "U",
-      "subject": "other",
+      "subject": "fsl",
       "prereqs": [
         "FEF3U"
       ]
@@ -1616,7 +1616,7 @@
       "name": "Discovering the Workplace",
       "grade": 10,
       "level": "O",
-      "subject": "other",
+      "subject": "gce",
       "prereqs": []
     },
     {
@@ -1644,7 +1644,7 @@
       "name": "Navigating the Workplace",
       "grade": 12,
       "level": "O",
-      "subject": "other",
+      "subject": "gce",
       "prereqs": []
     },
     {
@@ -1795,7 +1795,7 @@
       "name": "Food and Culture",
       "grade": 11,
       "level": "E",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -1803,7 +1803,7 @@
       "name": "Food and Culture",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -1811,7 +1811,7 @@
       "name": "Food and Healthy Living",
       "grade": 12,
       "level": "E",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -1819,7 +1819,7 @@
       "name": "Food and Nutrition",
       "grade": 9,
       "level": "O",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -1827,7 +1827,7 @@
       "name": "Food and Nutrition",
       "grade": 10,
       "level": "O",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -1835,7 +1835,7 @@
       "name": "Dynamics of Human Relationships",
       "grade": 11,
       "level": "O",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -2037,7 +2037,7 @@
       "name": "Housing and Home Design",
       "grade": 11,
       "level": "O",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -2045,7 +2045,7 @@
       "name": "The World of Fashion",
       "grade": 12,
       "level": "M",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": [],
       "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -2104,7 +2104,7 @@
       "name": "Understanding Fashion",
       "grade": 11,
       "level": "C",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -2112,7 +2112,7 @@
       "name": "Clothing",
       "grade": 10,
       "level": "O",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -2128,7 +2128,7 @@
       "name": "Working with School-Age Children and Adolescents",
       "grade": 12,
       "level": "C",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": [],
       "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -2188,7 +2188,7 @@
       "name": "Working with Infants and Young Children",
       "grade": 11,
       "level": "C",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -2196,7 +2196,7 @@
       "name": "World Religions and Belief Traditions in Daily Life",
       "grade": 11,
       "level": "O",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -2204,7 +2204,7 @@
       "name": "World Religions and Belief Traditions: Perspectives, Issues, and Challenges",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -2212,7 +2212,7 @@
       "name": "Challenge and Change in Society",
       "grade": 12,
       "level": "U",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": [],
       "prereq_note": "Any university or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -2330,7 +2330,7 @@
       "name": "Equity, Diversity, and Social Justice",
       "grade": 11,
       "level": "E",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -2338,7 +2338,7 @@
       "name": "Equity and Social Justice: From Theory to Practice",
       "grade": 12,
       "level": "M",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": [],
       "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -2428,7 +2428,7 @@
       "name": "Philosophy: The Big Questions",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -2595,7 +2595,7 @@
       "name": "Classical Civilization",
       "grade": 12,
       "level": "U",
-      "subject": "other",
+      "subject": "csil",
       "prereqs": [
         "ENG2D"
       ]
@@ -2605,7 +2605,7 @@
       "name": "Foundations for College Mathematics",
       "grade": 12,
       "level": "C",
-      "subject": "other",
+      "subject": "mathematics",
       "prereqs": [
         "MBF3C"
       ]
@@ -2675,7 +2675,7 @@
       "name": "Mathematics for Work and Everyday Life",
       "grade": 11,
       "level": "E",
-      "subject": "other",
+      "subject": "mathematics",
       "prereqs": [
         "MPM1D"
       ]
@@ -2685,7 +2685,7 @@
       "name": "Mathematics for Work and Everyday Life",
       "grade": 12,
       "level": "E",
-      "subject": "other",
+      "subject": "mathematics",
       "prereqs": [
         "MEL3E"
       ]
@@ -2770,7 +2770,7 @@
       "name": "Expressions of First Nations, Métis, and Inuit Cultures",
       "grade": 9,
       "level": "O",
-      "subject": "other",
+      "subject": "fnmi-studies",
       "prereqs": []
     },
     {
@@ -2778,7 +2778,7 @@
       "name": "First Nations, Métis, and Inuit in Canada",
       "grade": 10,
       "level": "O",
-      "subject": "other",
+      "subject": "fnmi-studies",
       "prereqs": []
     },
     {
@@ -2786,7 +2786,7 @@
       "name": "English: Understanding Contemporary First Nations, Métis, and Inuit Voices",
       "grade": 11,
       "level": "C",
-      "subject": "other",
+      "subject": "fnmi-studies",
       "prereqs": [],
       "prereq_note": "English, Grade 10, Academic or Applied",
       "prereq_any_of": [
@@ -2801,7 +2801,7 @@
       "name": "English: Understanding Contemporary First Nations, Métis and Inuit Voices",
       "grade": 11,
       "level": "E",
-      "subject": "other",
+      "subject": "fnmi-studies",
       "prereqs": [],
       "prereq_note": "English, Grade 10, Academic or Applied or the Grade 10 locally developed compulsory credit (LDCC) course in English",
       "prereq_any_of": [
@@ -2816,7 +2816,7 @@
       "name": "in Canada",
       "grade": 11,
       "level": "C",
-      "subject": "other",
+      "subject": "fnmi-studies",
       "prereqs": [],
       "prereq_note": "Grade 10 First Nations, Métis, and Inuit in Canada, Open, or Grade 10 Canadian History since World War I, Academic or Applied",
       "prereq_any_of": [
@@ -2832,7 +2832,7 @@
       "name": "in Canada",
       "grade": 11,
       "level": "E",
-      "subject": "other",
+      "subject": "fnmi-studies",
       "prereqs": [
         "NAC2O"
       ],
@@ -2844,7 +2844,7 @@
       "name": "Contemporary First Nations, Métis, and Inuit Issues and Perspectives",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "fnmi-studies",
       "prereqs": [],
       "prereq_note": "Grade 10 First Nations, Métis and Inuit in Canada, Open, or Grade 10 Canadian History since World War I, Academic or Applied",
       "prereq_any_of": [
@@ -2860,7 +2860,7 @@
       "name": "Contemporary Indigenous Issues and Perspectives in a Global Context",
       "grade": 12,
       "level": "M",
-      "subject": "other",
+      "subject": "fnmi-studies",
       "prereqs": [],
       "prereq_note": "Any Grade 11 University, University/College, or College Preparation course in First Nations, Métis, and Inuit studies, Canadian and world studies, or social sciences and humanities",
       "prereq_any_of": [
@@ -2914,7 +2914,7 @@
       "name": "Ontario Secondary School Literacy Course",
       "grade": 11,
       "level": "O",
-      "subject": "other",
+      "subject": "english",
       "prereqs": [],
       "prereq_note": "Eligibility requirement: Students who have been eligible to write the OSSLT at least twice and who have been unsuccessful at least once are eligible to take the course. (Stu- dents who have already met the literacy requirement for graduation may be eligible to take the course under special circumstances, at the discretion of the principal.)",
       "prereq_unresolved": true
@@ -2924,7 +2924,7 @@
       "name": "Ontario Secondary School Literacy Course",
       "grade": 12,
       "level": "O",
-      "subject": "other",
+      "subject": "english",
       "prereqs": [],
       "prereq_note": "Eligibility requirement: Students who have been eligible to write the OSSLT at least twice and who have been unsuccessful at least once are eligible to take the course. (Stu- dents who have already met the literacy requirement for graduation may be eligible to take the course under special circumstances, at the discretion of the principal.)",
       "prereq_unresolved": true
@@ -3052,7 +3052,7 @@
       "name": "Earth and Space Science",
       "grade": 12,
       "level": "U",
-      "subject": "other",
+      "subject": "science",
       "prereqs": [
         "SNC2D"
       ],
@@ -3186,7 +3186,7 @@
       "name": "Environmental Science",
       "grade": 11,
       "level": "E",
-      "subject": "other",
+      "subject": "science",
       "prereqs": [],
       "prereq_note": "Grade 9 Science, Academic or Applied, or a Grade 9 or 10 locally developed compulsory credit (LDCC) course in science",
       "prereq_any_of": [
@@ -3201,7 +3201,7 @@
       "name": "Environmental Science",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "science",
       "prereqs": [],
       "prereq_note": "Grade 10 Science, Academic or Applied",
       "prereq_any_of": [
@@ -3216,7 +3216,7 @@
       "name": "Construction Technology",
       "grade": 10,
       "level": "O",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3224,7 +3224,7 @@
       "name": "Construction Engineering Technology",
       "grade": 11,
       "level": "C",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3232,7 +3232,7 @@
       "name": "Construction Technology",
       "grade": 11,
       "level": "E",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3240,7 +3240,7 @@
       "name": "Construction Engineering Technology",
       "grade": 12,
       "level": "C",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": [
         "TCJ3C"
       ]
@@ -3250,7 +3250,7 @@
       "name": "Construction Technology",
       "grade": 12,
       "level": "E",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": [
         "TCJ3E"
       ]
@@ -3468,7 +3468,7 @@
       "name": "Exploring Technologies",
       "grade": 9,
       "level": "O",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3476,7 +3476,7 @@
       "name": "Manufacturing Technology",
       "grade": 10,
       "level": "O",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3484,7 +3484,7 @@
       "name": "Manufacturing Technology",
       "grade": 11,
       "level": "C",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3492,7 +3492,7 @@
       "name": "Manufacturing Technology",
       "grade": 11,
       "level": "E",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3500,7 +3500,7 @@
       "name": "Manufacturing Engineering Technology",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3508,7 +3508,7 @@
       "name": "Manufacturing Technology",
       "grade": 12,
       "level": "C",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": [
         "TMJ3C"
       ]
@@ -3518,7 +3518,7 @@
       "name": "Manufacturing Technology",
       "grade": 12,
       "level": "E",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": [
         "TMJ3E"
       ]
@@ -3528,7 +3528,7 @@
       "name": "Manufacturing Engineering Technology",
       "grade": 12,
       "level": "M",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": [
         "TMJ3M"
       ]
@@ -3538,7 +3538,7 @@
       "name": "Child Development and Gerontology",
       "grade": 12,
       "level": "C",
-      "subject": "other",
+      "subject": "social-sciences-humanities",
       "prereqs": []
     },
     {
@@ -3546,7 +3546,7 @@
       "name": "Health Care",
       "grade": 10,
       "level": "O",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3554,7 +3554,7 @@
       "name": "Health Care",
       "grade": 11,
       "level": "C",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3562,7 +3562,7 @@
       "name": "Health Care",
       "grade": 11,
       "level": "M",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3570,7 +3570,7 @@
       "name": "Health Care",
       "grade": 12,
       "level": "C",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": [
         "TPJ3C"
       ]
@@ -3580,7 +3580,7 @@
       "name": "Health Care: Support Services",
       "grade": 12,
       "level": "E",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3588,7 +3588,7 @@
       "name": "Health Care",
       "grade": 12,
       "level": "M",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": [
         "TPJ3M"
       ]
@@ -3640,7 +3640,7 @@
       "name": "Custom Woodworking",
       "grade": 11,
       "level": "E",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": []
     },
     {
@@ -3648,7 +3648,7 @@
       "name": "Custom Woodworking",
       "grade": 12,
       "level": "E",
-      "subject": "other",
+      "subject": "tech-ed",
       "prereqs": [
         "TWJ3E"
       ]
