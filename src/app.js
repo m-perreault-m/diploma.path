@@ -62,7 +62,6 @@ const els = {
   tabForward: document.getElementById("tab-forward"),
   drawer: document.getElementById("drawer"),
   drawerToggle: document.getElementById("drawer-toggle"),
-  drawerClose: document.getElementById("drawer-close"),
   drawerScrim: document.getElementById("drawer-scrim"),
   hint: document.getElementById("mode-hint"),
   search: document.getElementById("search"),
@@ -137,24 +136,14 @@ function wireEvents() {
   els.tabBackward?.addEventListener("click", () => setMode("backward"));
   els.tabForward?.addEventListener("click", () => setMode("forward"));
   els.drawerToggle?.addEventListener("click", () => {
-    const isOpen = els.drawer?.classList.toggle("is-open");
-    els.drawerScrim?.toggleAttribute("hidden", !isOpen);
-    els.drawerToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-  });
-  els.drawerClose?.addEventListener("click", () => {
-    els.drawer?.classList.remove("is-open");
-    els.drawerScrim?.setAttribute("hidden", "");
-    els.drawerToggle?.setAttribute("aria-expanded", "false");
+    const isOpen = !els.drawer?.classList.contains("is-open");
+    setDrawerOpen(isOpen);
   });
   els.drawerScrim?.addEventListener("click", () => {
-    els.drawer?.classList.remove("is-open");
-    els.drawerScrim?.setAttribute("hidden", "");
-    els.drawerToggle?.setAttribute("aria-expanded", "false");
+    setDrawerOpen(false);
   });
   els.printPathway?.addEventListener("click", () => {
-    els.drawer?.classList.remove("is-open");
-    els.drawerScrim?.setAttribute("hidden", "");
-    els.drawerToggle?.setAttribute("aria-expanded", "false");
+    setDrawerOpen(false);
     window.print();
   });
   els.savePathway?.addEventListener("click", () => {
@@ -283,6 +272,17 @@ function wireEvents() {
   });
 
   setupPlanDropZones();
+}
+
+function setDrawerOpen(isOpen) {
+  els.drawer?.classList.toggle("is-open", isOpen);
+  els.drawerToggle?.classList.toggle("is-open", isOpen);
+  els.drawerScrim?.toggleAttribute("hidden", !isOpen);
+  els.drawerToggle?.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  els.drawerToggle?.setAttribute(
+    "aria-label",
+    isOpen ? "Close menu" : "Open menu"
+  );
 }
 
 function hasActiveSelections() {
@@ -419,9 +419,7 @@ function applySavedPathway(entry) {
   initWheelOrder();
   setMode(payload.mode ?? "backward");
   if (els.drawer?.classList.contains("is-open")) {
-    els.drawer.classList.remove("is-open");
-    els.drawerScrim?.setAttribute("hidden", "");
-    els.drawerToggle?.setAttribute("aria-expanded", "false");
+    setDrawerOpen(false);
   }
   renderBoard();
   renderPlan();

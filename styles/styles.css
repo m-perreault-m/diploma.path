@@ -71,22 +71,23 @@ body::before{
   gap: 6px;
   cursor:pointer;
   z-index: 3;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 .drawer-toggle span{
   display:block;
   height: 2px;
   background: var(--text);
   border-radius: 999px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
-.drawer-close{
-  align-self:flex-end;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  border: 1px solid var(--stroke);
-  background: var(--panel);
-  color: var(--text);
-  cursor:pointer;
+.drawer-toggle.is-open span:nth-child(1){
+  transform: translateY(8px) rotate(45deg);
+}
+.drawer-toggle.is-open span:nth-child(2){
+  opacity: 0;
+}
+.drawer-toggle.is-open span:nth-child(3){
+  transform: translateY(-8px) rotate(-45deg);
 }
 .drawer-panel{
   display:flex;
