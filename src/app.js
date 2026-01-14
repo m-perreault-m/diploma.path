@@ -381,6 +381,7 @@ function applySavedPathway(entry) {
     els.drawerScrim?.setAttribute("hidden", "");
     els.drawerToggle?.setAttribute("aria-expanded", "false");
   }
+  renderBoard();
   renderPlan();
   applyStateToCards();
   drawBoardWires();
