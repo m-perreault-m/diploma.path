@@ -565,7 +565,7 @@ function renderPlan() {
               return renderPlanCard(c, g);
             })
             .join("")
-        : `<div class="plan-empty">Drag any visible course card into this box.</div>`;
+        : `<div class="plan-empty">Drag courses here, or double click to add</div>`;
 
       return `
       <div class="plan-col" data-plan-grade="${g}">
