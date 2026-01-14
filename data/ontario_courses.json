@@ -1616,7 +1616,7 @@
       "name": "Discovering the Workplace",
       "grade": 10,
       "level": "O",
-      "subject": "gce",
+      "subject": "guidance",
       "prereqs": []
     },
     {
@@ -1624,7 +1624,7 @@
       "name": "Learning Strategies 1: Skills for Success in Secondary School",
       "grade": 9,
       "level": "O",
-      "subject": "gce",
+      "subject": "guidance",
       "prereqs": [],
       "prereq_note": "Recommendation of principal",
       "prereq_unresolved": true
@@ -1634,7 +1634,7 @@
       "name": "Learning Strategies 1: Skills for Success in Secondary School",
       "grade": 10,
       "level": "O",
-      "subject": "gce",
+      "subject": "guidance",
       "prereqs": [],
       "prereq_note": "Recommendation of principal",
       "prereq_unresolved": true
@@ -1644,7 +1644,7 @@
       "name": "Navigating the Workplace",
       "grade": 12,
       "level": "O",
-      "subject": "gce",
+      "subject": "guidance",
       "prereqs": []
     },
     {
@@ -1652,7 +1652,7 @@
       "name": "Learning Strategies 1: Skills for Success in Secondary School",
       "grade": 9,
       "level": "O",
-      "subject": "gce",
+      "subject": "guidance",
       "prereqs": []
     },
     {
