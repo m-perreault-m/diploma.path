@@ -738,6 +738,18 @@ function bindBoardCardHandlers() {
       }, CLICK_DELAY_MS);
     });
 
+    card.addEventListener("dblclick", (e) => {
+      e.preventDefault();
+      if (clickTimer) {
+        clearTimeout(clickTimer);
+        clickTimer = null;
+      }
+      const course = state.byCode.get(code);
+      if (!course) return;
+      const from = state.plannedSet.has(code) ? "plan" : "board";
+      onDropIntoPlan(code, from, course.grade);
+    });
+
     card.addEventListener("dragstart", (e) => {
       state.draggingCode = code;
       state.draggingFrom = "board";
