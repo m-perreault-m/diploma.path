@@ -93,6 +93,7 @@ body::before{
   display:flex;
   flex-direction:column;
   gap: 12px;
+  padding-top: calc(var(--drawer-toggle-size) + 12px);
 }
 .drawer-section{
   display:flex;

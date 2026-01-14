@@ -436,20 +436,21 @@ function resetFocusOnly() {
 }
 
 function setMode(mode) {
-  state.mode = mode;
+  const nextMode = mode === "forward" ? "backward" : mode;
+  state.mode = nextMode;
 
-  els.tabBackward?.classList.toggle("active", mode === "backward");
-  els.tabForward?.classList.toggle("active", mode === "forward");
+  els.tabBackward?.classList.toggle("active", nextMode === "backward");
+  els.tabForward?.classList.toggle("active", nextMode === "forward");
 
   const hintText =
-    mode === "backward"
+    nextMode === "backward"
       ? "Backward mode: click a Grade 12 course to focus prereqs. Drag courses into the Plan."
       : "Forward mode: mark completed courses; eligible ones light up. Drag into Plan still works.";
   if (els.hint) els.hint.textContent = hintText;
 
   resetFocusOnly();
 
-  if (mode === "forward") state.unlocked = computeUnlocked();
+  if (nextMode === "forward") state.unlocked = computeUnlocked();
 
   renderBoard();
   renderPlan();
