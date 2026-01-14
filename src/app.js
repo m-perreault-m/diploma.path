@@ -54,6 +54,7 @@ const state = {
   draggingFrom: null,
 
   savedPaths: [],
+  activeSaveId: null,
 };
 
 const els = {
@@ -70,6 +71,7 @@ const els = {
   savePathway: document.getElementById("save-pathway"),
   showAll: document.getElementById("show-all"), // Show All Courses
   savedList: document.getElementById("saved-list"),
+  loadingOverlay: document.getElementById("loading-overlay"),
 
   plan: document.getElementById("plan"),
   planWires: document.getElementById("plan-wires"),
@@ -167,6 +169,9 @@ function wireEvents() {
     if (!id) return;
     const entry = state.savedPaths.find((item) => item.id === id);
     if (!entry) return;
+    state.activeSaveId = id;
+    renderSavedList();
+    showLoadingOverlay();
     applySavedPathway(entry);
   });
 
@@ -291,7 +296,7 @@ function renderSavedList() {
         ? date.toLocaleDateString(undefined, { month: "short", day: "numeric" })
         : "Saved";
       return `
-        <button class="saved-item" type="button" data-save-id="${escapeHtml(entry.id)}">
+        <button class="saved-item ${state.activeSaveId === entry.id ? "is-active" : ""}" type="button" data-save-id="${escapeHtml(entry.id)}">
           <span>${escapeHtml(entry.name)}</span>
           <time datetime="${escapeHtml(entry.savedAt ?? "")}">${escapeHtml(label)}</time>
         </button>
@@ -370,6 +375,11 @@ function applySavedPathway(entry) {
     els.drawerScrim?.setAttribute("hidden", "");
     els.drawerToggle?.setAttribute("aria-expanded", "false");
   }
+  renderPlan();
+  applyStateToCards();
+  drawBoardWires();
+  drawPlanWires();
+  hideLoadingOverlaySoon();
 }
 
 function resetFocusOnly() {
@@ -1114,4 +1124,20 @@ function readCookie(name) {
 function writeCookie(name, encodedValue, maxAgeDays) {
   const maxAgeSeconds = Math.floor(maxAgeDays * 24 * 60 * 60);
   document.cookie = `${name}=${encodedValue}; max-age=${maxAgeSeconds}; path=/; SameSite=Lax`;
+}
+
+function showLoadingOverlay() {
+  if (!els.loadingOverlay) return;
+  els.loadingOverlay.classList.add("is-visible");
+  els.loadingOverlay.setAttribute("aria-hidden", "false");
+}
+
+function hideLoadingOverlaySoon() {
+  if (!els.loadingOverlay) return;
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      els.loadingOverlay.classList.remove("is-visible");
+      els.loadingOverlay.setAttribute("aria-hidden", "true");
+    }, 180);
+  });
 }
