@@ -365,6 +365,11 @@ function applySavedPathway(entry) {
   state.focusFilterActive = false;
   initWheelOrder();
   setMode(payload.mode ?? "backward");
+  if (els.drawer?.classList.contains("is-open")) {
+    els.drawer.classList.remove("is-open");
+    els.drawerScrim?.setAttribute("hidden", "");
+    els.drawerToggle?.setAttribute("aria-expanded", "false");
+  }
 }
 
 function resetFocusOnly() {
