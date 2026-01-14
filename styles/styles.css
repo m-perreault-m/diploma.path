@@ -263,11 +263,27 @@ input[type="search"]{
 .pill.glow{ box-shadow: 0 0 0 6px rgba(255,255,255,0.03); }
 
 /* ===== Plan Area (now 4 grade boxes) ===== */
-.plan-strip{ padding: 0 18px 12px; }
+.plan-strip{
+  padding: 12px 18px 18px;
+  margin: 0 18px 20px;
+  border: 1px dashed rgba(255,255,255,0.35);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top left, rgba(120,200,255,0.16), transparent 60%),
+    rgba(255,255,255,0.05);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+}
 .plan-title{
-  font-size: 12px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 6px;
+}
+.plan-subtitle{
+  font-size: 13px;
   color: var(--mutedText);
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 }
 
 .plan-wrap{
