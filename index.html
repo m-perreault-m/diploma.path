@@ -21,7 +21,12 @@
         <button id="tab-forward" class="tab" role="tab" aria-selected="false">⏩ Build starting from Grade 9</button>
       </div>
       <button id="print-pathway" class="btn" title="Print your current pathway" aria-label="Print your current pathway">🖨️ Print Pathway</button>
+      <button id="save-pathway" class="btn" title="Save your current pathway" aria-label="Save your current pathway">💾 Save Pathway</button>
       <button id="clear" class="btn" title="Start a new pathway" aria-label="Start a new pathway">🆕 Start a new pathway</button>
+      <div class="drawer-section">
+        <div class="drawer-section-title">Saved pathways</div>
+        <div id="saved-list" class="saved-list" aria-live="polite"></div>
+      </div>
     </div>
   </aside>
   <header class="app-header">
@@ -81,6 +86,9 @@
       Based on Ontario course prerequisites information, confirm info with your school councilor, or with the Ministry of education documentation.
     </div>
   </footer>
+  <div id="loading-overlay" class="loading-overlay" aria-hidden="true">
+    <div class="loading-spinner" role="status" aria-live="polite" aria-label="Loading saved pathway"></div>
+  </div>
 
   <script type="module" src="./src/app.js"></script>
 </body>
