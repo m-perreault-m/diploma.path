@@ -172,7 +172,13 @@ function wireEvents() {
     state.activeSaveId = id;
     renderSavedList();
     showLoadingOverlay();
-    applySavedPathway(entry);
+    requestAnimationFrame(() => {
+      try {
+        applySavedPathway(entry);
+      } finally {
+        hideLoadingOverlaySoon();
+      }
+    });
   });
 
   els.search?.addEventListener("input", (e) => {
@@ -379,7 +385,6 @@ function applySavedPathway(entry) {
   applyStateToCards();
   drawBoardWires();
   drawPlanWires();
-  hideLoadingOverlaySoon();
 }
 
 function resetFocusOnly() {
