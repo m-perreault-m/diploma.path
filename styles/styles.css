@@ -114,32 +114,51 @@ body::before{
 .saved-item{
   display:flex;
   align-items:center;
-  justify-content:space-between;
   gap: 8px;
-  padding: 10px 12px;
+  padding: 6px;
   border-radius: 12px;
   border: 1px solid var(--stroke);
   background: rgba(255,255,255,0.04);
   color: var(--text);
-  cursor:pointer;
-  text-align:left;
 }
 .saved-item.is-active{
   border-color: rgba(120,255,180,0.6);
   box-shadow: 0 0 0 3px rgba(120,255,180,0.18);
   background: rgba(120,255,180,0.08);
 }
-.saved-item span{
+.saved-load{
+  flex: 1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align:left;
+  cursor:pointer;
+}
+.saved-load span{
   flex:1;
   min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.saved-item time{
+.saved-load time{
   font-size: 10px;
   color: var(--mutedText);
   white-space: nowrap;
+}
+.saved-delete{
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  cursor: pointer;
 }
 .saved-empty{
   font-size: 12px;
@@ -153,6 +172,16 @@ body::before{
 .drawer .tab{
   width: 100%;
   text-align:left;
+}
+.drawer .tab,
+.drawer .btn{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
 }
 
 .app-header{

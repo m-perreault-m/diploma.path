@@ -163,12 +163,37 @@ function wireEvents() {
     saveCurrentPathway(name);
   });
   els.savedList?.addEventListener("click", (event) => {
-    const button = event.target.closest(".saved-item");
+    const deleteButton = event.target.closest(".saved-delete");
+    if (deleteButton) {
+      const id = deleteButton.dataset.saveId;
+      if (!id) return;
+      const entry = state.savedPaths.find((item) => item.id === id);
+      if (!entry) return;
+      const confirmed = window.confirm(
+        `Are you sure you want to delete the saved pathway "${entry.name}"?`
+      );
+      if (!confirmed) return;
+      const updated = state.savedPaths.filter((item) => item.id !== id);
+      persistSavedPathways(updated);
+      if (state.activeSaveId === id) state.activeSaveId = null;
+      renderSavedList();
+      return;
+    }
+
+    const button = event.target.closest(".saved-load");
     if (!button) return;
     const id = button.dataset.saveId;
     if (!id) return;
     const entry = state.savedPaths.find((item) => item.id === id);
     if (!entry) return;
+    if (
+      hasActiveSelections() &&
+      !window.confirm(
+        "Are you sure you want to load this pathway? This will clear your current selections."
+      )
+    ) {
+      return;
+    }
     state.activeSaveId = id;
     renderSavedList();
     showLoadingOverlay();
@@ -212,6 +237,12 @@ function wireEvents() {
 
   // Start over: wipe everything
   els.clear?.addEventListener("click", () => {
+    if (
+      hasActiveSelections() &&
+      !window.confirm("Are you sure you want to clear your selections?")
+    ) {
+      return;
+    }
     state.focusedCode = null;
     state.prereqSet = new Set();
     state.prereqDirectSet = new Set();
@@ -252,6 +283,14 @@ function wireEvents() {
   });
 
   setupPlanDropZones();
+}
+
+function hasActiveSelections() {
+  if (state.completed.size) return true;
+  for (const set of state.plannedByGrade.values()) {
+    if (set.size) return true;
+  }
+  return false;
 }
 
 function loadSavedPathways() {
@@ -302,10 +341,13 @@ function renderSavedList() {
         ? date.toLocaleDateString(undefined, { month: "short", day: "numeric" })
         : "Saved";
       return `
-        <button class="saved-item ${state.activeSaveId === entry.id ? "is-active" : ""}" type="button" data-save-id="${escapeHtml(entry.id)}">
-          <span>${escapeHtml(entry.name)}</span>
-          <time datetime="${escapeHtml(entry.savedAt ?? "")}">${escapeHtml(label)}</time>
-        </button>
+        <div class="saved-item ${state.activeSaveId === entry.id ? "is-active" : ""}" data-save-id="${escapeHtml(entry.id)}">
+          <button class="saved-load" type="button" data-save-id="${escapeHtml(entry.id)}">
+            <span>${escapeHtml(entry.name)}</span>
+            <time datetime="${escapeHtml(entry.savedAt ?? "")}">${escapeHtml(label)}</time>
+          </button>
+          <button class="saved-delete" type="button" data-save-id="${escapeHtml(entry.id)}" aria-label="Delete saved pathway ${escapeHtml(entry.name)}">✕</button>
+        </div>
       `;
     })
     .join("");
