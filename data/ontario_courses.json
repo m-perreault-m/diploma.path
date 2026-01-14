@@ -297,7 +297,7 @@
       "name": "Accounting Essentials",
       "grade": 11,
       "level": "E",
-      "subject": "business-studies",
+      "subject": "business",
       "prereqs": []
     },
     {
@@ -305,7 +305,7 @@
       "name": "Accounting for a Small Business",
       "grade": 12,
       "level": "E",
-      "subject": "business-studies",
+      "subject": "business",
       "prereqs": [
         "BAI3E"
       ]
@@ -341,7 +341,7 @@
       "name": "Introduction to Business",
       "grade": 9,
       "level": "O",
-      "subject": "business-studies",
+      "subject": "business",
       "prereqs": []
     },
     {
@@ -349,7 +349,7 @@
       "name": "Introduction to Business",
       "grade": 10,
       "level": "O",
-      "subject": "business-studies",
+      "subject": "business",
       "prereqs": []
     },
     {
@@ -365,7 +365,7 @@
       "name": "Entrepreneurship: The Enterprising Person",
       "grade": 11,
       "level": "O",
-      "subject": "business-studies",
+      "subject": "business",
       "prereqs": []
     },
     {
@@ -373,7 +373,7 @@
       "name": "Marketing: Goods, Services, Events",
       "grade": 11,
       "level": "C",
-      "subject": "business-studies",
+      "subject": "business",
       "prereqs": []
     },
     {
@@ -381,7 +381,7 @@
       "name": "Marketing: Retail and Service",
       "grade": 11,
       "level": "E",
-      "subject": "business-studies",
+      "subject": "business",
       "prereqs": []
     },
     {
@@ -389,7 +389,7 @@
       "name": "Business Leadership: Becoming a Manager",
       "grade": 12,
       "level": "E",
-      "subject": "business-studies",
+      "subject": "business",
       "prereqs": []
     },
     {
@@ -421,7 +421,7 @@
       "name": "Information and Communication Technology: Multimedia Solutions",
       "grade": 12,
       "level": "C",
-      "subject": "business-studies",
+      "subject": "business",
       "prereqs": [
         "BTA3O"
       ],
@@ -432,7 +432,7 @@
       "name": "Information and Communication Technology in the Workplace",
       "grade": 12,
       "level": "E",
-      "subject": "business-studies",
+      "subject": "business",
       "prereqs": [
         "BTA3O"
       ],
@@ -1676,7 +1676,7 @@
       "name": "Nutrition and Health",
       "grade": 12,
       "level": "C",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -1736,7 +1736,7 @@
       "name": "Nutrition and Health",
       "grade": 12,
       "level": "U",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "Any university or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -1795,7 +1795,7 @@
       "name": "Food and Culture",
       "grade": 11,
       "level": "E",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -1803,7 +1803,7 @@
       "name": "Food and Culture",
       "grade": 11,
       "level": "M",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -1811,7 +1811,7 @@
       "name": "Food and Healthy Living",
       "grade": 12,
       "level": "E",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -1819,7 +1819,7 @@
       "name": "Food and Nutrition",
       "grade": 9,
       "level": "O",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -1827,7 +1827,7 @@
       "name": "Food and Nutrition",
       "grade": 10,
       "level": "O",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -1835,7 +1835,7 @@
       "name": "Dynamics of Human Relationships",
       "grade": 11,
       "level": "O",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -1843,7 +1843,7 @@
       "name": "Human Development throughout the Lifespan",
       "grade": 12,
       "level": "M",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "Any university, university/college, or college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -1902,7 +1902,7 @@
       "name": "Families in Canada",
       "grade": 12,
       "level": "C",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -1962,7 +1962,7 @@
       "name": "Families in Canada",
       "grade": 12,
       "level": "U",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "Any university or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -2021,7 +2021,7 @@
       "name": "Exploring Family Studies",
       "grade": 9,
       "level": "O",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2029,7 +2029,7 @@
       "name": "Personal Life Management",
       "grade": 12,
       "level": "O",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2037,7 +2037,7 @@
       "name": "Housing and Home Design",
       "grade": 11,
       "level": "O",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2045,7 +2045,7 @@
       "name": "The World of Fashion",
       "grade": 12,
       "level": "M",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -2104,7 +2104,7 @@
       "name": "Understanding Fashion",
       "grade": 11,
       "level": "C",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2112,7 +2112,7 @@
       "name": "Clothing",
       "grade": 10,
       "level": "O",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2120,7 +2120,7 @@
       "name": "Raising Healthy Children",
       "grade": 11,
       "level": "O",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2128,7 +2128,7 @@
       "name": "Working with School-Age Children and Adolescents",
       "grade": 12,
       "level": "C",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -2188,7 +2188,7 @@
       "name": "Working with Infants and Young Children",
       "grade": 11,
       "level": "C",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2196,7 +2196,7 @@
       "name": "World Religions and Belief Traditions in Daily Life",
       "grade": 11,
       "level": "O",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2204,7 +2204,7 @@
       "name": "World Religions and Belief Traditions: Perspectives, Issues, and Challenges",
       "grade": 11,
       "level": "M",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2212,7 +2212,7 @@
       "name": "Challenge and Change in Society",
       "grade": 12,
       "level": "U",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "Any university or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -2271,7 +2271,7 @@
       "name": "World Cultures",
       "grade": 12,
       "level": "M",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -2330,7 +2330,7 @@
       "name": "Equity, Diversity, and Social Justice",
       "grade": 11,
       "level": "E",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2338,7 +2338,7 @@
       "name": "Equity and Social Justice: From Theory to Practice",
       "grade": 12,
       "level": "M",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "Any university, college, or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -2397,7 +2397,7 @@
       "name": "Gender Studies",
       "grade": 11,
       "level": "M",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2405,7 +2405,7 @@
       "name": "Introduction to Anthropology, Psychology, and Sociology",
       "grade": 11,
       "level": "C",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2413,7 +2413,7 @@
       "name": "Introduction to Anthropology, Psychology, and Sociology",
       "grade": 11,
       "level": "U",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "The Grade 10 academic course in English, or the Grade 10 academic history course (Canadian and world studies)",
       "prereq_any_of": [
@@ -2428,7 +2428,7 @@
       "name": "Philosophy: The Big Questions",
       "grade": 11,
       "level": "M",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
@@ -2436,7 +2436,7 @@
       "name": "Philosophy: Questions and Theories",
       "grade": 12,
       "level": "U",
-      "subject": "ssh",
+      "subject": "social-science-humanities",
       "prereqs": [],
       "prereq_note": "Any university or university/college preparation course in social sciences and humanities, English, or Canadian and world studies",
       "prereq_any_of": [
@@ -3538,7 +3538,7 @@
       "name": "Child Development and Gerontology",
       "grade": 12,
       "level": "C",
-      "subject": "social-sciences-humanities",
+      "subject": "social-science-humanities",
       "prereqs": []
     },
     {
