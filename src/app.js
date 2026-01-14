@@ -401,10 +401,11 @@ function setMode(mode) {
   els.tabBackward?.classList.toggle("active", mode === "backward");
   els.tabForward?.classList.toggle("active", mode === "forward");
 
-  els.hint.textContent =
+  const hintText =
     mode === "backward"
       ? "Backward mode: click a Grade 12 course to focus prereqs. Drag courses into the Plan."
       : "Forward mode: mark completed courses; eligible ones light up. Drag into Plan still works.";
+  if (els.hint) els.hint.textContent = hintText;
 
   resetFocusOnly();
 
