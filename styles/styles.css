@@ -471,7 +471,8 @@ input[type="search"]{
   min-height: 260px;
 }
 
-.course-card{
+.course-card,
+.custom-course-card{
   text-align:left;
   border: 1px solid var(--stroke);
   border-radius: 16px;
@@ -481,7 +482,8 @@ input[type="search"]{
   cursor:pointer;
   transition: transform .18s ease, filter .18s ease, opacity .18s ease, box-shadow .18s ease;
 }
-.course-card:hover{ transform: translateY(-1px); }
+.course-card:hover,
+.custom-course-card:hover{ transform: translateY(-1px); }
 
 .course-top{
   display:flex;
@@ -527,6 +529,7 @@ input[type="search"]{
   box-shadow: 0 0 0 3px rgba(255,255,255,0.14), 0 10px 30px rgba(0,0,0,0.25);
 }
 .plan-card.glow{ box-shadow: 0 0 0 6px rgba(255,255,255,0.05); }
+.custom-course-card.glow{ box-shadow: 0 0 0 6px rgba(255,255,255,0.05); }
 
 /* Subject palette */
 .subject-math{ background: rgba(86,140,255,0.24); }
@@ -553,6 +556,99 @@ input[type="search"]{
 .subject-health{ background: rgba(110,210,120,0.24); }
 .subject-coop{ background: rgba(140,180,255,0.24); }
 
+.custom-courses{
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--stroke);
+  display:flex;
+  flex-direction:column;
+  gap: 12px;
+}
+
+.custom-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+}
+
+.custom-title{
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.custom-subtitle{
+  font-size: 12px;
+  color: var(--mutedText);
+  margin-top: 4px;
+}
+
+.custom-add{
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.custom-builders{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+
+.custom-builder{
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  padding: 10px;
+  display:grid;
+  gap: 10px;
+  background: rgba(255,255,255,0.04);
+}
+
+.custom-builder label{
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--mutedText);
+}
+
+.custom-builder input,
+.custom-builder select{
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--stroke);
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+}
+
+.custom-builder-actions{
+  display:flex;
+  gap: 8px;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+}
+
+.custom-list{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+
+.custom-empty{
+  font-size: 12px;
+  color: var(--mutedText);
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px dashed var(--stroke);
+}
 
 
 /* Board wires */
@@ -720,6 +816,7 @@ body > *{
 .course-card.not-draggable{ cursor: default; }
 .course-card.top-draggable{ cursor: grab; }
 .course-card.dragging{ cursor: grabbing; opacity: 0.7; }
+.custom-course-card.dragging{ cursor: grabbing; opacity: 0.7; }
 
 /* Drop highlight on plan column */
 .plan-col.drop-hover{

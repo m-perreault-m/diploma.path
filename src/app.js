@@ -7,6 +7,24 @@ const SAVE_COOKIE_MAX_AGE_DAYS = 365;
 const SAVE_COOKIE_CHAR_LIMIT = 3500;
 const SAVE_COOKIE_MAX_ENTRIES = 8;
 const SAVE_NAME_MAX = 20;
+const CUSTOM_COOKIE_KEY = "customCourses";
+const CUSTOM_COOKIE_MAX_AGE_DAYS = 365;
+const CUSTOM_COOKIE_CHAR_LIMIT = 3500;
+const CUSTOM_SUBJECT_OPTIONS = [
+  { value: "english", label: "English" },
+  { value: "math", label: "Math" },
+  { value: "science", label: "Science" },
+  { value: "tech-ed", label: "Tech Ed" },
+  { value: "business", label: "Business" },
+  { value: "compsci", label: "Computer Science" },
+  { value: "arts", label: "Arts" },
+  { value: "fsl", label: "French" },
+  { value: "hpe", label: "Health & Physical Ed" },
+  { value: "guidance", label: "Guidance" },
+  { value: "coop", label: "Co-op" },
+  { value: "social-science-humanities", label: "Social Sciences & Humanities" },
+  { value: "other", label: "Other" },
+];
 const OSSD_CONFIG = {
   // Assumption: Native Languages substitution for French is off by default because
   // the planner does not know a student's elementary pathway. Set true to allow.
@@ -60,6 +78,9 @@ const state = {
 
   savedPaths: [],
   activeSaveId: null,
+
+  customCourses: [],
+  customDrafts: [],
 };
 
 const els = {
@@ -104,6 +125,9 @@ async function boot() {
   const { byCode, dependents } = buildIndex(state.courses);
   state.byCode = byCode;
   state.dependents = dependents;
+
+  state.customCourses = loadCustomCourses();
+  registerCustomCourses();
 
   initWheelOrder();
   wireEvents();
@@ -506,6 +530,7 @@ function renderBoard() {
   renderGradeColumn(11);
   renderGradeColumn(12);
   bindBoardCardHandlers();
+  bindCustomCourseHandlers();
 }
 
 function renderGradeColumn(grade) {
@@ -535,7 +560,12 @@ function renderGradeColumn(grade) {
     cards.push(renderCourseCard(c));
   }
 
-  colEl.innerHTML = cards.join("");
+  let customSection = "";
+  if (grade === 9) {
+    customSection = renderCustomCoursesSection();
+  }
+
+  colEl.innerHTML = `${cards.join("")}${customSection}`;
 }
 
 function renderCourseCard(c) {
@@ -790,6 +820,106 @@ function bindBoardCardHandlers() {
   }
 }
 
+function bindCustomCourseHandlers() {
+  const addButton = document.querySelector(".custom-add");
+  if (addButton && addButton.dataset.bound !== "1") {
+    addButton.dataset.bound = "1";
+    addButton.addEventListener("click", () => {
+      addCustomDraft();
+    });
+  }
+
+  for (const builder of document.querySelectorAll(".custom-builder")) {
+    if (builder.dataset.bound === "1") continue;
+    builder.dataset.bound = "1";
+    const builderId = builder.dataset.builderId;
+
+    const codeInput = builder.querySelector(".custom-code-input");
+    const nameInput = builder.querySelector(".custom-name-input");
+    const subjectSelect = builder.querySelector(".custom-subject-select");
+    const createButton = builder.querySelector(".custom-create");
+    const removeButton = builder.querySelector(".custom-remove");
+
+    codeInput?.addEventListener("input", () => {
+      const value = normalizeCourseCode(codeInput.value);
+      codeInput.value = value;
+      updateCustomDraft(builderId, { code: value });
+      const predicted = guessSubjectFromCode(value);
+      if (predicted && subjectSelect?.dataset.manual !== "true") {
+        subjectSelect.value = predicted;
+        updateCustomDraft(builderId, { subject: predicted });
+      }
+    });
+
+    nameInput?.addEventListener("input", () => {
+      updateCustomDraft(builderId, { name: nameInput.value });
+    });
+
+    subjectSelect?.addEventListener("change", () => {
+      if (subjectSelect) subjectSelect.dataset.manual = "true";
+      updateCustomDraft(builderId, { subject: subjectSelect?.value ?? "other" });
+    });
+
+    createButton?.addEventListener("click", () => {
+      const draft = state.customDrafts.find((item) => item.id === builderId);
+      if (!draft) return;
+      const code = normalizeCourseCode(draft.code);
+      const name = String(draft.name ?? "").trim();
+      const subject = draft.subject ?? "other";
+      if (!code || !name) {
+        window.alert("Please enter both a course code and course name.");
+        return;
+      }
+      const existing = state.byCode.get(code);
+      if (existing && !existing.custom) {
+        window.alert("That course code already exists in the catalog.");
+        return;
+      }
+      if (existing && existing.custom) {
+        window.alert("That custom course already exists.");
+        return;
+      }
+      addCustomCourse({ code, name, subject });
+      removeCustomDraft(builderId);
+    });
+
+    removeButton?.addEventListener("click", () => {
+      removeCustomDraft(builderId);
+    });
+  }
+
+  for (const card of document.querySelectorAll(".custom-course-card")) {
+    const code = card.dataset.code;
+    if (!code || card.dataset.bound === "1") continue;
+    card.dataset.bound = "1";
+
+    card.addEventListener("mouseenter", () => onHover(code));
+    card.addEventListener("mouseleave", () => onHover(null));
+
+    card.addEventListener("dblclick", (e) => {
+      e.preventDefault();
+      const targetGrade = guessTargetGradeFromCode(code);
+      onDropIntoPlan(code, "custom", targetGrade);
+    });
+
+    card.addEventListener("dragstart", (e) => {
+      state.draggingCode = code;
+      state.draggingFrom = "custom";
+      card.classList.add("dragging");
+
+      e.dataTransfer.effectAllowed = "copy";
+      e.dataTransfer.setData("text/plain", JSON.stringify({ code, from: "custom" }));
+    });
+
+    card.addEventListener("dragend", () => {
+      card.classList.remove("dragging");
+      state.draggingCode = null;
+      state.draggingFrom = null;
+      clearPlanDropHighlights();
+    });
+  }
+}
+
 async function onBoardClick(code) {
   const c = state.byCode.get(code);
   if (!c) return;
@@ -1003,6 +1133,12 @@ function applyStateToCards() {
     const c = state.byCode.get(code);
     card.classList.toggle("needs-prereq", c && !prereqsSatisfied(c, state.plannedSet));
   }
+
+  for (const card of document.querySelectorAll(".custom-course-card")) {
+    const code = card.dataset.code;
+    card.classList.toggle("glow", state.hoverSet.has(code));
+    card.classList.toggle("planned", state.plannedSet.has(code));
+  }
 }
 
 // ----------------------
@@ -1202,6 +1338,225 @@ function readCookie(name) {
 function writeCookie(name, encodedValue, maxAgeDays) {
   const maxAgeSeconds = Math.floor(maxAgeDays * 24 * 60 * 60);
   document.cookie = `${name}=${encodedValue}; max-age=${maxAgeSeconds}; path=/; SameSite=Lax`;
+}
+
+function loadCustomCourses() {
+  const raw = readCookie(CUSTOM_COOKIE_KEY);
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .filter((item) => item && typeof item === "object")
+      .map((item) => normalizeCustomCourse(item))
+      .filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+
+function persistCustomCourses(list) {
+  let trimmed = list.slice();
+  let encoded = encodeURIComponent(JSON.stringify(trimmed));
+  while (encoded.length > CUSTOM_COOKIE_CHAR_LIMIT && trimmed.length > 1) {
+    trimmed = trimmed.slice(0, -1);
+    encoded = encodeURIComponent(JSON.stringify(trimmed));
+  }
+  writeCookie(CUSTOM_COOKIE_KEY, encoded, CUSTOM_COOKIE_MAX_AGE_DAYS);
+  state.customCourses = trimmed;
+}
+
+function normalizeCustomCourse(item) {
+  const code = normalizeCourseCode(item.code ?? "");
+  const name = String(item.name ?? "").trim();
+  const subject = String(item.subject ?? "other").trim() || "other";
+  if (!code || !name) return null;
+  return {
+    code,
+    name,
+    subject,
+    level: "Custom",
+    grade: null,
+    prereqs: [],
+    prereq_any_of: [],
+    prereq_note: "",
+    prereq_unresolved: false,
+    custom: true,
+  };
+}
+
+function registerCustomCourses() {
+  const filtered = [];
+  for (const course of state.customCourses) {
+    if (!course?.code) continue;
+    if (state.byCode.has(course.code)) continue;
+    filtered.push(course);
+    state.byCode.set(course.code, course);
+  }
+  if (filtered.length !== state.customCourses.length) {
+    persistCustomCourses(filtered);
+  }
+}
+
+function addCustomCourse(payload) {
+  const normalized = normalizeCustomCourse(payload);
+  if (!normalized) return;
+  state.customCourses.push(normalized);
+  state.byCode.set(normalized.code, normalized);
+  persistCustomCourses(state.customCourses);
+  renderBoard();
+  applyStateToCards();
+  drawBoardWires();
+  drawPlanWires();
+}
+
+function addCustomDraft() {
+  const draft = {
+    id: `draft_${Date.now()}_${Math.random().toString(16).slice(2, 6)}`,
+    code: "",
+    name: "",
+    subject: "other",
+  };
+  state.customDrafts.push(draft);
+  renderBoard();
+  requestAnimationFrame(() => {
+    const input = document.querySelector(
+      `.custom-builder[data-builder-id="${cssEscape(draft.id)}"] .custom-code-input`
+    );
+    input?.focus();
+  });
+}
+
+function updateCustomDraft(id, updates) {
+  const idx = state.customDrafts.findIndex((item) => item.id === id);
+  if (idx === -1) return;
+  state.customDrafts[idx] = { ...state.customDrafts[idx], ...updates };
+}
+
+function removeCustomDraft(id) {
+  state.customDrafts = state.customDrafts.filter((item) => item.id !== id);
+  renderBoard();
+  applyStateToCards();
+  drawBoardWires();
+  drawPlanWires();
+}
+
+function renderCustomCoursesSection() {
+  const builders = state.customDrafts.map(renderCustomBuilder).join("");
+  const courses = state.customCourses.map(renderCustomCourseCard).join("");
+  const empty = state.customCourses.length
+    ? ""
+    : `<div class="custom-empty">No custom courses yet.</div>`;
+
+  return `
+    <div class="custom-courses">
+      <div class="custom-header">
+        <div>
+          <div class="custom-title">Custom courses</div>
+          <div class="custom-subtitle">Add your own course cards below.</div>
+        </div>
+        <button class="btn custom-add" type="button" aria-label="Add a custom course">＋</button>
+      </div>
+      <div class="custom-builders">${builders}</div>
+      <div class="custom-list">${courses}${empty}</div>
+    </div>
+  `;
+}
+
+function renderCustomBuilder(draft) {
+  const subjectOptions = CUSTOM_SUBJECT_OPTIONS.map((option) => {
+    const selected = option.value === draft.subject ? "selected" : "";
+    return `<option value="${escapeHtml(option.value)}" ${selected}>${escapeHtml(option.label)}</option>`;
+  }).join("");
+
+  return `
+    <div class="custom-builder" data-builder-id="${escapeHtml(draft.id)}">
+      <label>
+        <span>Course code</span>
+        <input class="custom-code-input" type="text" placeholder="e.g., TGV3M" value="${escapeHtml(
+          draft.code ?? ""
+        )}" />
+      </label>
+      <label>
+        <span>Course name</span>
+        <input class="custom-name-input" type="text" placeholder="Course name" value="${escapeHtml(
+          draft.name ?? ""
+        )}" />
+      </label>
+      <label>
+        <span>Department</span>
+        <select class="custom-subject-select">${subjectOptions}</select>
+      </label>
+      <div class="custom-builder-actions">
+        <button class="btn custom-create" type="button">Create</button>
+        <button class="btn custom-remove" type="button" aria-label="Remove this custom course form">Remove</button>
+      </div>
+    </div>
+  `;
+}
+
+function renderCustomCourseCard(course) {
+  const subject = course.subject ?? "other";
+  const prereqText = formatPrereqText(course);
+
+  return `
+    <button class="custom-course-card subject-${escapeHtml(subject)}"
+      draggable="true"
+      data-code="${escapeHtml(course.code)}">
+      <div class="course-top">
+        <div class="course-code">${escapeHtml(course.code)}</div>
+        <div class="course-level">${escapeHtml(course.level ?? "")}</div>
+      </div>
+      <div class="course-name">${escapeHtml(course.name ?? "")}</div>
+      <div class="course-meta">${escapeHtml(prereqText)}</div>
+    </button>
+  `;
+}
+
+function normalizeCourseCode(code) {
+  return String(code ?? "").trim().toUpperCase();
+}
+
+function guessSubjectFromCode(code) {
+  const upper = normalizeCourseCode(code);
+  if (!upper) return "";
+  if (upper.startsWith("ENG") || upper.startsWith("ENL") || upper.startsWith("EMS")) return "english";
+  if (upper.startsWith("MTH") || upper.startsWith("MPM") || upper.startsWith("MFM")) return "math";
+  if (upper.startsWith("MCR") || upper.startsWith("MCV") || upper.startsWith("MAT")) return "math";
+  if (upper.startsWith("SNC")) return "science";
+  if (upper.startsWith("ICS")) return "compsci";
+  if (upper.startsWith("B")) return "business";
+  if (upper.startsWith("FSF")) return "fsl";
+  if (upper.startsWith("PPL")) return "hpe";
+  if (upper.startsWith("CHC") || upper.startsWith("CGC")) return "social-science-humanities";
+  if (upper.startsWith("GLC") || upper.startsWith("CHV")) return "guidance";
+  if (upper.startsWith("COP") || upper.startsWith("COOP")) return "coop";
+  if (upper.startsWith("T")) return "tech-ed";
+  if (upper.startsWith("ADA") || upper.startsWith("AVI") || upper.startsWith("AMU")) return "arts";
+  return "";
+}
+
+function guessTargetGradeFromCode(code) {
+  const match = normalizeCourseCode(code).match(/[1-4]/);
+  if (match) {
+    const digit = Number(match[0]);
+    const grade = 8 + digit;
+    if ([9, 10, 11, 12].includes(grade)) return grade;
+  }
+  return getRoomiestGrade();
+}
+
+function getRoomiestGrade() {
+  let bestGrade = 9;
+  let bestCount = Number.POSITIVE_INFINITY;
+  for (const grade of [9, 10, 11, 12]) {
+    const count = state.plannedByGrade.get(grade)?.size ?? 0;
+    if (count < bestCount) {
+      bestCount = count;
+      bestGrade = grade;
+    }
+  }
+  return bestGrade;
 }
 
 function showLoadingOverlay() {
