@@ -748,13 +748,11 @@ function renderGradeColumn(grade) {
   }
 
   let customSection = "";
-  let adSection = "";
   if (grade === 9) {
     customSection = renderCustomCoursesSection();
-    adSection = renderAdsenseSlot("grade-9-custom");
   }
 
-  colEl.innerHTML = `${cards.join("")}${customSection}${adSection}`;
+  colEl.innerHTML = `${cards.join("")}${customSection}`;
 }
 
 function getTypeLetter(code) {
@@ -1760,23 +1758,6 @@ function renderCustomCoursesSection() {
       </div>
       <div class="custom-builders">${builders}</div>
       <div class="custom-list">${courses}${empty}</div>
-    </div>
-  `;
-}
-
-function renderAdsenseSlot(context) {
-  return `
-    <div class="ad-slot ad-slot--${context}" aria-label="Advertisement">
-      <!-- Adsense slot: replace [YOUR-AD-SLOT-ID] with the slot identifier from Google -->
-      <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-6445096423980375"
-        data-ad-slot="[YOUR-AD-SLOT-ID]"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
     </div>
   `;
 }
