@@ -276,6 +276,10 @@ function wireEvents() {
   // Show all courses: reset focus/filter, keep plan, and spin columns back to base order
   els.showAll?.addEventListener("click", async () => {
     resetFocusOnly();
+    if (els.search) {
+      els.search.value = "";
+    }
+    state.search = "";
 
     // Spin all columns back to the original base ordering
     await spinAllColumnsToBase();
