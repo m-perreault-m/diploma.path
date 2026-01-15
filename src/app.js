@@ -26,6 +26,9 @@ const CUSTOM_SUBJECT_OPTIONS = [
   { value: "social-science-humanities", label: "Social Sciences & Humanities" },
   { value: "other", label: "Other" },
 ];
+const CUSTOM_SUBJECT_VALUES = new Set(
+  CUSTOM_SUBJECT_OPTIONS.map((option) => option.value)
+);
 const OSSD_CONFIG = {
   // Assumption: Native Languages substitution for French is off by default because
   // the planner does not know a student's elementary pathway. Set true to allow.
@@ -1599,7 +1602,7 @@ function persistCustomCourses(list) {
 function normalizeCustomCourse(item) {
   const code = normalizeCourseCode(item.code ?? "");
   const name = String(item.name ?? "").trim();
-  const subject = String(item.subject ?? "other").trim() || "other";
+  const subject = normalizeCustomSubject(item.subject);
   if (!code || !name) return null;
   return {
     code,
@@ -1613,6 +1616,13 @@ function normalizeCustomCourse(item) {
     prereq_unresolved: false,
     custom: true,
   };
+}
+
+function normalizeCustomSubject(subject) {
+  const trimmed = String(subject ?? "").trim();
+  if (trimmed === "social-sciences-humanities") return "social-science-humanities";
+  if (CUSTOM_SUBJECT_VALUES.has(trimmed)) return trimmed;
+  return "other";
 }
 
 function registerCustomCourses() {
