@@ -46,6 +46,7 @@ const SUBJECT_SEARCH_TERMS = {
     "geography",
     "history",
     "social",
+    "humanities",
   ],
   english: ["english", "literature", "language arts"],
   "fnmi-studies": [
@@ -57,7 +58,7 @@ const SUBJECT_SEARCH_TERMS = {
     "native studies",
   ],
   fsl: ["french", "fsl", "language", "languages", "world languages"],
-  guidance: ["guidance", "career", "learning strategies"],
+  guidance: ["guidance", "career", "learning strategies","civics"],
   hpe: ["health", "physical education", "phys ed", "hpe", "fitness"],
   math: ["math", "mathematics", "calculus", "functions", "advanced functions"],
   other: ["other"],
