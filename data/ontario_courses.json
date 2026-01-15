@@ -446,7 +446,8 @@
       "subject": "cws",
       "prereqs": [],
       "status": "expired_or_superseded",
-      "superseded_by": "CGC1W"
+      "superseded_by": "CGC1W",
+      "deprecated": true
     },
     {
       "code": "CGC1P",
@@ -456,7 +457,8 @@
       "subject": "cws",
       "prereqs": [],
       "status": "expired_or_superseded",
-      "superseded_by": "CGC1W"
+      "superseded_by": "CGC1W",
+      "deprecated": true
     },
     {
       "code": "CGD3M",
@@ -468,8 +470,6 @@
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
         [
-          "CGC1D",
-          "CGC1P",
           "CGC1W"
         ]
       ]
@@ -484,8 +484,6 @@
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
         [
-          "CGC1D",
-          "CGC1P",
           "CGC1W"
         ]
       ]
@@ -500,8 +498,6 @@
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
         [
-          "CGC1D",
-          "CGC1P",
           "CGC1W"
         ]
       ]
@@ -575,8 +571,6 @@
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
         [
-          "CGC1D",
-          "CGC1P",
           "CGC1W"
         ]
       ]
@@ -591,8 +585,6 @@
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
         [
-          "CGC1D",
-          "CGC1P",
           "CGC1W"
         ]
       ]
@@ -607,8 +599,6 @@
       "prereq_note": "Issues in Canadian Geography, Grade 9, Academic or Applied",
       "prereq_any_of": [
         [
-          "CGC1D",
-          "CGC1P",
           "CGC1W"
         ]
       ]
@@ -1143,8 +1133,7 @@
       "prereq_note": "Grade 9 English, Academic or Applied, or a Grade 9 English LDCC (locally developed compulsory credit) course",
       "prereq_any_of": [
         [
-          "ENG1D",
-          "ENG1P"
+          "ENL1W"
         ]
       ]
     },
@@ -1171,7 +1160,8 @@
       "subject": "english",
       "prereqs": [],
       "status": "expired_or_superseded",
-      "superseded_by": "ENL1W"
+      "superseded_by": "ENL1W",
+      "deprecated": true
     },
     {
       "code": "ENG1P",
@@ -1181,7 +1171,8 @@
       "subject": "english",
       "prereqs": [],
       "status": "expired_or_superseded",
-      "superseded_by": "ENL1W"
+      "superseded_by": "ENL1W",
+      "deprecated": true
     },
     {
       "code": "ENG2D",
@@ -1190,8 +1181,6 @@
       "level": "D",
       "subject": "english",
       "prereqs": [
-        "ENG1D",
-        "ENG1P",
         "ENL1W"
       ],
       "prereq_note": "Grade 9 English, De-streamed (ENL1W) (legacy credits ENG1D/ENG1P may be accepted)"
@@ -1203,8 +1192,6 @@
       "level": "P",
       "subject": "english",
       "prereqs": [
-        "ENG1D",
-        "ENG1P",
         "ENL1W"
       ],
       "prereq_note": "Grade 9 English, De-streamed (ENL1W) (legacy credits ENG1D/ENG1P may be accepted)"
@@ -1282,8 +1269,7 @@
       "level": "W",
       "subject": "english",
       "prereqs": [
-        "ENG1D",
-        "ENG1P"
+        "ENL1W"
       ],
       "prereq_note": "De-streamed Grade 9 English (supersedes ENG1D/ENG1P)"
     },
@@ -1341,7 +1327,7 @@
     },
     {
       "code": "EWC4U",
-      "name": "The Writer’s Craft",
+      "name": "The Writer\u2019s Craft",
       "grade": 12,
       "level": "U",
       "subject": "english",
@@ -2677,7 +2663,7 @@
       "level": "E",
       "subject": "math",
       "prereqs": [
-        "MPM1D"
+        "MTH1W"
       ]
     },
     {
@@ -2698,7 +2684,8 @@
       "subject": "math",
       "prereqs": [],
       "status": "expired_or_superseded",
-      "superseded_by": "MTH1W"
+      "superseded_by": "MTH1W",
+      "deprecated": true
     },
     {
       "code": "MFM2P",
@@ -2729,7 +2716,8 @@
       "subject": "math",
       "prereqs": [],
       "status": "expired_or_superseded",
-      "superseded_by": "MTH1W"
+      "superseded_by": "MTH1W",
+      "deprecated": true
     },
     {
       "code": "MPM1H",
@@ -2738,7 +2726,7 @@
       "level": "H",
       "subject": "math",
       "prereqs": [
-        "MFM1P"
+        "MTH1W"
       ],
       "prereq_note": "Foundations of Mathematics, Grade 9, Applied (MFM1P)"
     },
@@ -2760,14 +2748,13 @@
       "level": "W",
       "subject": "math",
       "prereqs": [
-        "MFM1P",
-        "MPM1D"
+        "MTH1W"
       ],
       "prereq_note": "Grade 9 de-streamed mathematics (supersedes MPM1D/MFM1P)"
     },
     {
       "code": "NAC1O",
-      "name": "Expressions of First Nations, Métis, and Inuit Cultures",
+      "name": "Expressions of First Nations, M\u00e9tis, and Inuit Cultures",
       "grade": 9,
       "level": "O",
       "subject": "fnmi-studies",
@@ -2775,7 +2762,7 @@
     },
     {
       "code": "NAC2O",
-      "name": "First Nations, Métis, and Inuit in Canada",
+      "name": "First Nations, M\u00e9tis, and Inuit in Canada",
       "grade": 10,
       "level": "O",
       "subject": "fnmi-studies",
@@ -2783,7 +2770,7 @@
     },
     {
       "code": "NBE3C",
-      "name": "English: Understanding Contemporary First Nations, Métis, and Inuit Voices",
+      "name": "English: Understanding Contemporary First Nations, M\u00e9tis, and Inuit Voices",
       "grade": 11,
       "level": "C",
       "subject": "fnmi-studies",
@@ -2798,7 +2785,7 @@
     },
     {
       "code": "NBE3E",
-      "name": "English: Understanding Contemporary First Nations, Métis and Inuit Voices",
+      "name": "English: Understanding Contemporary First Nations, M\u00e9tis and Inuit Voices",
       "grade": 11,
       "level": "E",
       "subject": "fnmi-studies",
@@ -2818,7 +2805,7 @@
       "level": "C",
       "subject": "fnmi-studies",
       "prereqs": [],
-      "prereq_note": "Grade 10 First Nations, Métis, and Inuit in Canada, Open, or Grade 10 Canadian History since World War I, Academic or Applied",
+      "prereq_note": "Grade 10 First Nations, M\u00e9tis, and Inuit in Canada, Open, or Grade 10 Canadian History since World War I, Academic or Applied",
       "prereq_any_of": [
         [
           "NAC2O",
@@ -2836,17 +2823,17 @@
       "prereqs": [
         "NAC2O"
       ],
-      "prereq_note": "Grade 10 First Nations, Métis and Inuit in Canada, Open, or Grade 10 Canadian History since World War I, Academic or Applied or the Grade 10 locally developed compulsory credit (LDCC) course in history",
+      "prereq_note": "Grade 10 First Nations, M\u00e9tis and Inuit in Canada, Open, or Grade 10 Canadian History since World War I, Academic or Applied or the Grade 10 locally developed compulsory credit (LDCC) course in history",
       "prereq_unresolved": true
     },
     {
       "code": "NDA3M",
-      "name": "Contemporary First Nations, Métis, and Inuit Issues and Perspectives",
+      "name": "Contemporary First Nations, M\u00e9tis, and Inuit Issues and Perspectives",
       "grade": 11,
       "level": "M",
       "subject": "fnmi-studies",
       "prereqs": [],
-      "prereq_note": "Grade 10 First Nations, Métis and Inuit in Canada, Open, or Grade 10 Canadian History since World War I, Academic or Applied",
+      "prereq_note": "Grade 10 First Nations, M\u00e9tis and Inuit in Canada, Open, or Grade 10 Canadian History since World War I, Academic or Applied",
       "prereq_any_of": [
         [
           "NAC2O",
@@ -2862,7 +2849,7 @@
       "level": "M",
       "subject": "fnmi-studies",
       "prereqs": [],
-      "prereq_note": "Any Grade 11 University, University/College, or College Preparation course in First Nations, Métis, and Inuit studies, Canadian and world studies, or social sciences and humanities",
+      "prereq_note": "Any Grade 11 University, University/College, or College Preparation course in First Nations, M\u00e9tis, and Inuit studies, Canadian and world studies, or social sciences and humanities",
       "prereq_any_of": [
         [
           "CGD3M",
@@ -3066,7 +3053,8 @@
       "subject": "science",
       "prereqs": [],
       "status": "expired_or_superseded",
-      "superseded_by": "SNC1W"
+      "superseded_by": "SNC1W",
+      "deprecated": true
     },
     {
       "code": "SNC1P",
@@ -3076,7 +3064,8 @@
       "subject": "science",
       "prereqs": [],
       "status": "expired_or_superseded",
-      "superseded_by": "SNC1W"
+      "superseded_by": "SNC1W",
+      "deprecated": true
     },
     {
       "code": "SNC1W",
@@ -3085,8 +3074,7 @@
       "level": "W",
       "subject": "science",
       "prereqs": [
-        "SNC1D",
-        "SNC1P"
+        "SNC1W"
       ],
       "prereq_note": "Grade 9 de-streamed science (supersedes SNC1D/SNC1P)"
     },
@@ -3100,8 +3088,6 @@
       "prereq_note": "Grade 9 Science",
       "prereq_any_of": [
         [
-          "SNC1D",
-          "SNC1P",
           "SNC1W"
         ]
       ]
@@ -3116,8 +3102,6 @@
       "prereq_note": "Grade 9 Science",
       "prereq_any_of": [
         [
-          "SNC1D",
-          "SNC1P",
           "SNC1W"
         ]
       ]
@@ -3191,8 +3175,7 @@
       "prereq_note": "Grade 9 Science, Academic or Applied, or a Grade 9 or 10 locally developed compulsory credit (LDCC) course in science",
       "prereq_any_of": [
         [
-          "SNC1D",
-          "SNC1P"
+          "SNC1W"
         ]
       ]
     },
