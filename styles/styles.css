@@ -612,6 +612,15 @@ body > *{
   z-index: 1;
 }
 
+@page{
+  size: landscape;
+  margin: 12mm;
+}
+
+.print-footer{
+  display: none;
+}
+
 @media print{
   body{
     background: #fff;
@@ -652,6 +661,25 @@ body > *{
 
   .plan-wires{
     display: none;
+  }
+
+  .print-footer{
+    display: block;
+    position: fixed;
+    bottom: 10mm;
+    left: 12mm;
+    right: 12mm;
+    color: #000;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .print-footer-line{
+    margin: 0;
+  }
+
+  .print-footer-line + .print-footer-line{
+    margin-top: 4px;
   }
 }
 
