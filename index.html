@@ -61,6 +61,16 @@
         <input id="search" type="search" placeholder="Search (code or name)…" autocomplete="off" />
         <button id="show-all" class="btn icon-btn" title="Show all courses / remove filters" aria-label="Show all courses / remove filters">🔄️</button>
       </div>
+      <div class="control-row">
+        <label class="control-label" for="pathway-filter">Pathway</label>
+        <select id="pathway-filter" class="control-select">
+          <option value="all" selected>All courses</option>
+          <option value="university">University-bound</option>
+          <option value="college">College-bound</option>
+          <option value="undecided">Undecided (U/C)</option>
+          <option value="workplace">Workplace / Apprenticeship</option>
+        </select>
+      </div>
     </section>
 
     <section class="plan-strip">
