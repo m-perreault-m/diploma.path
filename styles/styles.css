@@ -625,6 +625,7 @@ body > *{
   body{
     background: #fff;
     color: #000;
+    font-size: 14px;
   }
 
   body::before,
@@ -641,6 +642,34 @@ body > *{
 
   .app-header{
     padding: 0 0 12px;
+  }
+
+  .title h1{
+    font-size: 32px;
+  }
+
+  .subtitle{
+    font-size: 18px;
+  }
+
+  .plan-col-title{
+    font-size: 18px;
+  }
+
+  .plan-col-subtitle{
+    font-size: 13px;
+  }
+
+  .plan-card .course-code{
+    font-size: 17px;
+  }
+
+  .plan-card .course-name{
+    font-size: 16px;
+  }
+
+  .plan-card .course-meta{
+    font-size: 13px;
   }
 
   .plan-strip{
@@ -670,8 +699,8 @@ body > *{
     left: 12mm;
     right: 12mm;
     color: #000;
-    font-size: 11px;
-    line-height: 1.4;
+    font-size: 16px;
+    line-height: 1.5;
   }
 
   .print-footer-line{
