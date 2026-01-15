@@ -314,6 +314,12 @@ body.ossd-open .ossd-drawer{
   align-items:center;
 }
 
+.pathway-group{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
 .control-label{
   font-size: 14px;
   color: var(--text);
@@ -321,7 +327,8 @@ body.ossd-open .ossd-drawer{
 }
 
 input[type="search"]{
-  flex:1;
+  flex: 1 1 360px;
+  min-width: 220px;
   padding: 12px 12px;
   border-radius: 12px;
   border: 1px solid var(--stroke);
@@ -331,7 +338,7 @@ input[type="search"]{
 }
 
 .control-select{
-  min-width: 220px;
+  min-width: 200px;
   padding: 12px 12px;
   border-radius: 12px;
   border: 1px solid var(--stroke);
@@ -540,6 +547,11 @@ input[type="search"]{
 .course-card.muted{
   opacity: 0.35;
   filter: grayscale(0.35);
+}
+
+.course-card.pathway-muted{
+  opacity: 0.45;
+  filter: grayscale(0.55);
 }
 
 .course-card.prereq{
@@ -888,5 +900,4 @@ body > *{
 .course-card.drag-warning{
   animation: prereqPulse 1.6s ease-in-out infinite;
 }
-
 

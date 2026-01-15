@@ -740,11 +740,11 @@ function renderGradeColumn(grade) {
       if (!hay.includes(state.search)) continue;
     }
 
-    if (!isCourseAllowedByPathway(c, grade)) continue;
+    const matchesPathway = isCourseAllowedByPathway(c, grade);
 
     if (filterActive && !state.prereqSet.has(code)) continue;
 
-    cards.push(renderCourseCard(c));
+    cards.push(renderCourseCard(c, { pathwayMuted: !matchesPathway }));
   }
 
   let customSection = "";
@@ -814,13 +814,14 @@ function buildSearchHaystack(course) {
   return tokens;
 }
 
-function renderCourseCard(c) {
+function renderCourseCard(c, options = {}) {
   const subject = c.subject ?? "other";
   const prereqText = formatPrereqText(c);
+  const pathwayMuted = options.pathwayMuted ? "pathway-muted" : "";
 
   // Any visible course is draggable
   return `
-    <button class="course-card subject-${escapeHtml(subject)}"
+    <button class="course-card subject-${escapeHtml(subject)} ${pathwayMuted}"
       draggable="true"
       data-code="${escapeHtml(c.code)}"
       data-grade="${c.grade}">
