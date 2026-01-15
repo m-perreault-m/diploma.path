@@ -194,6 +194,27 @@ body.ossd-open .app-shell{
   padding: 12px 14px;
   border-radius: 14px;
 }
+.toast{
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(12px);
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(15,18,26,0.95);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: var(--text);
+  font-size: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 4;
+  pointer-events: none;
+}
+.toast.toast--visible{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 
 .ossd-drawer{
   position: fixed;
