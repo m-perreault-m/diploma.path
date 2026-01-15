@@ -7,6 +7,11 @@ const SAVE_COOKIE_MAX_AGE_DAYS = 365;
 const SAVE_COOKIE_CHAR_LIMIT = 3500;
 const SAVE_COOKIE_MAX_ENTRIES = 8;
 const SAVE_NAME_MAX = 20;
+const OSSD_CONFIG = {
+  // Assumption: Native Languages substitution for French is off by default because
+  // the planner does not know a student's elementary pathway. Set true to allow.
+  allowNativeLanguagesForFrench: false,
+};
 
 const state = {
   mode: "backward",
@@ -63,6 +68,9 @@ const els = {
   drawer: document.getElementById("drawer"),
   drawerToggle: document.getElementById("drawer-toggle"),
   drawerScrim: document.getElementById("drawer-scrim"),
+  ossdDrawer: document.getElementById("ossd-drawer"),
+  ossdToggle: document.getElementById("ossd-toggle"),
+  ossdList: document.getElementById("ossd-list"),
   hint: document.getElementById("mode-hint"),
   search: document.getElementById("search"),
   clear: document.getElementById("clear"), // Start Over
@@ -141,6 +149,10 @@ function wireEvents() {
   });
   els.drawerScrim?.addEventListener("click", () => {
     setDrawerOpen(false);
+  });
+  els.ossdToggle?.addEventListener("click", () => {
+    const isOpen = !document.body.classList.contains("ossd-open");
+    setOssdDrawerOpen(isOpen);
   });
   els.printPathway?.addEventListener("click", () => {
     setDrawerOpen(false);
@@ -283,6 +295,11 @@ function setDrawerOpen(isOpen) {
     "aria-label",
     isOpen ? "Close menu" : "Open menu"
   );
+}
+
+function setOssdDrawerOpen(isOpen) {
+  document.body.classList.toggle("ossd-open", isOpen);
+  els.ossdToggle?.setAttribute("aria-expanded", isOpen ? "true" : "false");
 }
 
 function hasActiveSelections() {
@@ -581,6 +598,7 @@ function renderPlan() {
 
   bindPlanHandlers();
   setupPlanDropZones();
+  updateOssdChecklist();
 }
 
 function renderPlanCard(c, placedGrade) {
@@ -1200,4 +1218,277 @@ function hideLoadingOverlaySoon() {
       els.loadingOverlay.setAttribute("aria-hidden", "true");
     }, 180);
   });
+}
+
+// ----------------------
+// OSSD checklist helpers
+// ----------------------
+
+function updateOssdChecklist() {
+  if (!els.ossdList) return;
+  const status = computeOssdStatus();
+  for (const item of els.ossdList.querySelectorAll(".ossd-item")) {
+    const key = item.dataset.req;
+    const isComplete = Boolean(status[key]);
+    item.classList.toggle("is-complete", isComplete);
+    const check = item.querySelector(".ossd-check");
+    if (check) check.textContent = isComplete ? "✅" : "⬜";
+  }
+}
+
+function computeOssdStatus() {
+  const plannedEntries = getPlannedEntries();
+
+  const englishByGrade = { 9: 0, 10: 0, 11: 0, 12: 0 };
+  let englishCredits = 0;
+  let eslCredits = 0;
+  let hasGrade12CompEnglish = false;
+
+  const mathByGrade = { 9: 0, 10: 0, 11: 0, 12: 0 };
+  let mathCredits = 0;
+
+  let scienceCredits = 0;
+  let techCredits = 0;
+  let historyCredits = 0;
+  let geographyCredits = 0;
+  let artsCredits = 0;
+  let hpeCredits = 0;
+  let frenchCredits = 0;
+  let careerCredits = 0;
+  let civicsCredits = 0;
+
+  let businessCredits = 0;
+  let compsciCredits = 0;
+  let coopCredits = 0;
+
+  for (const entry of plannedEntries) {
+    const { course, plannedGrade } = entry;
+    const credit = getCourseCredit(course);
+
+    if (isEnglishCourse(course)) {
+      englishCredits += credit;
+      if (englishByGrade[plannedGrade] !== undefined) {
+        englishByGrade[plannedGrade] += credit;
+      }
+      if (isGrade12CompEnglish(course)) hasGrade12CompEnglish = true;
+    } else if (isEnglishSpecialG11(course)) {
+      // Assumption: NBE3* satisfies the Grade 11 English requirement.
+      englishCredits += credit;
+      if (englishByGrade[plannedGrade] !== undefined) {
+        englishByGrade[plannedGrade] += credit;
+      }
+    } else if (isEslEldCourse(course)) {
+      // Assumption: ESL/ELD credits count toward total English, but not grade-by-grade checks.
+      eslCredits += credit;
+    }
+
+    if (isMathCourse(course)) {
+      mathCredits += credit;
+      if (mathByGrade[plannedGrade] !== undefined) {
+        mathByGrade[plannedGrade] += credit;
+      }
+    }
+
+    if (isScienceCourse(course)) scienceCredits += credit;
+    if (isTechCourse(course) && (plannedGrade === 9 || plannedGrade === 10)) techCredits += credit;
+    if (isHistoryCourse(course)) historyCredits += credit;
+    if (isGeographyCourse(course)) geographyCredits += credit;
+    if (isArtsCourse(course)) artsCredits += credit;
+    if (isHpeCourse(course)) hpeCredits += credit;
+    if (isFrenchCourse(course)) frenchCredits += credit;
+    if (isCareerStudies(course)) careerCredits += credit;
+    if (isCivics(course)) civicsCredits += credit;
+
+    if (isBusinessCourse(course)) businessCredits += credit;
+    if (isCompSciCourse(course)) compsciCredits += credit;
+    if (isCoopCourse(course)) coopCredits += credit;
+  }
+
+  const cappedEslCredits = Math.min(eslCredits, 3);
+  const totalEnglishCredits = englishCredits + cappedEslCredits;
+  const englishComplete =
+    totalEnglishCredits >= 4 &&
+    englishByGrade[9] >= 1 &&
+    englishByGrade[10] >= 1 &&
+    englishByGrade[11] >= 1 &&
+    englishByGrade[12] >= 1 &&
+    hasGrade12CompEnglish;
+
+  const mathGrade11Plus = (mathByGrade[11] ?? 0) + (mathByGrade[12] ?? 0);
+  const mathComplete =
+    mathCredits >= 3 && mathByGrade[9] >= 1 && mathByGrade[10] >= 1 && mathGrade11Plus >= 1;
+
+  const scienceComplete = scienceCredits >= 2;
+  const techComplete = techCredits >= 1;
+  const historyComplete = historyCredits >= 1;
+  const geographyComplete = geographyCredits >= 1;
+  const artsComplete = artsCredits >= 1;
+  const hpeComplete = hpeCredits >= 1;
+  const frenchComplete =
+    frenchCredits >= 1 ||
+    (OSSD_CONFIG.allowNativeLanguagesForFrench && hasNativeLanguageCredit(plannedEntries));
+  const careerComplete = careerCredits >= 0.5;
+  const civicsComplete = civicsCredits >= 0.5;
+
+  const requiredMathCredits =
+    Math.min(1, mathByGrade[9]) + Math.min(1, mathByGrade[10]) + Math.min(1, mathGrade11Plus);
+  const extraMathCredits = Math.max(0, mathCredits - requiredMathCredits);
+  const extraScienceCredits = Math.max(0, scienceCredits - 2);
+  const extraTechCredits = Math.max(0, techCredits - 1);
+  const stemCredits =
+    businessCredits + compsciCredits + coopCredits + extraMathCredits + extraScienceCredits + extraTechCredits;
+  const stemComplete = stemCredits >= 1;
+
+  return {
+    english: englishComplete,
+    math: mathComplete,
+    science: scienceComplete,
+    tech: techComplete,
+    history: historyComplete,
+    geography: geographyComplete,
+    arts: artsComplete,
+    hpe: hpeComplete,
+    french: frenchComplete,
+    career: careerComplete,
+    civics: civicsComplete,
+    stem: stemComplete,
+  };
+}
+
+function getPlannedEntries() {
+  const entries = [];
+  for (const grade of [9, 10, 11, 12]) {
+    const set = state.plannedByGrade.get(grade) ?? new Set();
+    for (const code of set) {
+      const course = state.byCode.get(code);
+      if (!course) continue;
+      entries.push({ course, plannedGrade: grade });
+    }
+  }
+  return entries;
+}
+
+function getCourseCredit(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  // Assumption: Civics (CHV2*) and Careers (GLC2*) are 0.5 credits; others are 1.0.
+  if (code.startsWith("CHV2") || code.startsWith("GLC2")) return 0.5;
+  return 1;
+}
+
+function isEnglishCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  const subject = String(course.subject ?? "").toLowerCase();
+  return subject === "english" || code.startsWith("ENG") || code.startsWith("ENL") || code.startsWith("EMS");
+}
+
+function isEnglishSpecialG11(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  return code.startsWith("NBE3");
+}
+
+function isEslEldCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  return code.startsWith("ESL") || code.startsWith("ELD");
+}
+
+function isGrade12CompEnglish(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  // Assumption: Grade 12 compulsory English courses start with ENG4.
+  return course.grade === 12 && code.startsWith("ENG4");
+}
+
+function isMathCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  const subject = String(course.subject ?? "").toLowerCase();
+  return (
+    subject === "math" ||
+    code.startsWith("MTH") ||
+    code.startsWith("MPM") ||
+    code.startsWith("MFM") ||
+    code.startsWith("MCR") ||
+    code.startsWith("MCV") ||
+    code.startsWith("MAT")
+  );
+}
+
+function isScienceCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  const subject = String(course.subject ?? "").toLowerCase();
+  return subject === "science" || code.startsWith("SNC");
+}
+
+function isTechCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  const subject = String(course.subject ?? "").toLowerCase();
+  return subject.includes("tech") || code.startsWith("T");
+}
+
+function isHistoryCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  return code.startsWith("CHC2");
+}
+
+function isGeographyCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  return code.startsWith("CGC1");
+}
+
+function isArtsCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  const subject = String(course.subject ?? "").toLowerCase();
+  return subject === "arts" || code === "NAC1O";
+}
+
+function isHpeCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  const subject = String(course.subject ?? "").toLowerCase();
+  return subject === "health" || code.startsWith("PPL");
+}
+
+function isFrenchCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  const subject = String(course.subject ?? "").toLowerCase();
+  return subject === "fsl" || code.startsWith("FSF");
+}
+
+function isCareerStudies(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  return code.startsWith("GLC2");
+}
+
+function isCivics(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  return code.startsWith("CHV2");
+}
+
+function isBusinessCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  const subject = String(course.subject ?? "").toLowerCase();
+  return subject === "business" || code.startsWith("B");
+}
+
+function isCompSciCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  const subject = String(course.subject ?? "").toLowerCase();
+  return subject === "compsci" || code.startsWith("ICS");
+}
+
+function isCoopCourse(course) {
+  const code = String(course.code ?? "").toUpperCase();
+  const subject = String(course.subject ?? "").toLowerCase();
+  return subject === "coop" || code.startsWith("COP") || code.startsWith("COOP");
+}
+
+function hasNativeLanguageCredit(entries) {
+  // Assumption: Native Languages Level 1 or 2 will include "Native Languages"
+  // in the name or start with LN.. in the course code.
+  for (const entry of entries) {
+    const course = entry.course;
+    const code = String(course.code ?? "").toUpperCase();
+    const name = String(course.name ?? "").toLowerCase();
+    if (name.includes("native languages") || code.startsWith("LN")) {
+      if (code.includes("1") || code.includes("2")) return true;
+    }
+  }
+  return false;
 }

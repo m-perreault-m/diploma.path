@@ -26,71 +26,90 @@
       </div>
     </div>
   </aside>
-  <header class="app-header">
-    <div class="title">
-      <h1>🎓 Diploma Path - Ontario OSSD Diploma Pathway Planner</h1>
+  <aside class="ossd-drawer" id="ossd-drawer" aria-label="OSSD requirements">
+    <div class="ossd-panel">
+      <div class="ossd-title">OSSD compulsory credits</div>
+      <div class="ossd-note">Checklist updates based on your Selected Plan.</div>
+      <ul class="ossd-list" id="ossd-list">
+        <li class="ossd-item" data-req="english"><span class="ossd-check" aria-hidden="true">⬜</span><span>English: 4 credits (Grades 9-12; Grade 11 alternative allowed)</span></li>
+        <li class="ossd-item" data-req="math"><span class="ossd-check" aria-hidden="true">⬜</span><span>Mathematics: 3 credits (Grades 9, 10, and one in 11/12)</span></li>
+        <li class="ossd-item" data-req="science"><span class="ossd-check" aria-hidden="true">⬜</span><span>Science: 2 credits</span></li>
+        <li class="ossd-item" data-req="tech"><span class="ossd-check" aria-hidden="true">⬜</span><span>Technological education: 1 credit (Grade 9 or 10)</span></li>
+        <li class="ossd-item" data-req="history"><span class="ossd-check" aria-hidden="true">⬜</span><span>Canadian History: 1 credit (Grade 10)</span></li>
+        <li class="ossd-item" data-req="geography"><span class="ossd-check" aria-hidden="true">⬜</span><span>Canadian Geography: 1 credit (Grade 9)</span></li>
+        <li class="ossd-item" data-req="arts"><span class="ossd-check" aria-hidden="true">⬜</span><span>The Arts: 1 credit</span></li>
+        <li class="ossd-item" data-req="hpe"><span class="ossd-check" aria-hidden="true">⬜</span><span>Health and Physical Education: 1 credit</span></li>
+        <li class="ossd-item" data-req="french"><span class="ossd-check" aria-hidden="true">⬜</span><span>French as a Second Language: 1 credit</span></li>
+        <li class="ossd-item" data-req="career"><span class="ossd-check" aria-hidden="true">⬜</span><span>Career Studies: 0.5 credit</span></li>
+        <li class="ossd-item" data-req="civics"><span class="ossd-check" aria-hidden="true">⬜</span><span>Civics and Citizenship: 0.5 credit</span></li>
+        <li class="ossd-item" data-req="stem"><span class="ossd-check" aria-hidden="true">⬜</span><span>STEM-related group: 1 credit from business/computer/coop or extra math/science/tech</span></li>
+      </ul>
     </div>
-  </header>
-
-  <section class="controls">
-    <div class="control-row">
-      <input id="search" type="search" placeholder="Search (code or name)…" autocomplete="off" />
-      <button id="show-all" class="btn icon-btn" title="Show all courses / remove filters" aria-label="Show all courses / remove filters">🔄️</button>
-      
-    </div>
-
-
-
-  </section>
-
-  <section class="plan-strip">
-    <div class="plan-title">Build Your OSSD Diploma Pathway</div>
-
-    <!-- NEW: plan overlay for wires -->
-    <div class="plan-wrap">
-      <svg id="plan-wires" class="plan-wires" aria-hidden="true"></svg>
-      <div id="plan" class="plan"></div>
-    </div>
-  </section>
-
-  <main class="board-wrap">
-    <svg id="wires" class="wires" aria-hidden="true"></svg>
-
-    <div id="board" class="board" aria-label="Course board">
-      <div class="col" data-grade="9">
-        <div class="col-title">Grade 9</div>
-        <div class="col-body" id="col-9"></div>
+  </aside>
+  <div class="app-shell" id="app-shell">
+    <header class="app-header">
+      <div class="title">
+        <h1>🎓 Diploma Path - Ontario OSSD Diploma Pathway Planner</h1>
       </div>
+    </header>
 
-      <div class="col" data-grade="10">
-        <div class="col-title">Grade 10</div>
-        <div class="col-body" id="col-10"></div>
+    <section class="controls">
+      <div class="control-row">
+        <button id="ossd-toggle" class="btn ossd-toggle" type="button" aria-expanded="false" aria-controls="ossd-drawer">✅ OSSD</button>
+        <input id="search" type="search" placeholder="Search (code or name)…" autocomplete="off" />
+        <button id="show-all" class="btn icon-btn" title="Show all courses / remove filters" aria-label="Show all courses / remove filters">🔄️</button>
       </div>
+    </section>
 
-      <div class="col" data-grade="11">
-        <div class="col-title">Grade 11</div>
-        <div class="col-body" id="col-11"></div>
+    <section class="plan-strip">
+      <div class="plan-title">Build Your OSSD Diploma Pathway</div>
+
+      <!-- NEW: plan overlay for wires -->
+      <div class="plan-wrap">
+        <svg id="plan-wires" class="plan-wires" aria-hidden="true"></svg>
+        <div id="plan" class="plan"></div>
       </div>
+    </section>
 
-      <div class="col" data-grade="12">
-        <div class="col-title">Grade 12</div>
-        <div class="col-body" id="col-12"></div>
+    <main class="board-wrap">
+      <svg id="wires" class="wires" aria-hidden="true"></svg>
+
+      <div id="board" class="board" aria-label="Course board">
+        <div class="col" data-grade="9">
+          <div class="col-title">Grade 9</div>
+          <div class="col-body" id="col-9"></div>
+        </div>
+
+        <div class="col" data-grade="10">
+          <div class="col-title">Grade 10</div>
+          <div class="col-body" id="col-10"></div>
+        </div>
+
+        <div class="col" data-grade="11">
+          <div class="col-title">Grade 11</div>
+          <div class="col-body" id="col-11"></div>
+        </div>
+
+        <div class="col" data-grade="12">
+          <div class="col-title">Grade 12</div>
+          <div class="col-body" id="col-12"></div>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <footer class="footer">
-    <div class="small">
-      This planner is based on publicly available Ontario course prerequisite information. Students and families should always confirm course selections with their school guidance counsellor and refer to official Ontario Ministry of Education documentation.
+    <footer class="footer">
+      <div class="small">
+        This planner is based on publicly available Ontario course prerequisite information. Students and families should always confirm course selections with their school guidance counsellor and refer to official Ontario Ministry of Education documentation.
+      </div>
+      <div class="small">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/about.html">About</a> ·
+        <a href="/contact.html">Contact</a>
+      </div>
+    </footer>
+    <div id="loading-overlay" class="loading-overlay" aria-hidden="true">
+      <div class="loading-spinner" role="status" aria-live="polite" aria-label="Loading saved pathway"></div>
     </div>
-    <div class="small">
-      <a href="/privacy.html">Privacy Policy</a> ·
-      <a href="/about.html">About</a> ·
-      <a href="/contact.html">Contact</a>
-    </div>
-  </footer>
-  <div id="loading-overlay" class="loading-overlay" aria-hidden="true">
-    <div class="loading-spinner" role="status" aria-live="polite" aria-label="Loading saved pathway"></div>
   </div>
 
   <script type="module" src="./src/app.js"></script>
