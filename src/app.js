@@ -10,6 +10,7 @@ const SAVE_NAME_MAX = 20;
 const CUSTOM_COOKIE_KEY = "customCourses";
 const CUSTOM_COOKIE_MAX_AGE_DAYS = 365;
 const CUSTOM_COOKIE_CHAR_LIMIT = 3500;
+const SHARE_PAYLOAD_VERSION = 1;
 const CUSTOM_SUBJECT_OPTIONS = [
   { value: "english", label: "English" },
   { value: "math", label: "Math" },
@@ -97,6 +98,7 @@ const els = {
   clear: document.getElementById("clear"), // Start Over
   printPathway: document.getElementById("print-pathway"),
   savePathway: document.getElementById("save-pathway"),
+  sharePathway: document.getElementById("share-pathway"),
   showAll: document.getElementById("show-all"), // Show All Courses
   savedList: document.getElementById("saved-list"),
   loadingOverlay: document.getElementById("loading-overlay"),
@@ -126,13 +128,25 @@ async function boot() {
   state.byCode = byCode;
   state.dependents = dependents;
 
-  state.customCourses = loadCustomCourses();
+  const sharedPayload = readSharedPayloadFromLocation();
+  state.customCourses = sharedPayload
+    ? normalizeSharedCustomCourses(sharedPayload.customCourses)
+    : loadCustomCourses();
   registerCustomCourses();
+  if (sharedPayload) {
+    persistCustomCourses(state.customCourses);
+  }
 
   initWheelOrder();
   wireEvents();
   state.savedPaths = loadSavedPathways();
   renderSavedList();
+
+  if (sharedPayload) {
+    applySharedPayload(sharedPayload);
+    clearShareParamFromLocation();
+    return;
+  }
 
   renderBoard();
   renderPlan();
@@ -186,6 +200,21 @@ function wireEvents() {
     const name = promptForSaveName();
     if (!name) return;
     saveCurrentPathway(name);
+  });
+  els.sharePathway?.addEventListener("click", async () => {
+    const payload = buildSharePayload();
+    const encoded = encodeSharePayload(payload);
+    if (!encoded) {
+      showToast("Unable to build a share link right now.");
+      return;
+    }
+    const shareUrl = `${location.origin}${location.pathname}#share=${encoded}`;
+    const copied = await copyToClipboard(shareUrl);
+    showToast(
+      copied
+        ? "Share link copied to your clipboard."
+        : "Share link ready. Copy it from your address bar."
+    );
   });
   els.savedList?.addEventListener("click", (event) => {
     const deleteButton = event.target.closest(".saved-delete");
@@ -425,6 +454,100 @@ function saveCurrentPathway(name) {
   const updated = [entry, ...withoutName];
   persistSavedPathways(updated);
   renderSavedList();
+}
+
+function buildSharePayload() {
+  return {
+    version: SHARE_PAYLOAD_VERSION,
+    data: serializePathway(),
+    customCourses: state.customCourses,
+  };
+}
+
+function encodeSharePayload(payload) {
+  try {
+    const json = JSON.stringify(payload);
+    return toBase64Url(json);
+  } catch {
+    return "";
+  }
+}
+
+function decodeSharePayload(encoded) {
+  if (!encoded) return null;
+  try {
+    const json = fromBase64Url(encoded);
+    const parsed = JSON.parse(json);
+    if (!parsed || typeof parsed !== "object") return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function readSharedPayloadFromLocation() {
+  const shareParam = getShareParamFromLocation();
+  if (!shareParam) return null;
+  return decodeSharePayload(shareParam);
+}
+
+function getShareParamFromLocation() {
+  const hash = location.hash.startsWith("#") ? location.hash.slice(1) : "";
+  const hashParams = new URLSearchParams(hash);
+  const searchParams = new URLSearchParams(location.search);
+  return hashParams.get("share") ?? searchParams.get("share");
+}
+
+function clearShareParamFromLocation() {
+  const url = new URL(window.location.href);
+  if (url.hash) {
+    const hashParams = new URLSearchParams(url.hash.slice(1));
+    if (hashParams.has("share")) {
+      hashParams.delete("share");
+      const nextHash = hashParams.toString();
+      url.hash = nextHash ? `#${nextHash}` : "";
+    }
+  }
+  if (url.searchParams.has("share")) {
+    url.searchParams.delete("share");
+  }
+  history.replaceState(null, document.title, url.pathname + url.search + url.hash);
+}
+
+function normalizeSharedCustomCourses(courses) {
+  if (!Array.isArray(courses)) return [];
+  return courses.map((course) => normalizeCustomCourse(course)).filter(Boolean);
+}
+
+function applySharedPayload(payload) {
+  const data = payload?.data ?? {};
+  applySavedPathway({ data });
+}
+
+function toBase64Url(value) {
+  const utf8 = encodeUtf8(value);
+  const base64 = btoa(utf8);
+  return base64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+}
+
+function fromBase64Url(encoded) {
+  const base64 = encoded.replace(/-/g, "+").replace(/_/g, "/");
+  const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
+  const binary = atob(padded);
+  return decodeUtf8(binary);
+}
+
+function encodeUtf8(value) {
+  return encodeURIComponent(value).replace(/%([0-9A-F]{2})/g, (_, hex) =>
+    String.fromCharCode(parseInt(hex, 16))
+  );
+}
+
+function decodeUtf8(value) {
+  const escaped = [...value]
+    .map((char) => `%${char.charCodeAt(0).toString(16).padStart(2, "0")}`)
+    .join("");
+  return decodeURIComponent(escaped);
 }
 
 function serializePathway() {
@@ -1322,6 +1445,52 @@ function escapeHtml(s) {
 function cssEscape(value) {
   if (window.CSS && CSS.escape) return CSS.escape(value);
   return String(value).replace(/"/g, '\\"');
+}
+
+async function copyToClipboard(text) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // fallback below
+    }
+  }
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.top = "-9999px";
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    const result = document.execCommand("copy");
+    document.body.removeChild(textarea);
+    return result;
+  } catch {
+    document.body.removeChild(textarea);
+    return false;
+  }
+}
+
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => {
+    toast.classList.add("toast--visible");
+  });
+  window.setTimeout(() => {
+    toast.classList.remove("toast--visible");
+    toast.addEventListener(
+      "transitionend",
+      () => {
+        toast.remove();
+      },
+      { once: true }
+    );
+  }, 2600);
 }
 
 function readCookie(name) {
