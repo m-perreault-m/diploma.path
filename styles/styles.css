@@ -314,6 +314,12 @@ body.ossd-open .ossd-drawer{
   align-items:center;
 }
 
+.control-label{
+  font-size: 14px;
+  color: var(--text);
+  opacity: 0.9;
+}
+
 input[type="search"]{
   flex:1;
   padding: 12px 12px;
@@ -322,6 +328,20 @@ input[type="search"]{
   background: rgba(0,0,0,0.25);
   color: var(--text);
   outline: none;
+}
+
+.control-select{
+  min-width: 220px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+  outline: none;
+}
+
+.control-select option{
+  color: #000;
 }
 
 .btn{

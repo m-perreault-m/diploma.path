@@ -102,6 +102,7 @@ const state = {
   hoveredCode: null,
   hoverSet: new Set(),
   search: "",
+  pathwayFilter: "all",
 
   // grade -> array of course codes in current display order (“wheel”)
   orderByGrade: new Map([
@@ -140,6 +141,7 @@ const els = {
   ossdList: document.getElementById("ossd-list"),
   hint: document.getElementById("mode-hint"),
   search: document.getElementById("search"),
+  pathwayFilter: document.getElementById("pathway-filter"),
   clear: document.getElementById("clear"), // Start Over
   printPathway: document.getElementById("print-pathway"),
   savePathway: document.getElementById("save-pathway"),
@@ -318,6 +320,15 @@ function wireEvents() {
     drawPlanWires();
   });
 
+  els.pathwayFilter?.addEventListener("change", (e) => {
+    state.pathwayFilter = e.target.value;
+
+    renderBoard();
+    applyStateToCards();
+    drawBoardWires();
+    drawPlanWires();
+  });
+
   // Show all courses: reset focus/filter, keep plan, and spin columns back to base order
   els.showAll?.addEventListener("click", async () => {
     resetFocusOnly();
@@ -325,6 +336,7 @@ function wireEvents() {
       els.search.value = "";
     }
     state.search = "";
+    resetPathwayFilter();
 
     // Spin all columns back to the original base ordering
     await spinAllColumnsToBase();
@@ -369,6 +381,7 @@ function wireEvents() {
 
     els.search.value = "";
     state.search = "";
+    resetPathwayFilter();
 
     initWheelOrder();
     renderBoard();
@@ -727,6 +740,8 @@ function renderGradeColumn(grade) {
       if (!hay.includes(state.search)) continue;
     }
 
+    if (!isCourseAllowedByPathway(c, grade)) continue;
+
     if (filterActive && !state.prereqSet.has(code)) continue;
 
     cards.push(renderCourseCard(c));
@@ -738,6 +753,50 @@ function renderGradeColumn(grade) {
   }
 
   colEl.innerHTML = `${cards.join("")}${customSection}`;
+}
+
+function getTypeLetter(code) {
+  if (!code) return null;
+  const match = String(code).match(/([A-Z])(?!.*[A-Z])/);
+  return match ? match[1] : null;
+}
+
+function isCourseAllowedByPathway(course, grade = course?.grade) {
+  const filter = state.pathwayFilter;
+  if (!filter || filter === "all") return true;
+
+  const typeLetter = getTypeLetter(course?.code);
+  if (!typeLetter) return true;
+
+  const type = typeLetter.toUpperCase();
+  const level = Number(grade);
+
+  if (level === 9) {
+    return type === "W" || type === "O";
+  }
+
+  if (level === 10) {
+    if (filter === "university") return ["D", "O"].includes(type);
+    if (filter === "college") return ["D", "P", "O"].includes(type);
+    if (filter === "undecided") return ["D", "P", "O"].includes(type);
+    if (filter === "workplace") return ["P", "O"].includes(type);
+  }
+
+  if (level === 11 || level === 12) {
+    if (filter === "university") return ["U", "M"].includes(type);
+    if (filter === "college") return ["C", "M"].includes(type);
+    if (filter === "undecided") return ["U", "C", "M"].includes(type);
+    if (filter === "workplace") return ["E", "O"].includes(type);
+  }
+
+  return true;
+}
+
+function resetPathwayFilter() {
+  state.pathwayFilter = "all";
+  if (els.pathwayFilter) {
+    els.pathwayFilter.value = "all";
+  }
 }
 
 function buildSearchHaystack(course) {
