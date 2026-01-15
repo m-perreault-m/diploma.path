@@ -889,24 +889,4 @@ body > *{
   animation: prereqPulse 1.6s ease-in-out infinite;
 }
 
-/* =========================================================
-   Adsense placements
-   ========================================================= */
-.ad-slot{
-  margin: 16px auto;
-  max-width: 1100px;
-  padding: 0 16px;
-}
 
-.ad-slot--top{
-  margin-top: 12px;
-  margin-bottom: 8px;
-}
-
-.ad-slot--grade-9-custom{
-  margin-top: 20px;
-}
-
-.ad-slot--ossd{
-  margin-top: 20px;
-}
