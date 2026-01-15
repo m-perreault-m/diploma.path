@@ -31,6 +31,47 @@ const OSSD_CONFIG = {
   // the planner does not know a student's elementary pathway. Set true to allow.
   allowNativeLanguagesForFrench: false,
 };
+const SUBJECT_SEARCH_TERMS = {
+  arts: ["arts", "art"],
+  business: ["business", "entrepreneurship", "accounting"],
+  compsci: ["computer science", "computing", "programming", "coding"],
+  csil: ["classical", "classical civilization", "latin", "language", "languages", "world languages"],
+  cws: [
+    "canadian",
+    "world",
+    "studies",
+    "civics",
+    "cws",
+    "canadian and world studies",
+    "geography",
+    "history",
+    "social",
+  ],
+  english: ["english", "literature", "language arts"],
+  "fnmi-studies": [
+    "indigenous",
+    "first nations",
+    "metis",
+    "inuit",
+    "fnmi",
+    "native studies",
+  ],
+  fsl: ["french", "fsl", "language", "languages", "world languages"],
+  guidance: ["guidance", "career", "learning strategies"],
+  hpe: ["health", "physical education", "phys ed", "hpe", "fitness"],
+  math: ["math", "mathematics", "calculus", "functions", "advanced functions"],
+  other: ["other"],
+  science: ["science", "biology", "bio", "chemistry", "chem", "physics", "phys"],
+  "social-science-humanities": [
+    "social",
+    "social science",
+    "social sciences",
+    "humanities",
+    "psychology",
+    "sociology",
+  ],
+  "tech-ed": ["tech", "technology", "tech ed", "trades", "construction", "manufacturing"],
+};
 
 const state = {
   mode: "backward",
@@ -678,7 +719,7 @@ function renderGradeColumn(grade) {
     if (!c) continue;
 
     if (state.search) {
-      const hay = `${c.code} ${c.name}`.toLowerCase();
+      const hay = buildSearchHaystack(c);
       if (!hay.includes(state.search)) continue;
     }
 
@@ -693,6 +734,21 @@ function renderGradeColumn(grade) {
   }
 
   colEl.innerHTML = `${cards.join("")}${customSection}`;
+}
+
+function buildSearchHaystack(course) {
+  const subject = course.subject ?? "other";
+  const subjectTerms = SUBJECT_SEARCH_TERMS[subject] ?? [];
+  const tokens = [
+    course.code,
+    course.name,
+    subject,
+    ...subjectTerms,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return tokens;
 }
 
 function renderCourseCard(c) {
