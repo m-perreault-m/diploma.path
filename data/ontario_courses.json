@@ -3403,6 +3403,22 @@
       "prereqs": []
     },
     {
+      "code": "TGV3M",
+      "name": "Communications Technology: TV, Video and Movie Production",
+      "grade": 11,
+      "level": "M",
+      "subject": "tech-ed",
+      "prereqs": []
+    },
+    {
+      "code": "TGV4M",
+      "name": "Communications Technology: TV, Video and Movie Production",
+      "grade": 12,
+      "level": "M",
+      "subject": "tech-ed",
+      "prereqs": []
+    },
+    {
       "code": "THJ2O",
       "name": "Green Industries",
       "grade": 10,
