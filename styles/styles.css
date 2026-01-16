@@ -863,6 +863,11 @@ body > *{
     margin: 0;
   }
 
+  .print-footer-highlight{
+    font-size: 32px;
+    line-height: 1.25;
+  }
+
   .print-footer-line + .print-footer-line{
     margin-top: 4px;
   }
