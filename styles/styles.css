@@ -551,14 +551,14 @@ input[type="search"]{
 
 .course-card.pathway-muted,
 .course-card.deprecated{
-  opacity: 0.45;
-  filter: grayscale(0.55);
+  opacity: 0.3;
+  filter: grayscale(0.75);
 }
 
 /* Plan card muted styles */
 .plan-card.deprecated{
-  opacity: 0.45;
-  filter: grayscale(0.55);
+  opacity: 0.3;
+  filter: grayscale(0.75);
 }
 
 .course-card.prereq{
