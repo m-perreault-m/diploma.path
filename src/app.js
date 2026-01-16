@@ -818,10 +818,11 @@ function renderCourseCard(c, options = {}) {
   const subject = c.subject ?? "other";
   const prereqText = formatPrereqText(c);
   const pathwayMuted = options.pathwayMuted ? "pathway-muted" : "";
+  const deprecated = c.deprecated ? "deprecated" : "";
 
   // Any visible course is draggable
   return `
-    <button class="course-card subject-${escapeHtml(subject)} ${pathwayMuted}"
+    <button class="course-card subject-${escapeHtml(subject)} ${pathwayMuted} ${deprecated}"
       draggable="true"
       data-code="${escapeHtml(c.code)}"
       data-grade="${c.grade}">
@@ -884,9 +885,10 @@ function renderPlanCard(c, placedGrade) {
 
   const missing = !prereqsSatisfied(c, state.plannedSet);
   const needs = missing ? "needs-prereq" : "";
+  const deprecated = c.deprecated ? "deprecated" : "";
 
   return `
-    <button class="plan-card subject-${escapeHtml(subject)} ${needs}"
+    <button class="plan-card subject-${escapeHtml(subject)} ${needs} ${deprecated}"
       draggable="true"
       data-code="${escapeHtml(c.code)}"
       data-placed-grade="${placedGrade}">

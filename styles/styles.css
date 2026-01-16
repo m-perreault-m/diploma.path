@@ -549,7 +549,14 @@ input[type="search"]{
   filter: grayscale(0.35);
 }
 
-.course-card.pathway-muted{
+.course-card.pathway-muted,
+.course-card.deprecated{
+  opacity: 0.45;
+  filter: grayscale(0.55);
+}
+
+/* Plan card muted styles */
+.plan-card.deprecated{
   opacity: 0.45;
   filter: grayscale(0.55);
 }
@@ -900,4 +907,3 @@ body > *{
 .course-card.drag-warning{
   animation: prereqPulse 1.6s ease-in-out infinite;
 }
-
