@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mobile Pathway Planner</title>
+    <link rel="stylesheet" href="styles/styles-mobile.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div class="header-top">
+          <div>
+            <p class="eyebrow">Diploma Pathways</p>
+            <h1>Mobile Pathway Planner</h1>
+          </div>
+          <a class="ossd-pill" href="#ossd">OSSD Check</a>
+        </div>
+
+        <div class="action-bar">
+          <button class="ghost" id="new-path">New</button>
+          <button class="ghost" id="save-path">Save</button>
+          <button class="ghost" id="share-path">Share</button>
+          <button class="ghost" id="print-path">Print</button>
+        </div>
+
+        <div class="search-bar">
+          <label class="sr-only" for="course-search">Search courses</label>
+          <input
+            id="course-search"
+            type="search"
+            placeholder="Search by course name, code, or subject"
+            autocomplete="off"
+          />
+          <select id="pathway-filter" aria-label="Filter by pathway">
+            <option value="all">All Pathways</option>
+            <option value="U">University-bound (U)</option>
+            <option value="C">College-bound (C)</option>
+            <option value="M">University/College (M)</option>
+            <option value="O">Open (O)</option>
+            <option value="E">Workplace (E)</option>
+          </select>
+        </div>
+
+        <div class="status" id="status">Ready to plan your pathway.</div>
+      </header>
+
+      <main>
+        <section class="panel" id="planner">
+          <div class="panel-header">
+            <h2>Your Pathway</h2>
+            <p>Tap a course to move, remove, or view prerequisites.</p>
+          </div>
+          <div class="grade-grid" id="plan-grid">
+            <div class="grade-column" data-grade="9">
+              <div class="grade-header">
+                <h3>Grade 9</h3>
+                <span class="badge" id="credits-9">0 credits</span>
+              </div>
+              <div class="course-stack" id="plan-9"></div>
+            </div>
+            <div class="grade-column" data-grade="10">
+              <div class="grade-header">
+                <h3>Grade 10</h3>
+                <span class="badge" id="credits-10">0 credits</span>
+              </div>
+              <div class="course-stack" id="plan-10"></div>
+            </div>
+            <div class="grade-column" data-grade="11">
+              <div class="grade-header">
+                <h3>Grade 11</h3>
+                <span class="badge" id="credits-11">0 credits</span>
+              </div>
+              <div class="course-stack" id="plan-11"></div>
+            </div>
+            <div class="grade-column" data-grade="12">
+              <div class="grade-header">
+                <h3>Grade 12</h3>
+                <span class="badge" id="credits-12">0 credits</span>
+              </div>
+              <div class="course-stack" id="plan-12"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="library">
+          <div class="panel-header">
+            <h2>Course Library</h2>
+            <p>Browse courses and add them to your plan.</p>
+          </div>
+          <div class="course-list" id="course-list"></div>
+        </section>
+
+        <section class="panel" id="saved">
+          <div class="panel-header">
+            <h2>Saved Pathways</h2>
+            <p>Quickly reload a saved plan.</p>
+          </div>
+          <div class="saved-list" id="saved-list"></div>
+        </section>
+
+        <section class="panel" id="custom">
+          <div class="panel-header">
+            <h2>Custom Course Block</h2>
+            <p>Add a custom course when it isn't listed.</p>
+          </div>
+          <form id="custom-form" class="custom-form">
+            <div class="field-row">
+              <label>
+                Code
+                <input type="text" name="code" required placeholder="e.g. TSA4M" />
+              </label>
+              <label>
+                Grade
+                <select name="grade">
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              Course name
+              <input type="text" name="name" required placeholder="e.g. Travel & Tourism" />
+            </label>
+            <div class="field-row">
+              <label>
+                Subject
+                <input type="text" name="subject" placeholder="e.g. business" />
+              </label>
+              <label>
+                Level
+                <select name="level">
+                  <option value="O">O</option>
+                  <option value="M">M</option>
+                  <option value="U">U</option>
+                  <option value="C">C</option>
+                  <option value="E">E</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              Prerequisites (comma-separated codes)
+              <input type="text" name="prereqs" placeholder="e.g. ENG2D, ENG3U" />
+            </label>
+            <button type="submit" class="primary">Add custom course</button>
+          </form>
+        </section>
+
+        <section class="panel" id="ossd">
+          <div class="panel-header">
+            <h2>OSSD Checklist</h2>
+            <p>Track core requirements as you plan.</p>
+          </div>
+          <div class="ossd-grid" id="ossd-list"></div>
+        </section>
+      </main>
+
+      <aside class="sheet" id="course-sheet" aria-hidden="true">
+        <div class="sheet-header">
+          <div>
+            <p class="eyebrow" id="sheet-code">Course</p>
+            <h3 id="sheet-title">Course Details</h3>
+          </div>
+          <button class="icon" id="close-sheet" aria-label="Close">✕</button>
+        </div>
+        <div class="sheet-body">
+          <div class="sheet-meta" id="sheet-meta"></div>
+          <div>
+            <h4>Prerequisites</h4>
+            <ul id="sheet-prereqs" class="prereq-list"></ul>
+          </div>
+          <div class="add-row">
+            <label>
+              Add to grade
+              <select id="sheet-grade">
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </label>
+            <button class="primary" id="sheet-add">Add to pathway</button>
+          </div>
+        </div>
+      </aside>
+      <div class="scrim" id="sheet-scrim" aria-hidden="true"></div>
+    </div>
+
+    <script type="module" src="src/app-mobile.js"></script>
+  </body>
+</html>
