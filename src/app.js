@@ -10,7 +10,7 @@ const SAVE_NAME_MAX = 20;
 const CUSTOM_COOKIE_KEY = "customCourses";
 const CUSTOM_COOKIE_MAX_AGE_DAYS = 365;
 const CUSTOM_COOKIE_CHAR_LIMIT = 3500;
-const SHARE_PAYLOAD_VERSION = 1;
+const SHARE_PAYLOAD_VERSION = 2;
 const CUSTOM_SUBJECT_OPTIONS = [
   { value: "english", label: "English" },
   { value: "math", label: "Math" },
@@ -255,7 +255,7 @@ function wireEvents() {
       showToast("Unable to build a share link right now.");
       return;
     }
-    const shareUrl = `${location.origin}${location.pathname}#share=${encoded}`;
+    const shareUrl = `${location.origin}${location.pathname}?share=${encoded}`;
     const copied = await copyToClipboard(shareUrl);
     showToast(
       copied
@@ -520,9 +520,9 @@ function saveCurrentPathway(name) {
 
 function buildSharePayload() {
   return {
-    version: SHARE_PAYLOAD_VERSION,
-    data: serializePathway(),
-    customCourses: state.customCourses,
+    v: SHARE_PAYLOAD_VERSION,
+    d: compactSharePathway(serializePathway()),
+    u: compactCustomCourses(state.customCourses),
   };
 }
 
@@ -541,6 +541,23 @@ function decodeSharePayload(encoded) {
     const json = fromBase64Url(encoded);
     const parsed = JSON.parse(json);
     if (!parsed || typeof parsed !== "object") return null;
+    if (parsed.v === SHARE_PAYLOAD_VERSION) {
+      return {
+        version: parsed.v,
+        data: expandSharePathway(parsed.d ?? {}),
+        customCourses: expandSharedCustomCourses(parsed.u ?? []),
+      };
+    }
+    if (parsed.version === 1) {
+      return parsed;
+    }
+    if (parsed.d || parsed.u) {
+      return {
+        version: parsed.v ?? parsed.version ?? 0,
+        data: expandSharePathway(parsed.d ?? {}),
+        customCourses: expandSharedCustomCourses(parsed.u ?? []),
+      };
+    }
     return parsed;
   } catch {
     return null;
@@ -584,6 +601,67 @@ function normalizeSharedCustomCourses(courses) {
 function applySharedPayload(payload) {
   const data = payload?.data ?? {};
   applySavedPathway({ data });
+}
+
+function compactSharePathway(data) {
+  const compact = {};
+  if (data?.mode && data.mode !== "backward") {
+    compact.m = data.mode;
+  }
+  if (Array.isArray(data?.completed) && data.completed.length) {
+    compact.c = data.completed;
+  }
+  const plannedByGrade = data?.plannedByGrade ?? {};
+  const plannedCompact = {};
+  for (const grade of [9, 10, 11, 12]) {
+    const list = plannedByGrade[grade] ?? plannedByGrade[String(grade)] ?? [];
+    if (Array.isArray(list) && list.length) {
+      plannedCompact[grade] = list;
+    }
+  }
+  if (Object.keys(plannedCompact).length) {
+    compact.p = plannedCompact;
+  }
+  return compact;
+}
+
+function expandSharePathway(compact) {
+  const data = {
+    mode: compact?.m ?? "backward",
+    completed: Array.isArray(compact?.c) ? compact.c : [],
+    plannedByGrade: { 9: [], 10: [], 11: [], 12: [] },
+  };
+  const planned = compact?.p ?? {};
+  for (const grade of [9, 10, 11, 12]) {
+    const list = planned[grade] ?? planned[String(grade)] ?? [];
+    if (Array.isArray(list)) {
+      data.plannedByGrade[grade] = list;
+    }
+  }
+  return data;
+}
+
+function compactCustomCourses(courses) {
+  if (!Array.isArray(courses)) return [];
+  return courses
+    .map((course) => {
+      if (!course?.code || !course?.name) return null;
+      return [course.code, course.name, course.subject ?? "other"];
+    })
+    .filter(Boolean);
+}
+
+function expandSharedCustomCourses(courses) {
+  if (!Array.isArray(courses)) return [];
+  return courses
+    .map((course) => {
+      if (Array.isArray(course)) {
+        const [code, name, subject] = course;
+        return { code, name, subject };
+      }
+      return course;
+    })
+    .filter(Boolean);
 }
 
 function toBase64Url(value) {
