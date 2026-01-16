@@ -3416,7 +3416,7 @@
       "grade": 12,
       "level": "M",
       "subject": "tech-ed",
-      "prereqs": []
+      "prereqs": ["TGV3M"]
     },
     {
       "code": "THJ2O",
