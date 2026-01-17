@@ -9,6 +9,8 @@ import {
 } from "./share.js";
 
 const CLICK_DELAY_MS = 200;
+const DOUBLE_TAP_MS = 280;
+const LONG_PRESS_MS = 320;
 const SAVE_COOKIE_KEY = "pathwaySaves";
 const SAVE_COOKIE_MAX_AGE_DAYS = 365;
 const SAVE_COOKIE_CHAR_LIMIT = 3500;
@@ -111,6 +113,7 @@ const state = {
   hoverSet: new Set(),
   search: "",
   pathwayFilter: "all",
+  sheetCourseCode: null,
 
   // grade -> array of course codes in current display order (“wheel”)
   orderByGrade: new Map([
@@ -150,6 +153,8 @@ const els = {
   ossdList: document.getElementById("ossd-list"),
   hint: document.getElementById("mode-hint"),
   search: document.getElementById("search"),
+  searchToggle: document.getElementById("search-toggle"),
+  mobileSearch: document.getElementById("mobile-search"),
   pathwayFilter: document.getElementById("pathway-filter"),
   clear: document.getElementById("clear"), // Start Over
   printPathway: document.getElementById("print-pathway"),
@@ -168,6 +173,13 @@ const els = {
   col10: document.getElementById("col-10"),
   col11: document.getElementById("col-11"),
   col12: document.getElementById("col-12"),
+
+  sheet: document.getElementById("mobile-sheet"),
+  sheetTitle: document.getElementById("sheet-title"),
+  sheetSubtitle: document.getElementById("sheet-subtitle"),
+  sheetMeta: document.getElementById("sheet-meta"),
+  sheetAdd: document.getElementById("sheet-add"),
+  sheetClose: document.getElementById("sheet-close"),
 };
 
 boot();
@@ -269,6 +281,13 @@ function wireEvents() {
   });
   els.drawerScrim?.addEventListener("click", () => {
     setDrawerOpen(false);
+  });
+  els.searchToggle?.addEventListener("click", () => {
+    const isOpen = !document.body.classList.contains("search-open");
+    document.body.classList.toggle("search-open", isOpen);
+    if (isOpen) {
+      els.search?.focus();
+    }
   });
   els.ossdToggle?.addEventListener("click", () => {
     const isOpen = !document.body.classList.contains("ossd-open");
@@ -391,6 +410,18 @@ function wireEvents() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
+  document.querySelectorAll("[data-sheet-close]").forEach((el) => {
+    el.addEventListener("click", closeCourseSheet);
+  });
+  els.sheetClose?.addEventListener("click", closeCourseSheet);
+  els.sheetAdd?.addEventListener("click", () => {
+    const code = state.sheetCourseCode;
+    const course = code ? state.byCode.get(code) : null;
+    if (!course) return;
+    onDropIntoPlan(code, state.plannedSet.has(code) ? "plan" : "board", course.grade);
+    closeCourseSheet();
+  });
+
   // Start over: wipe everything
   els.clear?.addEventListener("click", () => {
     if (
@@ -456,6 +487,21 @@ function setDrawerOpen(isOpen) {
 function setOssdDrawerOpen(isOpen) {
   document.body.classList.toggle("ossd-open", isOpen);
   els.ossdToggle?.setAttribute("aria-expanded", isOpen ? "true" : "false");
+}
+
+function openCourseSheet(course) {
+  if (!els.sheet || !course) return;
+  state.sheetCourseCode = course.code;
+  els.sheetTitle.textContent = `${course.code} · Grade ${course.grade}`;
+  els.sheetSubtitle.textContent = course.name ?? "";
+  els.sheetMeta.textContent = formatPrereqText(course);
+  els.sheet.hidden = false;
+}
+
+function closeCourseSheet() {
+  if (!els.sheet) return;
+  els.sheet.hidden = true;
+  state.sheetCourseCode = null;
 }
 
 function hasActiveSelections() {
@@ -975,6 +1021,10 @@ function bindBoardCardHandlers() {
     const code = card.dataset.code;
     if (card.dataset.bound === "1") continue;
     card.dataset.bound = "1";
+    let lastTap = 0;
+    let longPressTimer = null;
+    let touchDragging = false;
+    let startPoint = null;
 
     card.addEventListener("mouseenter", () => onHover(code));
     card.addEventListener("mouseleave", () => onHover(null));
@@ -985,6 +1035,8 @@ function bindBoardCardHandlers() {
       clickTimer = setTimeout(() => {
         clickTimer = null;
         onBoardClick(code); // async ok
+        const course = state.byCode.get(code);
+        if (course) openCourseSheet(course);
       }, CLICK_DELAY_MS);
     });
 
@@ -1004,6 +1056,7 @@ function bindBoardCardHandlers() {
       state.draggingCode = code;
       state.draggingFrom = "board";
       card.classList.add("dragging");
+      document.body.classList.add("is-dragging");
 
       e.dataTransfer.effectAllowed = "copy";
       e.dataTransfer.setData("text/plain", JSON.stringify({ code, from: "board" }));
@@ -1017,6 +1070,59 @@ function bindBoardCardHandlers() {
       state.draggingCode = null;
       state.draggingFrom = null;
       clearPlanDropHighlights();
+      document.body.classList.remove("is-dragging");
+    });
+
+    card.addEventListener("touchstart", (event) => {
+      if (event.touches.length !== 1) return;
+      const touch = event.touches[0];
+      startPoint = { x: touch.clientX, y: touch.clientY };
+      longPressTimer = setTimeout(() => {
+        touchDragging = true;
+        beginTouchDrag(code, "board");
+      }, LONG_PRESS_MS);
+    });
+
+    card.addEventListener("touchmove", (event) => {
+      if (event.touches.length !== 1) return;
+      const touch = event.touches[0];
+      if (startPoint && !touchDragging) {
+        const dist = Math.hypot(touch.clientX - startPoint.x, touch.clientY - startPoint.y);
+        if (dist > 10 && longPressTimer) {
+          clearTimeout(longPressTimer);
+          longPressTimer = null;
+        }
+      }
+      if (touchDragging) {
+        event.preventDefault();
+        updateTouchDrag(touch);
+      }
+    });
+
+    card.addEventListener("touchend", (event) => {
+      if (longPressTimer) {
+        clearTimeout(longPressTimer);
+        longPressTimer = null;
+      }
+      if (touchDragging) {
+        const touch = event.changedTouches[0];
+        endTouchDrag(touch);
+        touchDragging = false;
+        startPoint = null;
+        return;
+      }
+      const now = Date.now();
+      const course = state.byCode.get(code);
+      if (now - lastTap <= DOUBLE_TAP_MS) {
+        lastTap = 0;
+        if (course) {
+          onDropIntoPlan(code, state.plannedSet.has(code) ? "plan" : "board", course.grade);
+        }
+        return;
+      }
+      lastTap = now;
+      onBoardClick(code);
+      if (course) openCourseSheet(course);
     });
   }
 }
@@ -1107,6 +1213,7 @@ function bindCustomCourseHandlers() {
       state.draggingCode = code;
       state.draggingFrom = "custom";
       card.classList.add("dragging");
+      document.body.classList.add("is-dragging");
 
       e.dataTransfer.effectAllowed = "copy";
       e.dataTransfer.setData("text/plain", JSON.stringify({ code, from: "custom" }));
@@ -1117,6 +1224,7 @@ function bindCustomCourseHandlers() {
       state.draggingCode = null;
       state.draggingFrom = null;
       clearPlanDropHighlights();
+      document.body.classList.remove("is-dragging");
     });
   }
 }
@@ -1124,35 +1232,15 @@ function bindCustomCourseHandlers() {
 async function onBoardClick(code) {
   const c = state.byCode.get(code);
   if (!c) return;
-
-  // Spin/roll that column so the clicked course rises to the top
-  await rollCourseToTop(code);
-
   state.focusedCode = code;
+  state.prereqSet = prereqClosure(code);
+  state.prereqDirectSet = new Set(getDirectPrereqCodes(c));
+  state.focusFilterActive = false;
 
-  // Backward focus filtering only when clicking a Grade 12 course
-  if (state.mode === "backward" && c.grade === 12) {
-    // toggle off if clicking the focused course again
-    if (state.focusFilterActive && state.focusedCode === code && state.prereqSet.size) {
-      resetFocusOnly();
-    } else {
-      state.prereqSet = prereqClosure(code);
-      state.prereqDirectSet = new Set(getDirectPrereqCodes(c));
-      state.focusFilterActive = true;
-    }
-  } else if (state.mode === "backward") {
-    state.prereqDirectSet = new Set(getDirectPrereqCodes(c));
-  }
-
-  // Re-render after order update
   renderBoard();
   applyStateToCards();
-
-  // Draw wires after motion finishes (reduces visual jitter)
   drawBoardWires();
   drawPlanWires();
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 // ----------------------
@@ -1182,6 +1270,7 @@ function bindPlanHandlers() {
       state.draggingCode = code;
       state.draggingFrom = "plan";
       card.classList.add("dragging");
+      document.body.classList.add("is-dragging");
 
       e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.setData("text/plain", JSON.stringify({ code, from: "plan" }));
@@ -1192,6 +1281,7 @@ function bindPlanHandlers() {
       state.draggingCode = null;
       state.draggingFrom = null;
       clearPlanDropHighlights();
+      document.body.classList.remove("is-dragging");
     });
   }
 }
@@ -1230,6 +1320,43 @@ function setupPlanDropZones() {
 
 function clearPlanDropHighlights() {
   document.querySelectorAll(".plan-col").forEach((c) => c.classList.remove("drop-hover"));
+}
+
+let activeTouchDrop = null;
+
+function beginTouchDrag(code, from) {
+  state.draggingCode = code;
+  state.draggingFrom = from;
+  document.body.classList.add("is-dragging");
+}
+
+function updateTouchDrag(touch) {
+  const el = document.elementFromPoint(touch.clientX, touch.clientY);
+  const nextTarget = el?.closest?.(".plan-col") ?? null;
+  if (activeTouchDrop && activeTouchDrop !== nextTarget) {
+    activeTouchDrop.classList.remove("drop-hover");
+  }
+  if (nextTarget && nextTarget !== activeTouchDrop) {
+    nextTarget.classList.add("drop-hover");
+  }
+  activeTouchDrop = nextTarget;
+}
+
+function endTouchDrag(touch) {
+  document.body.classList.remove("is-dragging");
+  if (activeTouchDrop) {
+    activeTouchDrop.classList.remove("drop-hover");
+  }
+  const el = touch ? document.elementFromPoint(touch.clientX, touch.clientY) : null;
+  const target = el?.closest?.(".plan-col");
+  if (target && state.draggingCode) {
+    const targetGrade = Number(target.getAttribute("data-plan-grade"));
+    onDropIntoPlan(state.draggingCode, state.draggingFrom, targetGrade);
+  }
+  activeTouchDrop = null;
+  state.draggingCode = null;
+  state.draggingFrom = null;
+  clearPlanDropHighlights();
 }
 
 function onDropIntoPlan(code, from, targetGrade) {
@@ -1347,6 +1474,7 @@ function applyStateToCards() {
 // ----------------------
 
 function drawBoardWires() {
+  return;
   const svg = els.wires;
   if (!svg) return;
   svg.innerHTML = "";
@@ -1374,6 +1502,7 @@ function drawBoardWires() {
 }
 
 function drawPlanWires() {
+  return;
   const svg = els.planWires;
   if (!svg) return;
   svg.innerHTML = "";
