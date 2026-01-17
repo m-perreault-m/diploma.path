@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Diploma Path (Mobile)</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🧭%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles/styles-mobile.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6445096423980375"
+     crossorigin="anonymous"></script>
+</head>
+<body class="mobile">
+  <div class="drawer-scrim" id="drawer-scrim" hidden></div>
+  <aside class="drawer" id="drawer">
+    <div class="drawer-panel">
+      <button id="print-pathway" class="btn" title="Print your current pathway" aria-label="Print your current pathway">🖨️ Print Pathway</button>
+      <button id="save-pathway" class="btn" title="Save your current pathway" aria-label="Save your current pathway">💾 Save Pathway</button>
+      <button id="share-pathway" class="btn" title="Share your current pathway" aria-label="Share your current pathway">🔗 Share Pathway</button>
+      <button id="theme-toggle" class="btn theme-toggle" type="button" aria-pressed="false">🌙 Dark</button>
+      <div class="drawer-section">
+        <div class="drawer-section-title">Saved pathways</div>
+        <div id="saved-list" class="saved-list" aria-live="polite"></div>
+      </div>
+    </div>
+  </aside>
+  <aside class="ossd-drawer" id="ossd-drawer" aria-label="OSSD requirements">
+    <div class="ossd-panel">
+      <div class="ossd-title">OSSD compulsory credits</div>
+      <div class="ossd-note">Checklist updates based on your Selected Plan.</div>
+      <ul class="ossd-list" id="ossd-list">
+        <li class="ossd-item" data-req="english"><span class="ossd-check" aria-hidden="true">⬜</span><span>English: 4 credits (Grades 9-12; Grade 11 alternative allowed)</span></li>
+        <li class="ossd-item" data-req="math"><span class="ossd-check" aria-hidden="true">⬜</span><span>Mathematics: 3 credits (Grades 9, 10, and one in 11/12)</span></li>
+        <li class="ossd-item" data-req="science"><span class="ossd-check" aria-hidden="true">⬜</span><span>Science: 2 credits</span></li>
+        <li class="ossd-item" data-req="tech"><span class="ossd-check" aria-hidden="true">⬜</span><span>Technological education: 1 credit (Grade 9 or 10)</span></li>
+        <li class="ossd-item" data-req="history"><span class="ossd-check" aria-hidden="true">⬜</span><span>Canadian History: 1 credit (Grade 10)</span></li>
+        <li class="ossd-item" data-req="geography"><span class="ossd-check" aria-hidden="true">⬜</span><span>Canadian Geography: 1 credit (Grade 9)</span></li>
+        <li class="ossd-item" data-req="arts"><span class="ossd-check" aria-hidden="true">⬜</span><span>The Arts: 1 credit</span></li>
+        <li class="ossd-item" data-req="hpe"><span class="ossd-check" aria-hidden="true">⬜</span><span>Health and Physical Education: 1 credit</span></li>
+        <li class="ossd-item" data-req="french"><span class="ossd-check" aria-hidden="true">⬜</span><span>French as a Second Language: 1 credit</span></li>
+        <li class="ossd-item" data-req="career"><span class="ossd-check" aria-hidden="true">⬜</span><span>Career Studies: 0.5 credit</span></li>
+        <li class="ossd-item" data-req="civics"><span class="ossd-check" aria-hidden="true">⬜</span><span>Civics and Citizenship: 0.5 credit</span></li>
+        <li class="ossd-item" data-req="stem"><span class="ossd-check" aria-hidden="true">⬜</span><span>STEM-related group: 1 credit from business/computer/coop or extra math/science/tech</span></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="mobile-shell" id="app-shell">
+    <header class="mobile-topbar">
+      <button class="drawer-toggle" id="drawer-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <button class="icon-btn" id="ossd-toggle" type="button" aria-expanded="false" aria-controls="ossd-drawer">✅</button>
+      <div class="pathway-group">
+        <label class="control-label" for="pathway-filter">Pathway</label>
+        <select id="pathway-filter" class="control-select">
+          <option value="all" selected>All courses</option>
+          <option value="university">University-bound</option>
+          <option value="college">College-bound</option>
+          <option value="undecided">Undecided (U/C)</option>
+          <option value="workplace">Workplace / Apprenticeship</option>
+        </select>
+      </div>
+      <button class="icon-btn" id="search-toggle" type="button" aria-label="Search courses">🔍</button>
+      <button id="clear" class="icon-btn" title="Start a new pathway" aria-label="Start a new pathway">🆕</button>
+    </header>
+
+    <section class="mobile-search" id="mobile-search">
+      <input id="search" type="search" placeholder="Search (code or name)…" autocomplete="off" />
+      <button id="show-all" class="btn icon-btn" title="Show all courses / remove filters" aria-label="Show all courses / remove filters">🔄️</button>
+    </section>
+
+    <section class="mobile-plan">
+      <div class="plan-title">My Pathway</div>
+      <div class="plan-wrap">
+        <svg id="plan-wires" class="plan-wires" aria-hidden="true"></svg>
+        <div id="plan" class="plan"></div>
+      </div>
+    </section>
+
+    <section class="mobile-board">
+      <div class="board-title">Course Browser</div>
+      <div class="board-wrap">
+        <svg id="wires" class="wires" aria-hidden="true"></svg>
+        <div id="board" class="board" aria-label="Course board">
+          <div class="col" data-grade="9">
+            <div class="col-title">Grade 9</div>
+            <div class="col-body" id="col-9"></div>
+          </div>
+
+          <div class="col" data-grade="10">
+            <div class="col-title">Grade 10</div>
+            <div class="col-body" id="col-10"></div>
+          </div>
+
+          <div class="col" data-grade="11">
+            <div class="col-title">Grade 11</div>
+            <div class="col-body" id="col-11"></div>
+          </div>
+
+          <div class="col" data-grade="12">
+            <div class="col-title">Grade 12</div>
+            <div class="col-body" id="col-12"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="small">
+        This planner is based on publicly available Ontario course prerequisite information. Students and families should always confirm course selections with their school guidance counsellor and refer to official Ontario Ministry of Education documentation.
+      </div>
+      <div class="small">
+        <a href="/privacy.html">Privacy Policy</a> ·
+        <a href="/about.html">About</a> ·
+        <a href="/contact.html">Contact</a>
+      </div>
+    </footer>
+
+    <div id="loading-overlay" class="loading-overlay" aria-hidden="true">
+      <div class="loading-spinner" role="status" aria-live="polite" aria-label="Loading saved pathway"></div>
+    </div>
+  </div>
+
+  <div class="mobile-sheet" id="mobile-sheet" hidden>
+    <div class="sheet-scrim" data-sheet-close></div>
+    <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-content">
+        <div class="sheet-title" id="sheet-title"></div>
+        <div class="sheet-subtitle" id="sheet-subtitle"></div>
+        <div class="sheet-meta" id="sheet-meta"></div>
+      </div>
+      <div class="sheet-actions">
+        <button class="btn" id="sheet-add">Add to pathway</button>
+        <button class="btn ghost" id="sheet-close" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/app-mobile.js"></script>
+</body>
+</html>
