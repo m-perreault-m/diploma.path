@@ -760,6 +760,11 @@ input[type="search"]{
   opacity: 0.75;
 }
 
+body:not(.theme-dark) .wire-or{
+  stroke-width: 2.5;
+  opacity: 0.9;
+}
+
 .footer{
   padding: 0 18px 18px;
   color: var(--mutedText);
