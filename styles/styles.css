@@ -1,13 +1,44 @@
 :root{
+  --bg: #f5f6fb;
+  --panel: rgba(12,18,28,0.06);
+  --panel-strong: rgba(12,18,28,0.1);
+  --panel-weak: rgba(12,18,28,0.04);
+  --panel-input: rgba(12,18,28,0.08);
+  --panel-highlight: rgba(255,255,255,0.85);
+  --text: #0f1320;
+  --mutedText: rgba(15,19,32,0.62);
+  --stroke: rgba(15,19,32,0.14);
+  --glow: rgba(15,19,32,0.18);
+  --drawer-bg: rgba(248,249,252,0.96);
+  --ossd-bg: rgba(250,251,254,0.97);
+  --toast-bg: rgba(250,251,254,0.96);
+  --scrim: rgba(15,19,32,0.2);
+  --loading-overlay: rgba(240,243,248,0.65);
+  --bg-glow-1: rgba(90,130,255,0.14);
+  --bg-glow-2: rgba(140,110,255,0.12);
+  --drawer-open: 280px;
+  --drawer-toggle-size: 44px;
+  --ossd-drawer-width: 300px;
+}
+
+body.theme-dark{
   --bg: #0b0c10;
   --panel: rgba(255,255,255,0.06);
+  --panel-strong: rgba(255,255,255,0.08);
+  --panel-weak: rgba(255,255,255,0.04);
+  --panel-input: rgba(0,0,0,0.25);
+  --panel-highlight: rgba(255,255,255,0.12);
   --text: rgba(255,255,255,0.92);
   --mutedText: rgba(255,255,255,0.65);
   --stroke: rgba(255,255,255,0.10);
   --glow: rgba(255,255,255,0.18);
-  --drawer-open: 280px;
-  --drawer-toggle-size: 44px;
-  --ossd-drawer-width: 300px;
+  --drawer-bg: rgba(9,10,14,0.94);
+  --ossd-bg: rgba(12,14,20,0.96);
+  --toast-bg: rgba(15,18,26,0.95);
+  --scrim: rgba(3,4,8,0.55);
+  --loading-overlay: rgba(3,4,8,0.35);
+  --bg-glow-1: rgba(255,255,255,0.06);
+  --bg-glow-2: rgba(255,255,255,0.05);
 }
 
 *{ box-sizing:border-box; }
@@ -28,8 +59,8 @@ body::before{
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,0.06), transparent),
-    radial-gradient(1200px 600px at 80% 0%, rgba(255,255,255,0.05), transparent);
+    radial-gradient(1200px 600px at 20% 0%, var(--bg-glow-1), transparent),
+    radial-gradient(1200px 600px at 80% 0%, var(--bg-glow-2), transparent);
 }
 
 .app-shell{
@@ -44,7 +75,7 @@ body.ossd-open .app-shell{
   position: fixed;
   inset: 0 0 0 auto;
   width: var(--drawer-open);
-  background: rgba(9,10,14,0.94);
+  background: var(--drawer-bg);
   border-left: 1px solid var(--stroke);
   display:flex;
   flex-direction:column;
@@ -62,7 +93,7 @@ body.ossd-open .app-shell{
 .drawer-scrim{
   position: fixed;
   inset: 0;
-  background: rgba(3,4,8,0.55);
+  background: var(--scrim);
   z-index: 1;
 }
 .drawer-toggle{
@@ -129,7 +160,7 @@ body.ossd-open .app-shell{
   padding: 6px;
   border-radius: 12px;
   border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.04);
+  background: var(--panel-weak);
   color: var(--text);
 }
 .saved-item.is-active{
@@ -167,7 +198,7 @@ body.ossd-open .app-shell{
   height: 28px;
   border-radius: 10px;
   border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.08);
+  background: var(--panel-strong);
   color: var(--text);
   cursor: pointer;
 }
@@ -201,8 +232,8 @@ body.ossd-open .app-shell{
   transform: translateX(-50%) translateY(12px);
   padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(15,18,26,0.95);
-  border: 1px solid rgba(255,255,255,0.18);
+  background: var(--toast-bg);
+  border: 1px solid var(--stroke);
   color: var(--text);
   font-size: 14px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
@@ -220,7 +251,7 @@ body.ossd-open .app-shell{
   position: fixed;
   inset: 0 auto 0 0;
   width: var(--ossd-drawer-width);
-  background: rgba(12,14,20,0.96);
+  background: var(--ossd-bg);
   border-right: 1px solid var(--stroke);
   transform: translateX(-100%);
   transition: transform 0.2s ease;
@@ -261,7 +292,7 @@ body.ossd-open .ossd-drawer{
   padding: 8px 10px;
   border-radius: 12px;
   border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.04);
+  background: var(--panel-weak);
   font-size: 12px;
   color: var(--text);
 }
@@ -299,7 +330,7 @@ body.ossd-open .ossd-drawer{
   transition: transform .15s ease, background .15s ease;
 }
 .tab:hover{ transform: translateY(-1px); }
-.tab.active{ background: rgba(255,255,255,0.12); }
+.tab.active{ background: var(--panel-highlight); }
 
 .controls{
   padding: 10px 18px 14px;
@@ -332,7 +363,7 @@ input[type="search"]{
   padding: 12px 12px;
   border-radius: 12px;
   border: 1px solid var(--stroke);
-  background: rgba(0,0,0,0.25);
+  background: var(--panel-input);
   color: var(--text);
   outline: none;
 }
@@ -342,7 +373,7 @@ input[type="search"]{
   padding: 12px 12px;
   border-radius: 12px;
   border: 1px solid var(--stroke);
-  background: rgba(0,0,0,0.25);
+  background: var(--panel-input);
   color: var(--text);
   outline: none;
 }
@@ -355,7 +386,7 @@ input[type="search"]{
   padding: 12px 12px;
   border-radius: 12px;
   border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.08);
+  background: var(--panel-strong);
   color: var(--text);
   cursor:pointer;
 }
@@ -372,30 +403,30 @@ input[type="search"]{
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.06);
+  background: var(--panel);
 }
 .pill.muted{ opacity: .6; }
 .pill.prereq{ background: rgba(120,200,255,0.12); }
 .pill.unlocked{ background: rgba(140,255,180,0.12); }
-.pill.selected{ background: rgba(255,255,255,0.14); }
-.pill.glow{ box-shadow: 0 0 0 6px rgba(255,255,255,0.03); }
+.pill.selected{ background: var(--panel-highlight); }
+.pill.glow{ box-shadow: 0 0 0 6px var(--glow); }
 
 /* ===== Plan Area (now 4 grade boxes) ===== */
 .plan-strip{
   padding: 12px 18px 18px;
   margin: 0 18px 20px;
-  border: 1px dashed rgba(255,255,255,0.35);
+  border: 1px dashed var(--stroke);
   border-radius: 20px;
   background:
     radial-gradient(circle at top left, rgba(120,200,255,0.16), transparent 60%),
-    rgba(255,255,255,0.05);
+    var(--panel-weak);
   box-shadow: 0 16px 40px rgba(0,0,0,0.28);
 }
 .plan-title{
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.72);
+  color: var(--mutedText);
   margin-bottom: 6px;
 }
 .plan-subtitle{
@@ -419,7 +450,7 @@ input[type="search"]{
 .plan-col{
   border: 1px solid var(--stroke);
   border-radius: 18px;
-  background: rgba(255,255,255,0.04);
+  background: var(--panel-weak);
   overflow:hidden;
   min-height: 140px;
 }
@@ -461,7 +492,7 @@ input[type="search"]{
   border: 1px solid var(--stroke);
   border-radius: 16px;
   padding: 10px 12px;
-  background: rgba(255,255,255,0.06);
+  background: var(--panel);
   color: var(--text);
   cursor:pointer;
   transition: transform .18s ease, filter .18s ease, opacity .18s ease, box-shadow .18s ease;
@@ -503,7 +534,7 @@ input[type="search"]{
 .col{
   border: 1px solid var(--stroke);
   border-radius: 18px;
-  background: rgba(255,255,255,0.04);
+  background: var(--panel-weak);
   overflow:hidden;
 }
 .col-title{
@@ -525,7 +556,7 @@ input[type="search"]{
   border: 1px solid var(--stroke);
   border-radius: 16px;
   padding: 10px 12px;
-  background: rgba(255,255,255,0.06);
+  background: var(--panel);
   color: var(--text);
   cursor:pointer;
   transition: transform .18s ease, filter .18s ease, opacity .18s ease, box-shadow .18s ease;
@@ -572,11 +603,11 @@ input[type="search"]{
 }
 
 .course-card.selected{
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.14), 0 10px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 0 0 3px var(--glow), 0 10px 30px rgba(0,0,0,0.25);
 }
 
 .course-card.glow{
-  box-shadow: 0 0 0 6px rgba(255,255,255,0.05);
+  box-shadow: 0 0 0 6px var(--glow);
 }
 
 /* Plan card states can reuse same styles */
@@ -586,10 +617,10 @@ input[type="search"]{
 }
 .plan-card.prereq{ box-shadow: 0 0 0 3px rgba(120,200,255,0.10); }
 .plan-card.selected{
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.14), 0 10px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 0 0 3px var(--glow), 0 10px 30px rgba(0,0,0,0.25);
 }
-.plan-card.glow{ box-shadow: 0 0 0 6px rgba(255,255,255,0.05); }
-.custom-course-card.glow{ box-shadow: 0 0 0 6px rgba(255,255,255,0.05); }
+.plan-card.glow{ box-shadow: 0 0 0 6px var(--glow); }
+.custom-course-card.glow{ box-shadow: 0 0 0 6px var(--glow); }
 
 /* Subject palette */
 .subject-math{ background: rgba(86,140,255,0.24); }
@@ -607,7 +638,7 @@ input[type="search"]{
 .subject-tech-ed{ background: rgba(70,190,255,0.24); }
 .subject-social-science-humanities{ background: rgba(220,110,210,0.24); }
 .subject-social-sciences-humanities{ background: rgba(220,110,210,0.24); }
-.subject-other{ background: rgba(255,255,255,0.10); }
+.subject-other{ background: var(--panel-strong); }
 
 /* Legacy subject aliases */
 .subject-technology{ background: rgba(70,190,255,0.24); }
@@ -669,7 +700,7 @@ input[type="search"]{
   padding: 10px;
   display:grid;
   gap: 10px;
-  background: rgba(255,255,255,0.04);
+  background: var(--panel-weak);
 }
 
 .custom-builder label{
@@ -685,7 +716,7 @@ input[type="search"]{
   padding: 8px 10px;
   border-radius: 10px;
   border: 1px solid var(--stroke);
-  background: rgba(0,0,0,0.25);
+  background: var(--panel-input);
   color: var(--text);
 }
 
@@ -720,7 +751,7 @@ input[type="search"]{
 }
 
 .wire{
-  stroke: rgba(255,255,255,0.22);
+  stroke: var(--stroke);
   stroke-width: 1.5;
 }
 
@@ -740,7 +771,7 @@ input[type="search"]{
   display:flex;
   align-items:center;
   justify-content:center;
-  background: rgba(3,4,8,0.35);
+  background: var(--loading-overlay);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
@@ -754,7 +785,7 @@ input[type="search"]{
   width: 48px;
   height: 48px;
   border-radius: 999px;
-  border: 3px solid rgba(255,255,255,0.2);
+  border: 3px solid var(--panel-strong);
   border-top-color: rgba(120,255,180,0.9);
   animation: spin 0.9s linear infinite;
 }
@@ -886,7 +917,7 @@ body > *{
 /* Drop highlight on plan column */
 .plan-col.drop-hover{
   box-shadow:
-    0 0 0 3px rgba(255,255,255,0.14),
+    0 0 0 3px var(--glow),
     0 14px 40px rgba(0,0,0,0.25);
 }
 

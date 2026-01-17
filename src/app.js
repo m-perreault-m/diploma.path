@@ -11,6 +11,8 @@ const CUSTOM_COOKIE_KEY = "customCourses";
 const CUSTOM_COOKIE_MAX_AGE_DAYS = 365;
 const CUSTOM_COOKIE_CHAR_LIMIT = 3500;
 const SHARE_PAYLOAD_VERSION = 2;
+const THEME_STORAGE_KEY = "theme";
+const THEME_DARK = "dark";
 const CUSTOM_SUBJECT_OPTIONS = [
   { value: "english", label: "English" },
   { value: "math", label: "Math" },
@@ -138,6 +140,7 @@ const els = {
   drawerScrim: document.getElementById("drawer-scrim"),
   ossdDrawer: document.getElementById("ossd-drawer"),
   ossdToggle: document.getElementById("ossd-toggle"),
+  themeToggle: document.getElementById("theme-toggle"),
   ossdList: document.getElementById("ossd-list"),
   hint: document.getElementById("mode-hint"),
   search: document.getElementById("search"),
@@ -164,6 +167,7 @@ const els = {
 boot();
 
 async function boot() {
+  initTheme();
   const res = await fetch("./data/ontario_courses.json");
   const data = await res.json();
   state.courses = Array.isArray(data) ? data : (data.courses ?? []);
@@ -202,6 +206,31 @@ async function boot() {
   drawPlanWires();
 }
 
+function initTheme() {
+  const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+  const theme = storedTheme === THEME_DARK ? THEME_DARK : "light";
+  applyTheme(theme);
+}
+
+function applyTheme(theme) {
+  const isDark = theme === THEME_DARK;
+  document.body.classList.toggle("theme-dark", isDark);
+  updateThemeToggle(isDark);
+}
+
+function updateThemeToggle(isDark) {
+  if (!els.themeToggle) {
+    return;
+  }
+
+  els.themeToggle.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+  els.themeToggle.setAttribute("aria-pressed", String(isDark));
+  els.themeToggle.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light mode" : "Switch to dark mode"
+  );
+}
+
 function sanitizeCoursesInMemory(courses) {
   for (const c of courses) {
     // Grade 9 should never have prereqs
@@ -238,6 +267,12 @@ function wireEvents() {
   els.ossdToggle?.addEventListener("click", () => {
     const isOpen = !document.body.classList.contains("ossd-open");
     setOssdDrawerOpen(isOpen);
+  });
+  els.themeToggle?.addEventListener("click", () => {
+    const isDark = document.body.classList.contains("theme-dark");
+    const nextTheme = isDark ? "light" : THEME_DARK;
+    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    applyTheme(nextTheme);
   });
   els.printPathway?.addEventListener("click", () => {
     setDrawerOpen(false);
