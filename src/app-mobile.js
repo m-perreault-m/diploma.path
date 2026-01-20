@@ -21,6 +21,9 @@ const CUSTOM_COOKIE_MAX_AGE_DAYS = 365;
 const CUSTOM_COOKIE_CHAR_LIMIT = 3500;
 const THEME_STORAGE_KEY = "theme";
 const THEME_DARK = "dark";
+const MOBILE_VIEW_STORAGE_KEY = "mobileView";
+const MOBILE_VIEW_PLAN = "plan";
+const MOBILE_VIEW_BROWSE = "browse";
 const CUSTOM_SUBJECT_OPTIONS = [
   { value: "english", label: "English" },
   { value: "math", label: "Math" },
@@ -139,6 +142,7 @@ const state = {
 
   customCourses: [],
   customDrafts: [],
+  mobileView: MOBILE_VIEW_PLAN,
 };
 
 const els = {
@@ -157,6 +161,10 @@ const els = {
   mobileSearch: document.getElementById("mobile-search"),
   pathwayFilter: document.getElementById("pathway-filter"),
   clear: document.getElementById("clear"), // Start Over
+  viewPlan: document.getElementById("view-plan"),
+  viewBrowse: document.getElementById("view-browse"),
+  planContainer: document.getElementById("mobile-plan-container"),
+  boardContainer: document.getElementById("mobile-board-container"),
   printPathway: document.getElementById("print-pathway"),
   savePathway: document.getElementById("save-pathway"),
   sharePathway: document.getElementById("share-pathway"),
@@ -186,6 +194,7 @@ boot();
 
 async function boot() {
   initTheme();
+  initMobileView();
   const res = await fetch("./data/ontario_courses.json");
   const data = await res.json();
   state.courses = Array.isArray(data) ? data : (data.courses ?? []);
@@ -234,6 +243,29 @@ function applyTheme(theme) {
   const isDark = theme === THEME_DARK;
   document.body.classList.toggle("theme-dark", isDark);
   updateThemeToggle(isDark);
+}
+
+function initMobileView() {
+  const storedView = localStorage.getItem(MOBILE_VIEW_STORAGE_KEY);
+  const view =
+    storedView === MOBILE_VIEW_BROWSE ? MOBILE_VIEW_BROWSE : MOBILE_VIEW_PLAN;
+  setMobileView(view, { persist: false });
+}
+
+function setMobileView(view, { persist = true } = {}) {
+  const normalizedView =
+    view === MOBILE_VIEW_BROWSE ? MOBILE_VIEW_BROWSE : MOBILE_VIEW_PLAN;
+  state.mobileView = normalizedView;
+  const isPlan = normalizedView === MOBILE_VIEW_PLAN;
+  els.planContainer?.classList.toggle("is-hidden", !isPlan);
+  els.boardContainer?.classList.toggle("is-hidden", isPlan);
+  els.viewPlan?.classList.toggle("is-active", isPlan);
+  els.viewBrowse?.classList.toggle("is-active", !isPlan);
+  els.viewPlan?.setAttribute("aria-selected", String(isPlan));
+  els.viewBrowse?.setAttribute("aria-selected", String(!isPlan));
+  if (persist) {
+    localStorage.setItem(MOBILE_VIEW_STORAGE_KEY, normalizedView);
+  }
 }
 
 function updateThemeToggle(isDark) {
@@ -288,6 +320,12 @@ function wireEvents() {
     if (isOpen) {
       els.search?.focus();
     }
+  });
+  els.viewPlan?.addEventListener("click", () => {
+    setMobileView(MOBILE_VIEW_PLAN);
+  });
+  els.viewBrowse?.addEventListener("click", () => {
+    setMobileView(MOBILE_VIEW_BROWSE);
   });
   els.ossdToggle?.addEventListener("click", () => {
     const isOpen = !document.body.classList.contains("ossd-open");
