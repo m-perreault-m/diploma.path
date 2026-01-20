@@ -982,7 +982,7 @@ body.mobile .mobile-shell {
 
 body.mobile .mobile-topbar {
   display: grid;
-  grid-template-columns: auto auto 1fr auto auto;
+  grid-template-columns: auto auto minmax(0, 1fr) auto auto auto;
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
@@ -1013,6 +1013,32 @@ body.mobile .icon-btn {
   border-radius: 12px;
   padding: 8px 10px;
   box-shadow: none;
+}
+
+body.mobile .mobile-segmented {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: var(--panel);
+}
+
+body.mobile .mobile-segment {
+  border: none;
+  background: transparent;
+  color: var(--mutedText);
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+body.mobile .mobile-segment.is-active {
+  background: var(--panel-highlight);
+  color: var(--text);
+  box-shadow: var(--shadow);
 }
 
 body.mobile .mobile-search {
@@ -1199,6 +1225,14 @@ body.mobile .sheet-actions .btn {
 body.mobile .btn.ghost {
   background: transparent;
   border: 1px solid var(--stroke);
+}
+
+.is-hidden {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
 }
 
 @media (max-width: 480px) {
