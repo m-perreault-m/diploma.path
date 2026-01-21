@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Course Path Compass Demo</title>
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Ontario Course Planning Demo</p>
+        <h1>Course Path Compass</h1>
+        <p class="subtitle">
+          Reimagine prerequisite data as a planning compass: choose a target course,
+          mark what you have completed, and instantly see the prerequisite chain
+          plus unlocked options you can explore next.
+        </p>
+      </div>
+      <div class="legend">
+        <div><span class="dot ready"></span> Ready now</div>
+        <div><span class="dot needed"></span> Needed</div>
+        <div><span class="dot completed"></span> Completed</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>1) Set your target</h2>
+        <p class="hint">
+          Pick a destination course to reveal the fastest prerequisite route and alternative
+          options.
+        </p>
+        <label class="field">
+          Target course
+          <select id="target-course"></select>
+        </label>
+      </section>
+
+      <section class="panel">
+        <h2>2) Mark completed courses</h2>
+        <p class="hint">
+          Add the courses you already have. The compass recalculates what is required and
+          what is unlocked.
+        </p>
+        <div class="completed-controls">
+          <label class="field">
+            Add a course
+            <input id="add-course" list="course-list" placeholder="Start typing a course code" />
+            <datalist id="course-list"></datalist>
+          </label>
+          <button id="add-course-button" type="button">Add</button>
+          <button id="clear-completed" type="button" class="ghost">Clear all</button>
+        </div>
+        <label class="field">
+          Completed courses
+          <select id="completed-courses" multiple size="10"></select>
+        </label>
+      </section>
+
+      <section class="panel">
+        <h2>3) Choose a planning focus</h2>
+        <p class="hint">Filter unlocked course suggestions by grade.</p>
+        <div class="grade-filters" id="grade-filters"></div>
+      </section>
+
+      <section class="panel" id="summary-panel">
+        <h2>Compass Summary</h2>
+        <div class="summary" id="summary"></div>
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <h2>Prerequisite chain</h2>
+          <div id="chain"></div>
+        </div>
+        <div class="panel">
+          <h2>Unlocked next steps</h2>
+          <div id="unlocked"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Alternative prerequisite options</h2>
+        <div id="alternatives"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Data source: Ontario course prerequisites dataset. This demo visualizes prerequisite
+        logic, not an official timetable.
+      </p>
+    </footer>
+
+    <script src="demo.js"></script>
+  </body>
+</html>
